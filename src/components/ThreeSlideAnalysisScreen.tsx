@@ -51,13 +51,13 @@ const getAnalysisCategories = (
             title: "Mid Cheek Flattening",
             score: 72,
             description:
-              "2.8mm anterior malar fat pad descent requiring restoration",
+              "Anterior malar fat pad descent requiring restoration",
           },
           {
             title: "Temporal Hollow",
             score: 68,
             description:
-              "3.2mm volume loss in temporal region affecting facial contour",
+              "Volume loss in temporal region affecting facial contour",
           },
           {
             title: "Under Eye Hollow",
@@ -78,12 +78,12 @@ const getAnalysisCategories = (
             title: "Dark Spots",
             score: 78,
             description:
-              "22% pigmentation irregularities requiring targeted treatment",
+              "Pigmentation irregularities requiring targeted treatment",
           },
           {
             title: "Red Spots",
             score: 82,
-            description: "18% vascular concerns identified for treatment",
+            description: "Vascular concerns identified for treatment",
           },
           {
             title: "Whiteheads",
@@ -104,7 +104,7 @@ const getAnalysisCategories = (
             title: "Collagen Density",
             score: 72,
             description:
-              "72% of age-matched controls - excellent for prevention",
+              "Excellent for prevention compared to age-matched controls",
           },
           {
             title: "Elastin Integrity",
@@ -138,7 +138,7 @@ const getAnalysisCategories = (
           {
             title: "Ill-Defined Jawline",
             score: 50,
-            description: "35% volume loss requiring structural support",
+            description: "Volume loss requiring structural support",
           },
           {
             title: "Excess Submental Fullness",
@@ -159,12 +159,12 @@ const getAnalysisCategories = (
             title: "Dark Spots",
             score: 62,
             description:
-              "38% pigmentation irregularities requiring aggressive treatment",
+              "Pigmentation irregularities requiring aggressive treatment",
           },
           {
             title: "Red Spots",
             score: 75,
-            description: "25% vascular concerns identified",
+            description: "Vascular concerns identified",
           },
           {
             title: "Excess Upper Eyelid Skin",
@@ -185,18 +185,18 @@ const getAnalysisCategories = (
             title: "Collagen Density",
             score: 48,
             description:
-              "48% of age-matched controls - requires immediate intervention",
+              "Below age-matched controls - requires immediate intervention",
           },
           {
             title: "Elastin Integrity",
             score: 42,
-            description: "42% preservation - aggressive treatment needed",
+            description: "Reduced preservation - aggressive treatment needed",
           },
           {
             title: "Cellular Turnover",
             score: 45,
             description:
-              "32% slower than optimal - comprehensive protocol required",
+              "Slower than optimal - comprehensive protocol required",
           },
         ],
       },
@@ -310,11 +310,11 @@ export function ThreeSlideAnalysisScreen({
 
   return (
     <div
-      className="bg-gradient-to-br from-black via-gray-900 to-black flex flex-col"
+      className="bg-gradient-to-br from-black via-gray-900 to-black flex flex-col h-screen overflow-hidden"
       style={{
-        height: "calc(var(--actual-vh, 100vh))",
-        minHeight: "calc(var(--actual-vh, 100vh))",
-        maxHeight: "calc(var(--actual-vh, 100vh))",
+        height: "100vh",
+        minHeight: "100vh",
+        maxHeight: "100vh",
       }}
     >
       {/* Header */}

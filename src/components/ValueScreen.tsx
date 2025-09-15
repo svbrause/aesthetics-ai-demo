@@ -172,9 +172,9 @@ export function ValueScreen({ onRestart }: ValueScreenProps) {
     <div
       className="bg-gradient-to-br from-black via-gray-900 to-black flex flex-col h-screen overflow-hidden"
       style={{
-        height: "100dvh",
-        minHeight: "100dvh",
-        maxHeight: "100dvh",
+        height: "100vh",
+        minHeight: "100vh",
+        maxHeight: "100vh",
       }}
     >
       {/* Header - Compact */}
@@ -304,8 +304,36 @@ export function ValueScreen({ onRestart }: ValueScreenProps) {
                   </div>
                 )}
 
-                {currentSlideData.id === "key-stats" && (
-                  <div className="grid grid-cols-1 gap-6">
+                {currentSlideData.id === "clinical-efficiency" && (
+                  <div className="space-y-3">
+                    {currentSlideData.content.map(
+                      (metric: any, index: number) => (
+                        <motion.div
+                          key={metric.title}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.1 * index }}
+                          className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/50"
+                        >
+                          <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center text-purple-400 flex-shrink-0">
+                            {metric.icon}
+                          </div>
+                          <div>
+                            <h4 className="text-base font-semibold text-white mb-1">
+                              {metric.title}
+                            </h4>
+                            <p className="text-gray-300 text-xs leading-relaxed">
+                              {metric.description}
+                            </p>
+                          </div>
+                        </motion.div>
+                      )
+                    )}
+                  </div>
+                )}
+
+                {currentSlideData.id === "revenue-impact" && (
+                  <div className="grid grid-cols-2 gap-4">
                     {currentSlideData.content.map(
                       (stat: any, index: number) => (
                         <motion.div
@@ -313,18 +341,18 @@ export function ValueScreen({ onRestart }: ValueScreenProps) {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.1 * index }}
-                          className={`p-6 text-center rounded-xl bg-gradient-to-br ${
+                          className={`p-4 text-center rounded-xl bg-gradient-to-br ${
                             getColorClasses(stat.color).bg
                           } ${getColorClasses(stat.color).border} border`}
                         >
                           <div
-                            className={`text-4xl font-bold ${
+                            className={`text-2xl font-bold ${
                               getColorClasses(stat.color).text
-                            } mb-2`}
+                            } mb-1`}
                           >
                             {stat.value}
                           </div>
-                          <div className="text-gray-300 text-sm">
+                          <div className="text-gray-300 text-xs">
                             {stat.label}
                           </div>
                         </motion.div>

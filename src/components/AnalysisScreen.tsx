@@ -91,6 +91,20 @@ const progressMessages = [
   "Analysis complete! Building your comprehensive profile...",
 ];
 
+// Demo patient data mapping
+const getPatientAnalysis = (patientName: string) => {
+  const patientData: Record<string, { findings: string[] }> = {
+    "Sydney Adams": {
+      findings: ["Forehead Wrinkles", "Dark Spots", "Nasolabial Folds", "Marionette Lines", "Red Spots", "Whiteheads", "Temporal Hollow", "Under Eye Hollow", "Upper Eye Hollow", "Lower Eyelid Sag", "Mid Cheek Flattening", "Crooked Nose", "Dorsal Hump", "Dry Lips", "Excess/Submental Fullness", "Prejowl Sulcus", "Retruded Chin", "Masseter Hypertrophy"]
+    },
+    "Chelsea Perry": {
+      findings: ["Under Eye Wrinkles", "Bunny Lines", "Neck Lines", "Dark Spots", "Red Spots", "Nasolabial Folds", "Marionette Lines", "Temporal Hollow", "Brow Asymmetry", "Excess Upper Eyelid Skin", "Under Eye Hollow", "Negative Canthal Tilt", "Cheekbone - Not Prominent", "Over-Projected", "Over-Rotated", "Nasal Bone - Too Wide", "Nostril Base - Too Wide", "Nasal Tip Too Wide", "Thin Lips", "Long Philtral Column", "Dry Lips", "Retruded Chin", "Jowls", "Ill-Defined Jawline", "Prejowl Sulcus", "Excess/Submental Fullness", "Obtuse Cervicomental Angle"]
+    }
+  };
+  
+  return patientData[patientName] || { findings: [] };
+};
+
 const analysisCategories: AnalysisCategory[] = [
   {
     id: "facial-balancing",
@@ -111,7 +125,7 @@ const analysisCategories: AnalysisCategory[] = [
         id: "hyaluronic-fillers",
         name: "Hyaluronic Acid Fillers",
         description:
-          "Temporal hollow restoration (1.2ml), under-eye correction (0.8ml), mid-cheek enhancement (1.5ml)",
+          "Temporal hollow restoration, under-eye correction, mid-cheek enhancement",
         icon: <Syringe className="w-4 h-4" />,
         priceRange: "$1,400-2,500",
       },
@@ -153,7 +167,7 @@ const analysisCategories: AnalysisCategory[] = [
         id: "medical-skincare",
         name: "Medical-Grade Skincare Protocol",
         description:
-          "Tretinoin 0.025%, Vitamin C 20%, Niacinamide, SPF 50+, Hyaluronic Acid",
+          "Tretinoin, Vitamin C, Niacinamide, SPF 50+, Hyaluronic Acid",
         icon: <Droplets className="w-4 h-4" />,
         priceRange: "$450-650",
       },
@@ -161,7 +175,7 @@ const analysisCategories: AnalysisCategory[] = [
         id: "botox-skin",
         name: "Botox Treatment",
         description:
-          "20 units for forehead, glabella, crow's feet to prevent dynamic lines",
+          "Forehead, glabella, crow's feet to prevent dynamic lines",
         icon: <Syringe className="w-4 h-4" />,
         priceRange: "$400-800",
       },
@@ -313,11 +327,11 @@ export function AnalysisScreen({
   if (!showResults) {
     return (
       <div
-        className="bg-black flex flex-col p-4"
+        className="bg-black flex flex-col p-4 h-screen overflow-hidden"
         style={{
-          height: "calc(var(--actual-vh, 100vh))",
-          minHeight: "calc(var(--actual-vh, 100vh))",
-          maxHeight: "calc(var(--actual-vh, 100vh))",
+          height: "100vh",
+          minHeight: "100vh",
+          maxHeight: "100vh",
         }}
       >
         {/* Header - Compact */}
@@ -438,11 +452,11 @@ export function AnalysisScreen({
 
   return (
     <div
-      className="bg-black flex flex-col"
+      className="bg-black flex flex-col h-screen overflow-hidden"
       style={{
-        height: "calc(var(--actual-vh, 100vh))",
-        minHeight: "calc(var(--actual-vh, 100vh))",
-        maxHeight: "calc(var(--actual-vh, 100vh))",
+        height: "100vh",
+        minHeight: "100vh",
+        maxHeight: "100vh",
       }}
     >
       {/* Header - Optimized for Vertical Space */}

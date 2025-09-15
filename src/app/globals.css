@@ -31,6 +31,15 @@ body {
   height: var(--app-height); /* Fallback for older browsers */
 }
 
+/* Consistent viewport height across all devices */
+html,
+body {
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
 /* Mobile Safari viewport fix */
 @supports (-webkit-touch-callout: none) {
   html,

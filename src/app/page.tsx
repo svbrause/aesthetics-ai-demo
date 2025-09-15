@@ -160,9 +160,9 @@ export default function Home() {
     <main
       className="bg-black text-white overflow-hidden h-screen"
       style={{
-        height: "100dvh",
-        minHeight: "100dvh",
-        maxHeight: "100dvh",
+        height: "100vh",
+        minHeight: "100vh",
+        maxHeight: "100vh",
       }}
     >
       <AnimatePresence mode="wait">
