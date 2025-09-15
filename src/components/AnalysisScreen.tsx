@@ -107,7 +107,7 @@ const getPatientAnalysis = (patientName: string) => {
 
 const analysisCategories: AnalysisCategory[] = [
   {
-    id: "facial-balancing",
+    id: "facial-structure",
     title: "Facial Structure Analysis",
     description: "Comprehensive anatomical assessment and symmetry evaluation",
     score: 78,
@@ -198,7 +198,7 @@ const analysisCategories: AnalysisCategory[] = [
     ],
   },
   {
-    id: "preventative-aesthetics",
+    id: "preventative-care",
     title: "Preventative Care Strategy",
     description:
       "Evidence-based preventive protocols and long-term maintenance planning",
