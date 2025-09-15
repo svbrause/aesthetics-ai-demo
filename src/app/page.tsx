@@ -1,103 +1,301 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { WelcomeScreen } from "@/components/WelcomeScreen";
+import { PatientSelection } from "@/components/PatientSelection";
+import { PhotoUpload } from "@/components/PhotoUpload";
+import { ThreeSlideAnalysisScreen } from "@/components/ThreeSlideAnalysisScreen";
+import { AnalysisScreen } from "@/components/AnalysisScreen";
+import { Questionnaire } from "@/components/Questionnaire";
+import { JourneyScreen } from "@/components/JourneyScreen";
+import { ValueScreen } from "@/components/ValueScreen";
+import { UserAnswers, PatientType } from "@/types";
+
+type SceneType =
+  | "welcome"
+  | "patient-selection"
+  | "photo-upload"
+  | "questionnaire"
+  | "analysis-loading"
+  | "three-slide-analysis"
+  | "detailed-analysis"
+  | "journey"
+  | "value";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [currentScene, setCurrentScene] = useState<SceneType>("welcome");
+  const [selectedPatient, setSelectedPatient] = useState<PatientType | null>(
+    null
+  );
+  const [userPhoto, setUserPhoto] = useState<string>("");
+  const [userAnswers, setUserAnswers] = useState<UserAnswers>(
+    {} as UserAnswers
+  );
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  // Reset scroll position when scene changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentScene]);
+
+  // Fix mobile Safari viewport height
+  useEffect(() => {
+    const setViewportHeight = () => {
+      // Get the actual viewport height
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+      // Additional fix for mobile Safari
+      const actualHeight = window.innerHeight;
+      document.documentElement.style.setProperty(
+        "--actual-vh",
+        `${actualHeight}px`
+      );
+    };
+
+    // Set initial height
+    setViewportHeight();
+
+    // Handle resize events
+    window.addEventListener("resize", setViewportHeight);
+    window.addEventListener("orientationchange", setViewportHeight);
+
+    // Handle visual viewport changes (mobile Safari)
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", setViewportHeight);
+    }
+
+    // Set height on load
+    window.addEventListener("load", setViewportHeight);
+
+    return () => {
+      window.removeEventListener("resize", setViewportHeight);
+      window.removeEventListener("orientationchange", setViewportHeight);
+      window.removeEventListener("load", setViewportHeight);
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener("resize", setViewportHeight);
+      }
+    };
+  }, []);
+
+  const handleBegin = () => {
+    setCurrentScene("patient-selection");
+  };
+
+  const handlePatientSelect = (patient: PatientType) => {
+    setSelectedPatient(patient);
+    // Set the appropriate photo based on selected patient
+    if (patient === "sydney") {
+      setUserPhoto("/Sydney Adams Front.jpg");
+    } else {
+      setUserPhoto("/Chelsea Perry Front.jpg");
+    }
+    setCurrentScene("questionnaire");
+  };
+
+  const handlePhotoSelect = (photoUrl: string) => {
+    setUserPhoto(photoUrl);
+  };
+
+  const handlePhotoNext = () => {
+    setCurrentScene("questionnaire");
+  };
+
+  const handleQuestionnaireComplete = (answers: UserAnswers) => {
+    setUserAnswers(answers);
+    setCurrentScene("analysis-loading");
+  };
+
+  const handleAnalysisLoadingComplete = () => {
+    setCurrentScene("three-slide-analysis");
+  };
+
+  const handleMoreInfo = (category: string) => {
+    setSelectedCategory(category);
+    setCurrentScene("detailed-analysis");
+  };
+
+  const handleDetailedAnalysisBack = () => {
+    setCurrentScene("three-slide-analysis");
+  };
+
+  const handleViewJourney = () => {
+    setCurrentScene("journey");
+  };
+
+  const handleViewValue = () => {
+    setCurrentScene("value");
+  };
+
+  const handleRestart = () => {
+    setCurrentScene("welcome");
+    setSelectedPatient(null);
+    setUserPhoto("");
+    setUserAnswers({} as UserAnswers);
+  };
+
+  const sceneVariants = {
+    enter: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.95,
+      y: -20,
+      transition: {
+        duration: 0.3,
+        ease: "easeIn",
+      },
+    },
+  };
+
+  return (
+    <main
+      className="bg-black text-white overflow-hidden h-screen"
+      style={{
+        height: "100dvh",
+        minHeight: "100dvh",
+        maxHeight: "100dvh",
+      }}
+    >
+      <AnimatePresence mode="wait">
+        {currentScene === "welcome" && (
+          <motion.div
+            key="welcome"
+            variants={sceneVariants}
+            initial="exit"
+            animate="enter"
+            exit="exit"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+            <WelcomeScreen onBegin={handleBegin} />
+          </motion.div>
+        )}
+
+        {currentScene === "patient-selection" && (
+          <motion.div
+            key="patient-selection"
+            variants={sceneVariants}
+            initial="exit"
+            animate="enter"
+            exit="exit"
+          >
+            <PatientSelection onPatientSelect={handlePatientSelect} />
+          </motion.div>
+        )}
+
+        {currentScene === "photo-upload" && (
+          <motion.div
+            key="photo-upload"
+            variants={sceneVariants}
+            initial="exit"
+            animate="enter"
+            exit="exit"
+          >
+            <PhotoUpload
+              onPhotoSelect={handlePhotoSelect}
+              onNext={handlePhotoNext}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          </motion.div>
+        )}
+
+        {currentScene === "questionnaire" && (
+          <motion.div
+            key="questionnaire"
+            variants={sceneVariants}
+            initial="exit"
+            animate="enter"
+            exit="exit"
           >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            <Questionnaire onComplete={handleQuestionnaireComplete} />
+          </motion.div>
+        )}
+
+        {currentScene === "analysis-loading" && (
+          <motion.div
+            key="analysis-loading"
+            variants={sceneVariants}
+            initial="exit"
+            animate="enter"
+            exit="exit"
+          >
+            <AnalysisScreen
+              photoUrl={userPhoto}
+              onComplete={handleAnalysisLoadingComplete}
+              onViewJourney={handleViewJourney}
+              showResults={false}
+            />
+          </motion.div>
+        )}
+
+        {currentScene === "three-slide-analysis" && (
+          <motion.div
+            key="three-slide-analysis"
+            variants={sceneVariants}
+            initial="exit"
+            animate="enter"
+            exit="exit"
+          >
+            <ThreeSlideAnalysisScreen
+              photoUrl={userPhoto}
+              selectedPatient={selectedPatient}
+              onMoreInfo={handleMoreInfo}
+              onViewJourney={handleViewJourney}
+            />
+          </motion.div>
+        )}
+
+        {currentScene === "detailed-analysis" && (
+          <motion.div
+            key="detailed-analysis"
+            variants={sceneVariants}
+            initial="exit"
+            animate="enter"
+            exit="exit"
+          >
+            <AnalysisScreen
+              photoUrl={userPhoto}
+              onComplete={handleDetailedAnalysisBack}
+              onViewJourney={handleViewJourney}
+              showResults={true}
+              selectedCategory={selectedCategory}
+            />
+          </motion.div>
+        )}
+
+        {currentScene === "journey" && (
+          <motion.div
+            key="journey"
+            variants={sceneVariants}
+            initial="exit"
+            animate="enter"
+            exit="exit"
+          >
+            <JourneyScreen
+              userAnswers={userAnswers}
+              onViewValue={handleViewValue}
+            />
+          </motion.div>
+        )}
+
+        {currentScene === "value" && (
+          <motion.div
+            key="value"
+            variants={sceneVariants}
+            initial="exit"
+            animate="enter"
+            exit="exit"
+          >
+            <ValueScreen onRestart={handleRestart} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </main>
   );
 }
