@@ -413,7 +413,7 @@ export function PatientDetailScreen({
 
           {/* Photo Toggle Button - Fixed */}
           <Button
-            variant="outline"
+            variant="secondary"
             size="sm"
             className="mb-3"
             onClick={() => setIsSideView(!isSideView)}
