@@ -191,7 +191,7 @@ export function PatientWelcomeScreen({
                   className="flex justify-center mt-6"
                 >
                   <Button
-                    variant="outline"
+                    variant="secondary"
                     size="lg"
                     onClick={() => setIsSideView(!isSideView)}
                     className="backdrop-blur-md bg-white/10 border-white/20 hover:bg-white/20 text-white"
@@ -318,7 +318,7 @@ export function PatientWelcomeScreen({
 
                 <div className="grid grid-cols-2 gap-4">
                   <Button
-                    variant="outline"
+                    variant="secondary"
                     size="lg"
                     className="backdrop-blur-md bg-white/10 border-white/20 hover:bg-white/20 text-white rounded-2xl"
                   >
@@ -326,7 +326,7 @@ export function PatientWelcomeScreen({
                     Schedule
                   </Button>
                   <Button
-                    variant="outline"
+                    variant="secondary"
                     size="lg"
                     className="backdrop-blur-md bg-white/10 border-white/20 hover:bg-white/20 text-white rounded-2xl"
                   >

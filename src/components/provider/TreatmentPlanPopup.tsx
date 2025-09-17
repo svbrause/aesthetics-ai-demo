@@ -193,7 +193,7 @@ export function TreatmentPlanPopup({
               {/* Action Buttons */}
               <div className="flex justify-end space-x-3 pt-4 border-t border-gray-700">
                 <Button
-                  variant="outline"
+                  variant="secondary"
                   onClick={onClose}
                   className="backdrop-blur-md bg-white/10 border-white/20 hover:bg-white/20 text-white"
                 >
