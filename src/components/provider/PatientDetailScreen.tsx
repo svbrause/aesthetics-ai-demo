@@ -52,7 +52,7 @@ export function PatientDetailScreen({
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
   const [isSideView, setIsSideView] = useState(false);
   const [showTreatmentPlan, setShowTreatmentPlan] = useState(false);
-  const [treatmentPlan, setTreatmentPlan] = useState([]);
+  const [treatmentPlan, setTreatmentPlan] = useState<any[]>([]);
 
   if (!patient) {
     return (
