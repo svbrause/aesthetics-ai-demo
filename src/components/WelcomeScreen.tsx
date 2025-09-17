@@ -264,6 +264,21 @@ export function WelcomeScreen({ onBegin }: WelcomeScreenProps) {
               </span>
             </Button>
           </motion.div>
+
+          {/* Provider Access Link */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.6, duration: 0.8 }}
+            className="flex justify-center"
+          >
+            <a
+              href="/provider"
+              className="text-sm text-gray-400 hover:text-white transition-colors duration-300 underline underline-offset-4"
+            >
+              Provider Portal Access
+            </a>
+          </motion.div>
         </div>
       </div>
 

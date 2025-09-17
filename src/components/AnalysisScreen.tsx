@@ -95,13 +95,60 @@ const progressMessages = [
 const getPatientAnalysis = (patientName: string) => {
   const patientData: Record<string, { findings: string[] }> = {
     "Sydney Adams": {
-      findings: ["Forehead Wrinkles", "Dark Spots", "Nasolabial Folds", "Marionette Lines", "Red Spots", "Whiteheads", "Temporal Hollow", "Under Eye Hollow", "Upper Eye Hollow", "Lower Eyelid Sag", "Mid Cheek Flattening", "Crooked Nose", "Dorsal Hump", "Dry Lips", "Excess/Submental Fullness", "Prejowl Sulcus", "Retruded Chin", "Masseter Hypertrophy"]
+      findings: [
+        "Forehead Wrinkles",
+        "Dark Spots",
+        "Nasolabial Folds",
+        "Marionette Lines",
+        "Red Spots",
+        "Whiteheads",
+        "Temporal Hollow",
+        "Under Eye Hollow",
+        "Upper Eye Hollow",
+        "Lower Eyelid Sag",
+        "Mid Cheek Flattening",
+        "Crooked Nose",
+        "Dorsal Hump",
+        "Dry Lips",
+        "Excess/Submental Fullness",
+        "Prejowl Sulcus",
+        "Retruded Chin",
+        "Masseter Hypertrophy",
+      ],
     },
     "Chelsea Perry": {
-      findings: ["Under Eye Wrinkles", "Bunny Lines", "Neck Lines", "Dark Spots", "Red Spots", "Nasolabial Folds", "Marionette Lines", "Temporal Hollow", "Brow Asymmetry", "Excess Upper Eyelid Skin", "Under Eye Hollow", "Negative Canthal Tilt", "Cheekbone - Not Prominent", "Over-Projected", "Over-Rotated", "Nasal Bone - Too Wide", "Nostril Base - Too Wide", "Nasal Tip Too Wide", "Thin Lips", "Long Philtral Column", "Dry Lips", "Retruded Chin", "Jowls", "Ill-Defined Jawline", "Prejowl Sulcus", "Excess/Submental Fullness", "Obtuse Cervicomental Angle"]
-    }
+      findings: [
+        "Under Eye Wrinkles",
+        "Bunny Lines",
+        "Neck Lines",
+        "Dark Spots",
+        "Red Spots",
+        "Nasolabial Folds",
+        "Marionette Lines",
+        "Temporal Hollow",
+        "Brow Asymmetry",
+        "Excess Upper Eyelid Skin",
+        "Under Eye Hollow",
+        "Negative Canthal Tilt",
+        "Cheekbone - Not Prominent",
+        "Over-Projected",
+        "Over-Rotated",
+        "Nasal Bone - Too Wide",
+        "Nostril Base - Too Wide",
+        "Nasal Tip Too Wide",
+        "Thin Lips",
+        "Long Philtral Column",
+        "Dry Lips",
+        "Retruded Chin",
+        "Jowls",
+        "Ill-Defined Jawline",
+        "Prejowl Sulcus",
+        "Excess/Submental Fullness",
+        "Obtuse Cervicomental Angle",
+      ],
+    },
   };
-  
+
   return patientData[patientName] || { findings: [] };
 };
 
@@ -151,7 +198,7 @@ const analysisCategories: AnalysisCategory[] = [
     id: "skin-quality",
     title: "Skin Quality Assessment",
     description:
-      "Advanced skin analysis with VISIA imaging and clinical evaluation",
+      "Advanced skin analysis with facial analysis and clinical evaluation",
     score: 85,
     icon: <Sparkles className="w-5 h-5" />,
     issues: [
@@ -174,8 +221,7 @@ const analysisCategories: AnalysisCategory[] = [
       {
         id: "botox-skin",
         name: "Botox Treatment",
-        description:
-          "Forehead, glabella, crow's feet to prevent dynamic lines",
+        description: "Forehead, glabella, crow's feet to prevent dynamic lines",
         icon: <Syringe className="w-4 h-4" />,
         priceRange: "$400-800",
       },
