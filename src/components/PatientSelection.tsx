@@ -142,7 +142,7 @@ export function PatientSelection({ onPatientSelect }: PatientSelectionProps) {
                     ? `${colorClasses.bg} ${colorClasses.border} border-2 shadow-lg`
                     : "bg-gray-800/50 border-gray-700 hover:border-gray-600"
                 }`}
-                onClick={() => handleSelect(key as "sydney" | "chelsea")}
+                onClick={() => handleSelect(key as "1001" | "1002")}
               >
                 <div className="flex items-center space-x-3">
                   {/* Patient Photos - Smaller */}

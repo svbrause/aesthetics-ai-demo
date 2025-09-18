@@ -66,7 +66,7 @@ export function ProviderDashboard({
 
   const recentPatients = [
     {
-      id: "sydney-adams",
+      id: "1001",
       name: "Sydney Adams",
       age: 28,
       lastAnalysis: "2 hours ago",
@@ -98,7 +98,7 @@ export function ProviderDashboard({
       ],
     },
     {
-      id: "chelsea-perry",
+      id: "1002",
       name: "Chelsea Perry",
       age: 32,
       lastAnalysis: "4 hours ago",
@@ -139,7 +139,7 @@ export function ProviderDashboard({
       ],
     },
     {
-      id: "jen-lepage",
+      id: "1003",
       name: "Jen LePage",
       age: 39,
       lastAnalysis: "1 day ago",
