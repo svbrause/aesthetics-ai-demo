@@ -39,7 +39,7 @@ export function AnalysisTransitionScreen({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
+          className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent dark:text-white dark:from-white dark:to-gray-300"
         >
           Creating Your Personalized Analysis
         </motion.h1>

@@ -211,7 +211,7 @@ export function AnalysisToolsScreen({ onBack }: AnalysisToolsScreenProps) {
               <ArrowLeft className="w-4 h-4" />
             </Button>
             <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent dark:text-white dark:from-white dark:to-gray-300">
                 Analysis Tools
               </h1>
               <p className="text-gray-400 text-sm">

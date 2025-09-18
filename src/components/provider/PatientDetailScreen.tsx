@@ -201,8 +201,8 @@ export function PatientDetailScreen({
         invasiveness: "Minimal",
         description: "Hyaluronic acid filler to restore under-eye volume",
         beforeAfter: {
-          before: "/Sydney Adams Front.jpg",
-          after: "/Sydney Adams Side.jpg",
+          before: "/Sydney Adams Front.png",
+          after: "/Sydney Adams Side.png",
         },
         benefits: ["Immediate results", "Natural look", "Minimal downtime"],
         risks: ["Bruising", "Swelling", "Rare vascular complications"],
@@ -215,8 +215,8 @@ export function PatientDetailScreen({
         invasiveness: "Minimal",
         description: "Botulinum toxin to reduce crow's feet wrinkles",
         beforeAfter: {
-          before: "/Sydney Adams Front.jpg",
-          after: "/Sydney Adams Side.jpg",
+          before: "/Sydney Adams Front.png",
+          after: "/Sydney Adams Side.png",
         },
         benefits: ["Prevents new wrinkles", "Quick treatment", "No downtime"],
         risks: ["Temporary weakness", "Headache", "Drooping (rare)"],
@@ -232,8 +232,8 @@ export function PatientDetailScreen({
         description:
           "High-density filler to restore cheek volume and structure",
         beforeAfter: {
-          before: "/Sydney Adams Front.jpg",
-          after: "/Sydney Adams Side.jpg",
+          before: "/Sydney Adams Front.png",
+          after: "/Sydney Adams Side.png",
         },
         benefits: ["Long-lasting", "Natural lift", "Immediate results"],
         risks: ["Swelling", "Bruising", "Asymmetry risk"],
@@ -248,8 +248,8 @@ export function PatientDetailScreen({
         invasiveness: "Minimal",
         description: "Hyaluronic acid filler to enhance lip volume and shape",
         beforeAfter: {
-          before: "/Sydney Adams Front.jpg",
-          after: "/Sydney Adams Side.jpg",
+          before: "/Sydney Adams Front.png",
+          after: "/Sydney Adams Side.png",
         },
         benefits: ["Natural enhancement", "Customizable shape", "Reversible"],
         risks: ["Swelling", "Bruising", "Lumpiness (rare)"],
@@ -348,7 +348,7 @@ export function PatientDetailScreen({
               <ArrowLeft className="w-4 h-4" />
             </Button>
             <div>
-              <h1 className="text-xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              <h1 className="text-xl font-bold bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent dark:text-white dark:from-white dark:to-gray-300">
                 {patient.name}
               </h1>
               <p className="text-gray-400 text-sm">

@@ -387,7 +387,7 @@ export function AnalysisScreen({
           transition={{ duration: 0.6 }}
           className="text-center mb-3"
         >
-          <h2 className="text-xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+          <h2 className="text-xl font-bold bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent dark:text-white dark:from-white dark:to-gray-300">
             Analyzing Features
           </h2>
         </motion.div>

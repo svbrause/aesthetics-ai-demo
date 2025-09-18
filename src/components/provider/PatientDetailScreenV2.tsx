@@ -41,6 +41,7 @@ import {
   Pause,
   RefreshCw,
 } from "lucide-react";
+import { getFindingImage, getFallbackFindingImage } from "@/lib/findingImages";
 
 interface PatientDetailScreenV2Props {
   patient: any;
@@ -48,7 +49,7 @@ interface PatientDetailScreenV2Props {
   onOpenAreaAnalysis: (area: string) => void;
 }
 
-type ViewMode = "analysis" | "treatments" | "treatment-plan" | "interest-list";
+type ViewMode = "analysis" | "treatments" | "treatment-plan";
 
 export function PatientDetailScreenV2({
   patient,
@@ -61,7 +62,7 @@ export function PatientDetailScreenV2({
   const [selectedGoal, setSelectedGoal] = useState("");
   const [priceRange, setPriceRange] = useState("");
   const [modality, setModality] = useState("");
-  const [interestList, setInterestList] = useState<any[]>([]);
+  const [shortlist, setShortlist] = useState<any[]>([]);
   const [treatmentPlan, setTreatmentPlan] = useState<any[]>(() => {
     // Default treatment plans for demo patients
     const defaultPlans: Record<string, any[]> = {
@@ -127,6 +128,7 @@ export function PatientDetailScreenV2({
   const [selectedTreatment, setSelectedTreatment] = useState<any>(null);
   const [showAllAreas, setShowAllAreas] = useState(false);
   const [showAllAnalysisAreas, setShowAllAnalysisAreas] = useState(false);
+  const [showOnlyInterestedAreas, setShowOnlyInterestedAreas] = useState(true);
   const [expandedInterestItems, setExpandedInterestItems] = useState<
     Set<string>
   >(new Set());
@@ -165,13 +167,13 @@ export function PatientDetailScreenV2({
           ],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Temporal Filler",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Fat Grafting",
             },
           ],
@@ -195,13 +197,13 @@ export function PatientDetailScreenV2({
           ],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Botox Brow Lift",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Thread Lift",
             },
           ],
@@ -225,13 +227,13 @@ export function PatientDetailScreenV2({
           ],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Forehead Filler",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Fat Grafting",
             },
           ],
@@ -251,13 +253,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Drooping brows", "Tired appearance", "Heavy eyelids"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Brow Lift",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Thread Lift",
             },
           ],
@@ -285,13 +287,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Dark circles", "Tired appearance", "Hollowed look"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Tear Trough Filler",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Lower Blepharoplasty",
             },
           ],
@@ -311,13 +313,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Dark circles", "Tired appearance", "Hollowed appearance"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Tear Trough Filler",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Lower Blepharoplasty",
             },
           ],
@@ -341,13 +343,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Heavy eyelids", "Tired appearance", "Vision obstruction"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Upper Blepharoplasty",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Laser Resurfacing",
             },
           ],
@@ -370,13 +372,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Puffy eyes", "Tired appearance", "Aging look"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Lower Blepharoplasty",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Fat Repositioning",
             },
           ],
@@ -411,13 +413,13 @@ export function PatientDetailScreenV2({
           ],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Rhinoplasty",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Non-surgical Rhinoplasty",
             },
           ],
@@ -441,13 +443,13 @@ export function PatientDetailScreenV2({
           ],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Tip Rhinoplasty",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Thread Lift",
             },
           ],
@@ -471,13 +473,13 @@ export function PatientDetailScreenV2({
           ],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Rhinoplasty",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Non-surgical Correction",
             },
           ],
@@ -509,13 +511,13 @@ export function PatientDetailScreenV2({
           ],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Cheek Filler",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Fat Grafting",
             },
           ],
@@ -539,13 +541,13 @@ export function PatientDetailScreenV2({
           ],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Cheekbone Filler",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Cheek Implants",
             },
           ],
@@ -565,13 +567,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Full cheeks", "Round face", "Lack of definition"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Buccal Fat Removal",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Masseter Botox",
             },
           ],
@@ -599,13 +601,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Thin appearance", "Less defined shape", "Aging look"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Lip Filler",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Lip Lift",
             },
           ],
@@ -625,8 +627,8 @@ export function PatientDetailScreenV2({
           symptoms: ["Chapped lips", "Rough texture", "Discomfort"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Hydration Treatment",
             },
           ],
@@ -646,13 +648,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Uneven lips", "Asymmetric smile", "Facial imbalance"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Lip Filler",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Lip Surgery",
             },
           ],
@@ -680,13 +682,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Weak chin", "Profile imbalance", "Jawline definition"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Chin Filler",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Chin Implant",
             },
           ],
@@ -706,13 +708,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Sagging skin", "Loss of definition", "Aging appearance"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Thread Lift",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Facelift",
             },
           ],
@@ -732,13 +734,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Soft jawline", "Lack of definition", "Round face"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Jawline Filler",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Masseter Botox",
             },
           ],
@@ -758,13 +760,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Wide jaw", "Square face", "Muscle tension"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Masseter Botox",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Masseter Reduction",
             },
           ],
@@ -792,13 +794,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Sagging skin", "Turkey neck", "Aging appearance"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Neck Lift",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Ultherapy",
             },
           ],
@@ -818,13 +820,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Vertical bands", "Neck aging", "Contour issues"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Botox",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Neck Lift",
             },
           ],
@@ -844,13 +846,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Double chin", "Neck fullness", "Profile issues"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Kybella",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Liposuction",
             },
           ],
@@ -878,13 +880,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Uneven skin tone", "Dark patches", "Aging appearance"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "IPL Treatment",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Chemical Peel",
             },
           ],
@@ -904,13 +906,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Fine lines", "Crepey skin", "Aging appearance"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "Botox",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Microneedling",
             },
           ],
@@ -929,13 +931,13 @@ export function PatientDetailScreenV2({
           symptoms: ["Red patches", "Uneven tone", "Vascular issues"],
           beforeAfter: [
             {
-              before: "/Sydney Adams Front.jpg",
-              after: "/Sydney Adams Side.jpg",
+              before: "/Sydney Adams Front.png",
+              after: "/Sydney Adams Side.png",
               label: "IPL Treatment",
             },
             {
-              before: "/Chelsea Perry Front.jpg",
-              after: "/Chelsea Perry Side.jpg",
+              before: "/Chelsea Perry Front.png",
+              after: "/Chelsea Perry Side.png",
               label: "Laser Treatment",
             },
           ],
@@ -983,15 +985,28 @@ export function PatientDetailScreenV2({
     return Math.round(averageScore);
   };
 
-  // Show only top 3 areas by score by default
+  // Calculate overall patient score
+  const calculateOverallScore = () => {
+    if (!patient.findings || patient.findings.length === 0) return 100;
+
+    const allAreaScores = analysisAreas.map((area) => calculateAreaScore(area));
+    const averageScore =
+      allAreaScores.reduce((sum, score) => sum + score, 0) /
+      allAreaScores.length;
+    return Math.round(averageScore);
+  };
+
+  const overallScore = patient.score || calculateOverallScore();
+
+  // Show all areas by default, but highlight interested areas
   const interestedAreas = analysisAreas
     .filter((area) => allInterestedAreas.includes(area.id))
-    .sort((a, b) => calculateAreaScore(b) - calculateAreaScore(a))
-    .slice(0, 3)
+    .sort((a, b) => calculateAreaScore(a) - calculateAreaScore(b)) // Sort by score ascending (worst first)
     .map((area) => area.id);
-  const areasToShow = showAllAreas
-    ? analysisAreas
-    : analysisAreas.filter((area) => interestedAreas.includes(area.id));
+
+  const areasToShow = showOnlyInterestedAreas
+    ? analysisAreas.filter((area) => interestedAreas.includes(area.id))
+    : analysisAreas;
 
   const treatmentGoals = [
     "Volume Restoration",
@@ -1025,8 +1040,8 @@ export function PatientDetailScreenV2({
       description:
         "High-density hyaluronic acid filler for cheek volume restoration",
       beforeAfter: {
-        before: "/Sydney Adams Front.jpg",
-        after: "/Sydney Adams Side.jpg",
+        before: "/Sydney Adams Front.png",
+        after: "/Sydney Adams Side.png",
       },
       benefits: ["Long-lasting", "Natural lift", "Immediate results"],
       risks: ["Swelling", "Bruising", "Asymmetry risk"],
@@ -1044,8 +1059,8 @@ export function PatientDetailScreenV2({
       invasiveness: "Minimal",
       description: "Botulinum toxin to reduce crow's feet wrinkles",
       beforeAfter: {
-        before: "/Sydney Adams Front.jpg",
-        after: "/Sydney Adams Side.jpg",
+        before: "/Sydney Adams Front.png",
+        after: "/Sydney Adams Side.png",
       },
       benefits: ["Prevents new wrinkles", "Quick treatment", "No downtime"],
       risks: ["Temporary weakness", "Headache", "Drooping (rare)"],
@@ -1063,8 +1078,8 @@ export function PatientDetailScreenV2({
       invasiveness: "Minimal",
       description: "Hyaluronic acid filler to restore under-eye volume",
       beforeAfter: {
-        before: "/Sydney Adams Front.jpg",
-        after: "/Sydney Adams Side.jpg",
+        before: "/Sydney Adams Front.png",
+        after: "/Sydney Adams Side.png",
       },
       benefits: ["Immediate results", "Natural look", "Minimal downtime"],
       risks: ["Bruising", "Swelling", "Rare vascular complications"],
@@ -1082,8 +1097,8 @@ export function PatientDetailScreenV2({
       invasiveness: "Minimal",
       description: "Botulinum toxin to smooth forehead lines and wrinkles",
       beforeAfter: {
-        before: "/Sydney Adams Front.jpg",
-        after: "/Sydney Adams Side.jpg",
+        before: "/Sydney Adams Front.png",
+        after: "/Sydney Adams Side.png",
       },
       benefits: ["Prevents new wrinkles", "Quick treatment", "No downtime"],
       risks: ["Temporary weakness", "Headache", "Drooping (rare)"],
@@ -1101,8 +1116,8 @@ export function PatientDetailScreenV2({
       invasiveness: "Minimal",
       description: "Hyaluronic acid filler to enhance lip volume and shape",
       beforeAfter: {
-        before: "/Sydney Adams Front.jpg",
-        after: "/Sydney Adams Side.jpg",
+        before: "/Sydney Adams Front.png",
+        after: "/Sydney Adams Side.png",
       },
       benefits: ["Immediate results", "Natural look", "Reversible"],
       risks: ["Swelling", "Bruising", "Asymmetry risk"],
@@ -1121,8 +1136,8 @@ export function PatientDetailScreenV2({
       description:
         "Hyaluronic acid filler to enhance chin projection and jawline",
       beforeAfter: {
-        before: "/Sydney Adams Front.jpg",
-        after: "/Sydney Adams Side.jpg",
+        before: "/Sydney Adams Front.png",
+        after: "/Sydney Adams Side.png",
       },
       benefits: ["Immediate results", "Natural look", "Long-lasting"],
       risks: ["Swelling", "Bruising", "Asymmetry risk"],
@@ -1141,8 +1156,8 @@ export function PatientDetailScreenV2({
       description:
         "Medium-depth chemical peel to improve skin texture and tone",
       beforeAfter: {
-        before: "/Sydney Adams Front.jpg",
-        after: "/Sydney Adams Side.jpg",
+        before: "/Sydney Adams Front.png",
+        after: "/Sydney Adams Side.png",
       },
       benefits: ["Improves texture", "Reduces fine lines", "Even skin tone"],
       risks: ["Peeling", "Redness", "Sun sensitivity"],
@@ -1161,8 +1176,8 @@ export function PatientDetailScreenV2({
       description:
         "Collagen induction therapy to improve skin texture and scars",
       beforeAfter: {
-        before: "/Sydney Adams Front.jpg",
-        after: "/Sydney Adams Side.jpg",
+        before: "/Sydney Adams Front.png",
+        after: "/Sydney Adams Side.png",
       },
       benefits: ["Stimulates collagen", "Improves texture", "Minimal downtime"],
       risks: ["Redness", "Swelling", "Temporary sensitivity"],
@@ -1181,14 +1196,21 @@ export function PatientDetailScreenV2({
   };
 
   const getScoreColorClasses = (score: number) => {
-    // Create a subtle gradient from red (low scores) to green (high scores)
-    if (score >= 90) return "from-emerald-400/80 to-green-400/80";
-    if (score >= 80) return "from-green-400/80 to-lime-400/80";
-    if (score >= 70) return "from-lime-400/80 to-yellow-400/80";
-    if (score >= 60) return "from-yellow-400/80 to-orange-400/80";
-    if (score >= 50) return "from-orange-400/80 to-red-400/80";
-    if (score >= 40) return "from-red-400/80 to-red-500/80";
-    return "from-red-500/80 to-red-600/80";
+    // Create a gradient from orange (low scores) to green (high scores)
+    // More vibrant colors for better visibility in both light and dark modes
+    if (score >= 90)
+      return "from-green-600 to-emerald-600 dark:from-green-500 dark:to-emerald-500";
+    if (score >= 80)
+      return "from-green-500 to-green-600 dark:from-green-400 dark:to-green-500";
+    if (score >= 70)
+      return "from-yellow-500 to-green-500 dark:from-yellow-400 dark:to-green-400";
+    if (score >= 60)
+      return "from-yellow-600 to-yellow-500 dark:from-yellow-500 dark:to-yellow-400";
+    if (score >= 50)
+      return "from-orange-500 to-yellow-500 dark:from-orange-400 dark:to-yellow-400";
+    if (score >= 40)
+      return "from-orange-600 to-orange-500 dark:from-orange-500 dark:to-orange-400";
+    return "from-red-600 to-orange-600 dark:from-red-500 dark:to-orange-500";
   };
 
   const getSeverityColor = (severity: string) => {
@@ -1222,8 +1244,8 @@ export function PatientDetailScreenV2({
     return true;
   });
 
-  const addToInterestList = (treatment: any) => {
-    setInterestList((prev) => [...prev, treatment]);
+  const addToShortlist = (treatment: any) => {
+    setShortlist((prev) => [...prev, treatment]);
   };
 
   const addToTreatmentPlan = (treatment: any) => {
@@ -1289,7 +1311,7 @@ export function PatientDetailScreenV2({
               Back
             </Button>
             <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent dark:text-white dark:from-white dark:to-gray-300">
                 {patient.name}
               </h1>
               <p className="text-gray-400 text-sm">
@@ -1380,9 +1402,9 @@ export function PatientDetailScreenV2({
                     </span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-400">Interest List:</span>
+                    <span className="text-gray-400">Shortlist:</span>
                     <span className="text-pink-400">
-                      {interestList.length} items
+                      {shortlist.length} items
                     </span>
                   </div>
                   <div className="flex justify-between text-sm">
@@ -1407,10 +1429,10 @@ export function PatientDetailScreenV2({
                 <div className="text-center">
                   <div
                     className={`text-2xl font-bold bg-gradient-to-r ${getScoreColorClasses(
-                      patient.score
+                      overallScore
                     )} bg-clip-text text-transparent mb-1`}
                   >
-                    {patient.score}%
+                    {overallScore}%
                   </div>
                   <div className="text-xs text-gray-400">Overall Score</div>
                 </div>
@@ -1439,11 +1461,6 @@ export function PatientDetailScreenV2({
                   id: "treatments",
                   label: "Treatments",
                   icon: <Sparkles className="w-4 h-4" />,
-                },
-                {
-                  id: "interest-list",
-                  label: "Interest List",
-                  icon: <Heart className="w-4 h-4" />,
                 },
                 {
                   id: "treatment-plan",
@@ -1486,23 +1503,28 @@ export function PatientDetailScreenV2({
                     <h3 className="text-sm font-medium text-gray-400">
                       Filter by Area
                     </h3>
-                    {!showAllAnalysisAreas ? (
-                      <button
-                        type="button"
-                        onClick={() => setShowAllAnalysisAreas(true)}
-                        className="text-xs text-blue-400 hover:text-blue-300 transition-colors"
+                    <div className="flex items-center space-x-3">
+                      <div className="text-xs text-gray-500">
+                        {interestedAreas.length} areas of interest (marked with
+                        ★)
+                      </div>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() =>
+                          setShowOnlyInterestedAreas(!showOnlyInterestedAreas)
+                        }
+                        className={`text-xs px-3 py-1 rounded-lg transition-all duration-300 ${
+                          showOnlyInterestedAreas
+                            ? "bg-blue-600/20 text-blue-400 border border-blue-500/30"
+                            : "bg-gray-700/50 text-gray-300 border border-gray-600/50 hover:bg-gray-600/50"
+                        }`}
                       >
-                        View All Areas
-                      </button>
-                    ) : (
-                      <button
-                        type="button"
-                        onClick={() => setShowAllAnalysisAreas(false)}
-                        className="text-xs text-pink-400 hover:text-pink-300 transition-colors"
-                      >
-                        ← Back to Interested Areas
-                      </button>
-                    )}
+                        {showOnlyInterestedAreas
+                          ? "Show All Areas"
+                          : "Show Only Interested"}
+                      </Button>
+                    </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {/* All Areas Button */}
@@ -1519,12 +1541,7 @@ export function PatientDetailScreenV2({
                       <span className="text-sm">All Areas</span>
                     </Button>
 
-                    {(showAllAnalysisAreas
-                      ? analysisAreas
-                      : analysisAreas.filter((area) =>
-                          interestedAreas.includes(area.id)
-                        )
-                    )
+                    {areasToShow
                       .sort(
                         (a, b) => calculateAreaScore(a) - calculateAreaScore(b)
                       )
@@ -1561,18 +1578,15 @@ export function PatientDetailScreenV2({
                         </Button>
                       ))}
                   </div>
-                  {!showAllAnalysisAreas && (
-                    <p className="text-xs text-gray-500 mt-2">
-                      Showing {interestedAreas.length} areas of interest (marked
-                      with ★)
-                    </p>
-                  )}
                 </div>
 
-                {/* Findings Cards - Only show selected area or all if none selected */}
+                {/* Findings Cards - Show areas based on toggle or selected area */}
                 <div className="space-y-6">
-                  {analysisAreas
+                  {areasToShow
                     .filter((area) => !selectedArea || area.id === selectedArea)
+                    .sort(
+                      (a, b) => calculateAreaScore(a) - calculateAreaScore(b)
+                    ) // Sort by score (worst first)
                     .map((area) => (
                       <div key={area.id} className="space-y-4">
                         <div className="flex items-center justify-between">
@@ -1594,249 +1608,280 @@ export function PatientDetailScreenV2({
                                 ? "Good"
                                 : "Needs Work"}
                             </div>
+                            {interestedAreas.includes(area.id) && (
+                              <span className="text-xs text-pink-400">★</span>
+                            )}
                           </div>
                         </div>
                         <div className="grid grid-cols-1 gap-4">
-                          {area.findings.map((finding, index) => {
-                            const cardId = `${area.id}-${finding.name}`;
-                            const isExpanded = expandedCards.has(cardId);
+                          {area.findings.filter((finding) =>
+                            patient.findings.includes(finding.name)
+                          ).length > 0 ? (
+                            area.findings
+                              .filter((finding) =>
+                                patient.findings.includes(finding.name)
+                              )
+                              .map((finding, index) => {
+                                const cardId = `${area.id}-${finding.name}`;
+                                const isExpanded = expandedCards.has(cardId);
 
-                            return (
-                              <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.1 }}
-                              >
-                                <Card className="p-4 bg-gray-800/50 border-gray-700 hover:border-gray-600 transition-all duration-300 backdrop-blur-sm hover:shadow-xl hover:shadow-blue-500/10 group">
-                                  {/* Compact Header with Left/Right Layout */}
-                                  <div className="flex items-start gap-4 mb-3">
-                                    {/* Left Column - Visual Example (Half Width) */}
-                                    <div className="w-1/2">
-                                      {finding.beforeAfter &&
-                                        finding.beforeAfter.length > 0 && (
+                                return (
+                                  <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: index * 0.1 }}
+                                  >
+                                    <Card className="p-4 bg-gray-800/50 border-gray-700 hover:border-gray-600 transition-all duration-300 backdrop-blur-sm hover:shadow-xl hover:shadow-blue-500/10 group">
+                                      {/* Compact Header with Left/Right Layout */}
+                                      <div className="flex items-start gap-4 mb-3">
+                                        {/* Left Column - Visual Example (Half Width) */}
+                                        <div className="w-1/2">
                                           <div className="relative h-64">
                                             <img
-                                              src={
-                                                finding.beforeAfter[0].before
-                                              }
-                                              alt={
-                                                finding.beforeAfter[0].label ||
-                                                `${finding.name} example`
-                                              }
+                                              src={getFindingImage(
+                                                finding.name
+                                              )}
+                                              alt={`${finding.name} example`}
                                               className="w-full h-full object-contain rounded border border-gray-600/50"
+                                              onError={(e) => {
+                                                // Fallback to beforeAfter image if available, otherwise use fallback
+                                                const target =
+                                                  e.target as HTMLImageElement;
+                                                if (
+                                                  finding.beforeAfter &&
+                                                  finding.beforeAfter.length > 0
+                                                ) {
+                                                  target.src =
+                                                    finding.beforeAfter[0].before;
+                                                } else {
+                                                  target.src =
+                                                    getFallbackFindingImage();
+                                                }
+                                              }}
                                             />
                                             <div className="absolute bottom-0 left-0 right-0">
                                               <div className="bg-black/70 text-white text-xs px-2 py-1 rounded text-center">
-                                                {finding.beforeAfter[0].label ||
-                                                  "Example"}
+                                                {finding.name}
                                               </div>
                                             </div>
                                           </div>
-                                        )}
-                                    </div>
+                                        </div>
 
-                                    {/* Right Column - Content (Half Width) */}
-                                    <div className="w-1/2 h-64 flex flex-col justify-between">
-                                      {/* Title and Description */}
-                                      <div className="mb-4">
-                                        <h4 className="text-lg font-semibold text-white mb-2">
-                                          {finding.name}
-                                        </h4>
-                                        <p className="text-gray-300 text-sm line-clamp-3">
-                                          {finding.description}
-                                        </p>
-                                      </div>
-
-                                      {/* Score and Severity */}
-                                      <div className="flex items-center space-x-3 mb-3">
-                                        <span
-                                          className={`px-2 py-1 rounded-full text-xs border ${getSeverityColor(
-                                            finding.severity
-                                          )}`}
-                                        >
-                                          {finding.severity}
-                                        </span>
-                                        <div className="flex items-center space-x-1">
-                                          <div
-                                            className={`text-xl font-bold bg-gradient-to-r ${getScoreColorClasses(
-                                              finding.score
-                                            )} bg-clip-text text-transparent`}
-                                          >
-                                            {finding.score}%
+                                        {/* Right Column - Content (Half Width) */}
+                                        <div className="w-1/2 h-64 flex flex-col justify-between">
+                                          {/* Title and Description */}
+                                          <div className="mb-4">
+                                            <h4 className="text-lg font-semibold text-white mb-2">
+                                              {finding.name}
+                                            </h4>
+                                            <p className="text-gray-300 text-sm line-clamp-3">
+                                              {finding.description}
+                                            </p>
                                           </div>
-                                          <div className="text-xs text-gray-400">
-                                            Score
+
+                                          {/* Score and Severity */}
+                                          <div className="flex items-center space-x-3 mb-3">
+                                            <span
+                                              className={`px-2 py-1 rounded-full text-xs border ${getSeverityColor(
+                                                finding.severity
+                                              )}`}
+                                            >
+                                              {finding.severity}
+                                            </span>
+                                            <div className="flex items-center space-x-1">
+                                              <div
+                                                className={`text-xl font-bold bg-gradient-to-r ${getScoreColorClasses(
+                                                  finding.score
+                                                )} bg-clip-text text-transparent`}
+                                              >
+                                                {finding.score}%
+                                              </div>
+                                              <div className="text-xs text-gray-400">
+                                                Score
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          {/* Score Bar */}
+                                          <div className="mb-3">
+                                            <div className="relative h-2 bg-gray-700 rounded-full overflow-hidden">
+                                              <motion.div
+                                                className={`absolute inset-0 bg-gradient-to-r ${getScoreColorClasses(
+                                                  finding.score
+                                                )} rounded-full`}
+                                                initial={{ width: 0 }}
+                                                animate={{
+                                                  width: `${finding.score}%`,
+                                                }}
+                                                transition={{
+                                                  duration: 1.5,
+                                                  delay: 0.5,
+                                                }}
+                                              />
+                                            </div>
+                                          </div>
+
+                                          {/* Combined Commonality and Educational Info */}
+                                          <div className="mb-3">
+                                            <div className="p-3 bg-gradient-to-r from-blue-500/10 to-green-500/10 border border-blue-500/20 rounded-lg">
+                                              <p className="text-sm text-gray-300">
+                                                <span className="font-semibold text-blue-400">
+                                                  {finding.commonality}%
+                                                </span>{" "}
+                                                of people in your age group (
+                                                {finding.ageGroup}) experience
+                                                this.{" "}
+                                                {finding.educational
+                                                  .split(". ")
+                                                  .slice(1)
+                                                  .join(". ")}
+                                              </p>
+                                            </div>
                                           </div>
                                         </div>
                                       </div>
 
-                                      {/* Score Bar */}
-                                      <div className="mb-3">
-                                        <div className="relative h-2 bg-gray-700 rounded-full overflow-hidden">
+                                      {/* Expandable Content - Full Width */}
+                                      <AnimatePresence>
+                                        {isExpanded && (
                                           <motion.div
-                                            className={`absolute inset-0 bg-gradient-to-r ${getScoreColorClasses(
-                                              finding.score
-                                            )} rounded-full`}
-                                            initial={{ width: 0 }}
+                                            initial={{ opacity: 0, height: 0 }}
                                             animate={{
-                                              width: `${finding.score}%`,
+                                              opacity: 1,
+                                              height: "auto",
                                             }}
-                                            transition={{
-                                              duration: 1.5,
-                                              delay: 0.5,
-                                            }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            transition={{ duration: 0.3 }}
+                                            className="space-y-4 mt-4"
+                                          >
+                                            {/* Causes and Symptoms */}
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                              <div>
+                                                <h5 className="font-semibold text-white mb-2 text-sm">
+                                                  Common Causes
+                                                </h5>
+                                                <div className="flex flex-wrap gap-1">
+                                                  {finding.causes.map(
+                                                    (cause, idx) => (
+                                                      <span
+                                                        key={idx}
+                                                        className="px-2 py-1 bg-gray-700/50 text-gray-300 text-xs rounded-full"
+                                                      >
+                                                        {cause}
+                                                      </span>
+                                                    )
+                                                  )}
+                                                </div>
+                                              </div>
+                                              <div>
+                                                <h5 className="font-semibold text-white mb-2 text-sm">
+                                                  Symptoms
+                                                </h5>
+                                                <div className="flex flex-wrap gap-1">
+                                                  {finding.symptoms.map(
+                                                    (symptom, idx) => (
+                                                      <span
+                                                        key={idx}
+                                                        className="px-2 py-1 bg-gray-700/50 text-gray-300 text-xs rounded-full"
+                                                      >
+                                                        {symptom}
+                                                      </span>
+                                                    )
+                                                  )}
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            {/* Treatment Options */}
+                                            <div>
+                                              <h5 className="font-semibold text-white mb-2 text-sm">
+                                                Available Treatments
+                                              </h5>
+                                              <div className="flex flex-wrap gap-2">
+                                                {finding.treatments.map(
+                                                  (treatment, idx) => (
+                                                    <span
+                                                      key={idx}
+                                                      className="px-2 py-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 text-blue-400 text-xs rounded-full"
+                                                    >
+                                                      {treatment}
+                                                    </span>
+                                                  )
+                                                )}
+                                              </div>
+                                            </div>
+                                          </motion.div>
+                                        )}
+                                      </AnimatePresence>
+
+                                      {/* Action Buttons */}
+                                      <div className="flex items-center justify-between mt-4">
+                                        <Button
+                                          variant="ghost"
+                                          size="sm"
+                                          onClick={() =>
+                                            toggleCardExpansion(cardId)
+                                          }
+                                          className="text-gray-400 hover:text-white"
+                                        >
+                                          {isExpanded
+                                            ? "Show Less"
+                                            : "Learn More"}
+                                          <ChevronDown
+                                            className={`w-4 h-4 ml-1 transition-transform ${
+                                              isExpanded ? "rotate-180" : ""
+                                            }`}
                                           />
-                                        </div>
-                                      </div>
+                                        </Button>
 
-                                      {/* Combined Commonality and Educational Info */}
-                                      <div className="mb-3">
-                                        <div className="p-3 bg-gradient-to-r from-blue-500/10 to-green-500/10 border border-blue-500/20 rounded-lg">
-                                          <p className="text-sm text-gray-300">
-                                            <span className="font-semibold text-blue-400">
-                                              {finding.commonality}%
-                                            </span>{" "}
-                                            of people in your age group (
-                                            {finding.ageGroup}) experience this.{" "}
-                                            {finding.educational
-                                              .split(". ")
-                                              .slice(1)
-                                              .join(". ")}
-                                          </p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  {/* Expandable Content - Full Width */}
-                                  <AnimatePresence>
-                                    {isExpanded && (
-                                      <motion.div
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{
-                                          opacity: 1,
-                                          height: "auto",
-                                        }}
-                                        exit={{ opacity: 0, height: 0 }}
-                                        transition={{ duration: 0.3 }}
-                                        className="space-y-4 mt-4"
-                                      >
-                                        {/* Causes and Symptoms */}
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                          <div>
-                                            <h5 className="font-semibold text-white mb-2 text-sm">
-                                              Common Causes
-                                            </h5>
-                                            <div className="flex flex-wrap gap-1">
-                                              {finding.causes.map(
-                                                (cause, idx) => (
-                                                  <span
-                                                    key={idx}
-                                                    className="px-2 py-1 bg-gray-700/50 text-gray-300 text-xs rounded-full"
-                                                  >
-                                                    {cause}
-                                                  </span>
-                                                )
-                                              )}
-                                            </div>
-                                          </div>
-                                          <div>
-                                            <h5 className="font-semibold text-white mb-2 text-sm">
-                                              Symptoms
-                                            </h5>
-                                            <div className="flex flex-wrap gap-1">
-                                              {finding.symptoms.map(
-                                                (symptom, idx) => (
-                                                  <span
-                                                    key={idx}
-                                                    className="px-2 py-1 bg-gray-700/50 text-gray-300 text-xs rounded-full"
-                                                  >
-                                                    {symptom}
-                                                  </span>
-                                                )
-                                              )}
-                                            </div>
-                                          </div>
-                                        </div>
-
-                                        {/* Treatment Options */}
-                                        <div>
-                                          <h5 className="font-semibold text-white mb-2 text-sm">
-                                            Available Treatments
-                                          </h5>
-                                          <div className="flex flex-wrap gap-2">
-                                            {finding.treatments.map(
-                                              (treatment, idx) => (
-                                                <span
-                                                  key={idx}
-                                                  className="px-2 py-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 text-blue-400 text-xs rounded-full"
-                                                >
-                                                  {treatment}
-                                                </span>
-                                              )
+                                        <div className="flex space-x-2">
+                                          <Button
+                                            size="sm"
+                                            onClick={() =>
+                                              addToShortlist(finding)
+                                            }
+                                            disabled={shortlist.some(
+                                              (item) =>
+                                                item.name === finding.name
                                             )}
-                                          </div>
+                                            className={`transition-all duration-300 ${
+                                              shortlist.some(
+                                                (item) =>
+                                                  item.name === finding.name
+                                              )
+                                                ? "bg-gradient-to-r from-pink-600 to-purple-600 text-white cursor-not-allowed"
+                                                : "bg-gradient-to-r from-pink-600 to-purple-600 text-white hover:from-pink-700 hover:to-purple-700"
+                                            }`}
+                                          >
+                                            {shortlist.some(
+                                              (item) =>
+                                                item.name === finding.name
+                                            ) ? (
+                                              <>
+                                                <CheckCircle className="w-4 h-4 mr-1" />
+                                                Added to Shortlist
+                                              </>
+                                            ) : (
+                                              <>
+                                                <Heart className="w-4 h-4 mr-1" />
+                                                Add to Shortlist
+                                              </>
+                                            )}
+                                          </Button>
                                         </div>
-                                      </motion.div>
-                                    )}
-                                  </AnimatePresence>
-
-                                  {/* Action Buttons */}
-                                  <div className="flex items-center justify-between mt-4">
-                                    <Button
-                                      variant="ghost"
-                                      size="sm"
-                                      onClick={() =>
-                                        toggleCardExpansion(cardId)
-                                      }
-                                      className="text-gray-400 hover:text-white"
-                                    >
-                                      {isExpanded ? "Show Less" : "Learn More"}
-                                      <ChevronDown
-                                        className={`w-4 h-4 ml-1 transition-transform ${
-                                          isExpanded ? "rotate-180" : ""
-                                        }`}
-                                      />
-                                    </Button>
-
-                                    <div className="flex space-x-2">
-                                      <Button
-                                        size="sm"
-                                        onClick={() =>
-                                          addToInterestList(finding)
-                                        }
-                                        disabled={interestList.some(
-                                          (item) => item.name === finding.name
-                                        )}
-                                        className={`transition-all duration-300 ${
-                                          interestList.some(
-                                            (item) => item.name === finding.name
-                                          )
-                                            ? "bg-gradient-to-r from-pink-600 to-purple-600 text-white cursor-not-allowed"
-                                            : "bg-gradient-to-r from-pink-600 to-purple-600 text-white hover:from-pink-700 hover:to-purple-700"
-                                        }`}
-                                      >
-                                        {interestList.some(
-                                          (item) => item.name === finding.name
-                                        ) ? (
-                                          <>
-                                            <CheckCircle className="w-4 h-4 mr-1" />
-                                            Added to Interest List
-                                          </>
-                                        ) : (
-                                          <>
-                                            <Heart className="w-4 h-4 mr-1" />
-                                            Add to Interest List
-                                          </>
-                                        )}
-                                      </Button>
-                                    </div>
-                                  </div>
-                                </Card>
-                              </motion.div>
-                            );
-                          })}
+                                      </div>
+                                    </Card>
+                                  </motion.div>
+                                );
+                              })
+                          ) : (
+                            <div className="text-center py-8">
+                              <div className="text-gray-400 text-sm">
+                                No findings detected in this area
+                              </div>
+                            </div>
+                          )}
                         </div>
                       </div>
                     ))}
@@ -2122,198 +2167,6 @@ export function PatientDetailScreenV2({
                     </div>
                   </Card>
                 )}
-              </motion.div>
-            )}
-
-            {/* Interest List View */}
-            {currentView === "interest-list" && (
-              <motion.div
-                key="interest-list"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="space-y-6"
-              >
-                <Card className="p-6 bg-gradient-to-r from-pink-600/10 to-purple-600/10 border border-pink-500/30">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-semibold text-white">
-                      Interest List ({interestList.length} items)
-                    </h3>
-                    <p className="text-sm text-gray-400">
-                      Analysis findings that the patient is interested in
-                      addressing
-                    </p>
-                  </div>
-
-                  {interestList.length === 0 ? (
-                    <div className="text-center py-8">
-                      <Heart className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-400">
-                        No findings added to interest list yet
-                      </p>
-                      <p className="text-sm text-gray-500">
-                        Add findings from the Analysis tab
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="space-y-3">
-                      {interestList.map((finding, index) => {
-                        const itemId = `interest-${index}`;
-                        const isExpanded = expandedInterestItems.has(itemId);
-
-                        return (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            className="p-4 bg-gray-700/30 rounded-lg border border-gray-600/50"
-                          >
-                            <div className="flex items-center justify-between">
-                              <div className="flex-1">
-                                <h4 className="text-lg font-medium text-white mb-1">
-                                  {finding.name}
-                                </h4>
-                                <p className="text-gray-300 text-sm">
-                                  {finding.description}
-                                </p>
-                                <div className="flex items-center mt-2 space-x-4">
-                                  <span className="text-xs text-gray-400">
-                                    Severity: {finding.severity}
-                                  </span>
-                                  <span className="text-xs text-gray-400">
-                                    Score: {finding.score}/100
-                                  </span>
-                                </div>
-
-                                {/* Expandable Content */}
-                                {isExpanded && (
-                                  <motion.div
-                                    initial={{ opacity: 0, height: 0 }}
-                                    animate={{ opacity: 1, height: "auto" }}
-                                    exit={{ opacity: 0, height: 0 }}
-                                    className="mt-4 pt-4 border-t border-gray-600/50"
-                                  >
-                                    <div className="space-y-3">
-                                      <div>
-                                        <h5 className="text-sm font-medium text-white mb-2">
-                                          Causes:
-                                        </h5>
-                                        <ul className="text-sm text-gray-300 space-y-1">
-                                          {finding.causes?.map(
-                                            (cause: string, idx: number) => (
-                                              <li
-                                                key={idx}
-                                                className="flex items-center"
-                                              >
-                                                <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></span>
-                                                {cause}
-                                              </li>
-                                            )
-                                          )}
-                                        </ul>
-                                      </div>
-
-                                      <div>
-                                        <h5 className="text-sm font-medium text-white mb-2">
-                                          Symptoms:
-                                        </h5>
-                                        <ul className="text-sm text-gray-300 space-y-1">
-                                          {finding.symptoms?.map(
-                                            (symptom: string, idx: number) => (
-                                              <li
-                                                key={idx}
-                                                className="flex items-center"
-                                              >
-                                                <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-2"></span>
-                                                {symptom}
-                                              </li>
-                                            )
-                                          )}
-                                        </ul>
-                                      </div>
-
-                                      <div>
-                                        <h5 className="text-sm font-medium text-white mb-2">
-                                          Educational Information:
-                                        </h5>
-                                        <p className="text-sm text-gray-300">
-                                          {finding.educational}
-                                        </p>
-                                      </div>
-
-                                      {finding.treatments &&
-                                        finding.treatments.length > 0 && (
-                                          <div>
-                                            <h5 className="text-sm font-medium text-white mb-2">
-                                              Suggested Treatments:
-                                            </h5>
-                                            <div className="flex flex-wrap gap-2">
-                                              {finding.treatments.map(
-                                                (
-                                                  treatment: string,
-                                                  idx: number
-                                                ) => (
-                                                  <span
-                                                    key={idx}
-                                                    className="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded border border-blue-500/30"
-                                                  >
-                                                    {treatment}
-                                                  </span>
-                                                )
-                                              )}
-                                            </div>
-                                          </div>
-                                        )}
-                                    </div>
-                                  </motion.div>
-                                )}
-                              </div>
-
-                              <div className="flex items-center space-x-2 ml-4">
-                                <Button
-                                  variant="ghost"
-                                  size="sm"
-                                  onClick={() => {
-                                    setExpandedInterestItems((prev) => {
-                                      const newSet = new Set(prev);
-                                      if (newSet.has(itemId)) {
-                                        newSet.delete(itemId);
-                                      } else {
-                                        newSet.add(itemId);
-                                      }
-                                      return newSet;
-                                    });
-                                  }}
-                                  className="text-gray-400 hover:text-white"
-                                >
-                                  {isExpanded ? (
-                                    <ChevronDown className="w-4 h-4 rotate-180" />
-                                  ) : (
-                                    <ChevronDown className="w-4 h-4" />
-                                  )}
-                                </Button>
-                                <Button
-                                  variant="ghost"
-                                  size="sm"
-                                  onClick={() => {
-                                    setInterestList((prev) =>
-                                      prev.filter((_, i) => i !== index)
-                                    );
-                                  }}
-                                  className="text-gray-400 hover:text-red-400"
-                                >
-                                  <X className="w-4 h-4" />
-                                </Button>
-                              </div>
-                            </div>
-                          </motion.div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </Card>
               </motion.div>
             )}
 

@@ -71,10 +71,10 @@ export function PhotoUpload({ onPhotoSelect, onNext }: PhotoUploadProps) {
   return (
     <div
       className="bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center p-4"
-      style={{ 
+      style={{
         height: "calc(var(--actual-vh, 100vh))",
         minHeight: "calc(var(--actual-vh, 100vh))",
-        maxHeight: "calc(var(--actual-vh, 100vh))"
+        maxHeight: "calc(var(--actual-vh, 100vh))",
       }}
     >
       <motion.div
@@ -89,7 +89,7 @@ export function PhotoUpload({ onPhotoSelect, onNext }: PhotoUploadProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent dark:text-white dark:from-white dark:to-gray-300">
               Let's Start with Your Photo
             </h2>
             <p className="text-gray-400 text-lg mb-8">

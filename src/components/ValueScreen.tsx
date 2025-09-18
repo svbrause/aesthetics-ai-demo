@@ -184,7 +184,7 @@ export function ValueScreen({ onRestart }: ValueScreenProps) {
         transition={{ duration: 0.6 }}
         className="p-4 text-center border-b border-gray-800"
       >
-        <h2 className="text-xl font-bold mb-1 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+        <h2 className="text-xl font-bold mb-1 bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent dark:text-white dark:from-white dark:to-gray-300">
           The Aesthetics AI Advantage
         </h2>
         <p className="text-gray-400 text-xs">

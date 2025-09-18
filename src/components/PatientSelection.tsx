@@ -7,11 +7,11 @@ import { Card } from "@/components/ui/Card";
 import { ArrowRight, User, Star, Shield, Target } from "lucide-react";
 
 interface PatientSelectionProps {
-  onPatientSelect: (patient: "sydney" | "chelsea") => void;
+  onPatientSelect: (patient: "1001" | "1002") => void;
 }
 
 const patients = {
-  sydney: {
+  "1001": {
     name: "Sydney Adams",
     age: 32,
     profession: "Marketing Professional",
@@ -26,15 +26,15 @@ const patients = {
     ],
     score: 78,
     color: "blue",
-    frontImage: "/Sydney Adams Front.jpg",
-    sideImage: "/Sydney Adams Side.jpg",
+    frontImage: "/Sydney Adams Front.png",
+    sideImage: "/Sydney Adams Side.png",
     analysis: {
       facialStructure: 78,
       skinQuality: 82,
       preventativeCare: 75,
     },
   },
-  chelsea: {
+  "1002": {
     name: "Chelsea Perry",
     age: 42,
     profession: "Executive",
@@ -49,8 +49,8 @@ const patients = {
     ],
     score: 62,
     color: "purple",
-    frontImage: "/Chelsea Perry Front.jpg",
-    sideImage: "/Chelsea Perry Side.jpg",
+    frontImage: "/Chelsea Perry Front.png",
+    sideImage: "/Chelsea Perry Side.png",
     analysis: {
       facialStructure: 62,
       skinQuality: 68,
@@ -61,7 +61,7 @@ const patients = {
 
 export function PatientSelection({ onPatientSelect }: PatientSelectionProps) {
   const [selectedPatient, setSelectedPatient] = useState<
-    "sydney" | "chelsea" | null
+    "1001" | "1002" | null
   >(null);
 
   const getColorClasses = (color: string) => {
@@ -90,7 +90,7 @@ export function PatientSelection({ onPatientSelect }: PatientSelectionProps) {
     }
   };
 
-  const handleSelect = (patient: "sydney" | "chelsea") => {
+  const handleSelect = (patient: "1001" | "1002") => {
     setSelectedPatient(patient);
     setTimeout(() => {
       onPatientSelect(patient);
@@ -113,7 +113,7 @@ export function PatientSelection({ onPatientSelect }: PatientSelectionProps) {
         transition={{ duration: 0.6 }}
         className="text-center p-4 pb-2"
       >
-        <h1 className="text-2xl font-bold mb-1 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+        <h1 className="text-2xl font-bold mb-1 bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent dark:text-white dark:from-white dark:to-gray-300">
           Select Your Demo Patient
         </h1>
         <p className="text-gray-400 text-xs">

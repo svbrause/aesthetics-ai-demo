@@ -57,8 +57,8 @@ export function AreaAnalysisPopup({
             "Follow-up in 6 months",
           ],
           beforeAfter: {
-            before: "/Sydney Adams Front.jpg",
-            after: "/Sydney Adams Side.jpg",
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
           },
         },
         {
@@ -73,8 +73,8 @@ export function AreaAnalysisPopup({
             "Monitor for 3 months",
           ],
           beforeAfter: {
-            before: "/Sydney Adams Front.jpg",
-            after: "/Sydney Adams Side.jpg",
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
           },
         },
         {
@@ -88,8 +88,8 @@ export function AreaAnalysisPopup({
             "Gentle massage post-treatment",
           ],
           beforeAfter: {
-            before: "/Sydney Adams Front.jpg",
-            after: "/Sydney Adams Side.jpg",
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
           },
         },
       ],
@@ -114,8 +114,8 @@ export function AreaAnalysisPopup({
             "Daily SPF 50+",
           ],
           beforeAfter: {
-            before: "/Sydney Adams Front.jpg",
-            after: "/Sydney Adams Side.jpg",
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
           },
         },
         {
@@ -129,8 +129,8 @@ export function AreaAnalysisPopup({
             "Avoid triggers",
           ],
           beforeAfter: {
-            before: "/Sydney Adams Front.jpg",
-            after: "/Sydney Adams Side.jpg",
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
           },
         },
         {
@@ -144,8 +144,8 @@ export function AreaAnalysisPopup({
             "Professional extraction",
           ],
           beforeAfter: {
-            before: "/Sydney Adams Front.jpg",
-            after: "/Sydney Adams Side.jpg",
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
           },
         },
       ],
@@ -169,8 +169,8 @@ export function AreaAnalysisPopup({
             "Retinoid maintenance",
           ],
           beforeAfter: {
-            before: "/Sydney Adams Front.jpg",
-            after: "/Sydney Adams Side.jpg",
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
           },
         },
         {
@@ -184,8 +184,8 @@ export function AreaAnalysisPopup({
             "Regular facials",
           ],
           beforeAfter: {
-            before: "/Sydney Adams Front.jpg",
-            after: "/Sydney Adams Side.jpg",
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
           },
         },
         {
@@ -199,8 +199,8 @@ export function AreaAnalysisPopup({
             "Lifestyle optimization",
           ],
           beforeAfter: {
-            before: "/Sydney Adams Front.jpg",
-            after: "/Sydney Adams Side.jpg",
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
           },
         },
       ],
@@ -350,14 +350,14 @@ export function AreaAnalysisPopup({
               <div className="flex space-x-2">
                 <div className="relative w-12 h-12 rounded-lg overflow-hidden">
                   <img
-                    src={patient?.frontImage || "/Sydney Adams Front.jpg"}
+                    src={patient?.frontImage || "/Sydney Adams Front.png"}
                     alt="Patient front view"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="relative w-12 h-12 rounded-lg overflow-hidden">
                   <img
-                    src={patient?.sideImage || "/Sydney Adams Side.jpg"}
+                    src={patient?.sideImage || "/Sydney Adams Side.png"}
                     alt="Patient side view"
                     className="w-full h-full object-cover"
                   />

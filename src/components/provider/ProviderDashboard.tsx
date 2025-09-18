@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import {
   Users,
   BarChart3,
@@ -16,18 +17,21 @@ import {
   Activity,
   Target,
   Shield,
+  Camera,
 } from "lucide-react";
 
 interface ProviderDashboardProps {
   onViewPatients: () => void;
   onViewAnalysisTools: () => void;
   onSelectPatient: (patient: any) => void;
+  onNewPatientScan: () => void;
 }
 
 export function ProviderDashboard({
   onViewPatients,
   onViewAnalysisTools,
   onSelectPatient,
+  onNewPatientScan,
 }: ProviderDashboardProps) {
   const stats = [
     {
@@ -62,16 +66,16 @@ export function ProviderDashboard({
 
   const recentPatients = [
     {
-      id: 1,
+      id: "sydney-adams",
       name: "Sydney Adams",
-      age: 32,
+      age: 28,
       lastAnalysis: "2 hours ago",
       score: 78,
       status: "completed",
       reviewStatus: "patient-reviewed",
       provider: "Dr. Smith",
-      frontImage: "/Sydney Adams Front.jpg",
-      sideImage: "/Sydney Adams Side.jpg",
+      frontImage: "/Sydney Adams Front.png",
+      sideImage: "/Sydney Adams Side.png",
       findings: [
         "Forehead Wrinkles",
         "Dark Spots",
@@ -94,16 +98,16 @@ export function ProviderDashboard({
       ],
     },
     {
-      id: 2,
+      id: "chelsea-perry",
       name: "Chelsea Perry",
-      age: 42,
+      age: 32,
       lastAnalysis: "4 hours ago",
       score: 62,
       status: "in-progress",
       reviewStatus: "provider-only",
       provider: "Dr. Johnson",
-      frontImage: "/Chelsea Perry Front.jpg",
-      sideImage: "/Chelsea Perry Side.jpg",
+      frontImage: "/Chelsea Perry Front.png",
+      sideImage: "/Chelsea Perry Side.png",
       findings: [
         "Under Eye Wrinkles",
         "Bunny Lines",
@@ -135,7 +139,7 @@ export function ProviderDashboard({
       ],
     },
     {
-      id: 3,
+      id: "jen-lepage",
       name: "Jen LePage",
       age: 39,
       lastAnalysis: "1 day ago",
@@ -143,8 +147,8 @@ export function ProviderDashboard({
       status: "completed",
       reviewStatus: "joint-review",
       provider: "Dr. Smith",
-      frontImage: "/Sydney Adams Front.jpg",
-      sideImage: "/Sydney Adams Side.jpg",
+      frontImage: "/Jen LePage Front.png",
+      sideImage: "/Jen LePage Side.png",
       findings: [
         "Forehead Wrinkles",
         "Crow's Feet Wrinkles",
@@ -245,11 +249,13 @@ export function ProviderDashboard({
 
   return (
     <div
-      className="bg-gradient-to-br from-black via-gray-900 to-black flex flex-col h-screen overflow-hidden"
+      className="flex flex-col h-screen overflow-hidden"
       style={{
         height: "100vh",
         minHeight: "100vh",
         maxHeight: "100vh",
+        backgroundColor: "var(--background)",
+        color: "var(--text-primary)",
       }}
     >
       {/* Header */}
@@ -261,14 +267,17 @@ export function ProviderDashboard({
       >
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent dark:text-white dark:from-white dark:to-gray-300">
               Provider Dashboard
             </h1>
             <p className="text-gray-400 text-sm">Welcome back, Dr. Smith</p>
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            <span className="text-sm text-gray-400">Online</span>
+          <div className="flex items-center space-x-4">
+            <ThemeToggle />
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span className="text-sm text-gray-400">Online</span>
+            </div>
           </div>
         </div>
       </motion.div>
@@ -285,15 +294,26 @@ export function ProviderDashboard({
             <h2 className="text-xl font-semibold text-white">
               Recent Patients
             </h2>
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={onViewPatients}
-              className="text-xs"
-            >
-              View All
-              <ArrowRight className="w-3 h-3 ml-1" />
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={onNewPatientScan}
+                className="text-xs flex items-center gap-2"
+              >
+                <Camera className="w-3 h-3" />
+                New Patient Scan
+              </Button>
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={onViewPatients}
+                className="text-xs"
+              >
+                View All
+                <ArrowRight className="w-3 h-3 ml-1" />
+              </Button>
+            </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {recentPatients.map((patient, index) => {

@@ -215,7 +215,7 @@ export function WelcomeScreen({ onBegin }: WelcomeScreenProps) {
           >
             <h1 className="text-3xl sm:text-4xl font-bold leading-tight">
               <motion.span
-                className="block bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent"
+                className="block bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent dark:text-white dark:from-white dark:via-gray-200 dark:to-gray-400"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
@@ -223,7 +223,7 @@ export function WelcomeScreen({ onBegin }: WelcomeScreenProps) {
                 Intelligence
               </motion.span>
               <motion.span
-                className="block bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent"
+                className="block bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent dark:text-white dark:from-white dark:via-gray-200 dark:to-gray-400"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.0, duration: 0.8 }}

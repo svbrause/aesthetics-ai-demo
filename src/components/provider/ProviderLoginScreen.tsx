@@ -93,7 +93,7 @@ export function ProviderLoginScreen({ onLogin }: ProviderLoginScreenProps) {
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 mb-4">
               <Shield className="w-8 h-8 text-white" />
             </div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent mb-2">
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent dark:text-white dark:from-white dark:via-gray-200 dark:to-gray-400 mb-2">
               Provider Portal
             </h1>
             <p className="text-gray-400 text-sm">
@@ -208,4 +208,3 @@ export function ProviderLoginScreen({ onLogin }: ProviderLoginScreenProps) {
     </div>
   );
 }
-

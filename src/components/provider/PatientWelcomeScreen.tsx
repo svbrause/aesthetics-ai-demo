@@ -216,7 +216,7 @@ export function PatientWelcomeScreen({
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
-                  className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mb-4"
+                  className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent dark:text-white dark:from-white dark:via-gray-100 dark:to-gray-300 mb-4"
                 >
                   {patient.name}
                 </motion.h1>
@@ -342,6 +342,3 @@ export function PatientWelcomeScreen({
     </div>
   );
 }
-
-
-

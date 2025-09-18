@@ -21,6 +21,7 @@ interface TreatmentDetails {
   areas: string[];
   quantity: string;
   unit: string;
+  timeline: "short-term" | "long-term";
 }
 
 const treatmentAreas = [
@@ -54,6 +55,9 @@ export function TreatmentPlanPopup({
   const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
   const [quantity, setQuantity] = useState("");
   const [unit, setUnit] = useState("units");
+  const [timeline, setTimeline] = useState<"short-term" | "long-term">(
+    "short-term"
+  );
 
   const handleAreaToggle = (area: string) => {
     setSelectedAreas((prev) =>
@@ -71,6 +75,7 @@ export function TreatmentPlanPopup({
       areas: selectedAreas,
       quantity: quantity.trim(),
       unit,
+      timeline,
     };
 
     onAdd(treatmentDetails);
@@ -81,6 +86,7 @@ export function TreatmentPlanPopup({
     setSelectedAreas([]);
     setQuantity("");
     setUnit("units");
+    setTimeline("short-term");
   };
 
   if (!isOpen) return null;
@@ -173,6 +179,43 @@ export function TreatmentPlanPopup({
                     onChange={setUnit}
                     placeholder="Select unit"
                   />
+                </div>
+              </div>
+
+              {/* Timeline Selection */}
+              <div>
+                <label className="text-sm font-medium text-gray-300 mb-3 block">
+                  Treatment Timeline
+                </label>
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setTimeline("short-term")}
+                    className={`p-4 rounded-lg text-sm transition-all duration-200 border-2 ${
+                      timeline === "short-term"
+                        ? "bg-blue-600/20 text-blue-400 border-blue-500"
+                        : "bg-gray-700/50 text-gray-300 border-gray-600/50 hover:bg-gray-700 hover:border-gray-500"
+                    }`}
+                  >
+                    <div className="font-medium mb-1">Short-term</div>
+                    <div className="text-xs text-gray-400">
+                      Immediate results (1-6 months)
+                    </div>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setTimeline("long-term")}
+                    className={`p-4 rounded-lg text-sm transition-all duration-200 border-2 ${
+                      timeline === "long-term"
+                        ? "bg-purple-600/20 text-purple-400 border-purple-500"
+                        : "bg-gray-700/50 text-gray-300 border-gray-600/50 hover:bg-gray-700 hover:border-gray-500"
+                    }`}
+                  >
+                    <div className="font-medium mb-1">Long-term</div>
+                    <div className="text-xs text-gray-400">
+                      Sustained results (6+ months)
+                    </div>
+                  </button>
                 </div>
               </div>
 

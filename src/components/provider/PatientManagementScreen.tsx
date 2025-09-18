@@ -31,9 +31,9 @@ export function PatientManagementScreen({
 
   const patients = [
     {
-      id: 1,
+      id: "1001",
       name: "Sydney Adams",
-      age: 32,
+      age: 28,
       email: "sydney.adams@email.com",
       phone: "(555) 123-4567",
       lastVisit: "2024-01-15",
@@ -62,13 +62,13 @@ export function PatientManagementScreen({
       ],
       treatments: ["Filler", "Botox"],
       notes: "Conservative approach preferred",
-      frontImage: "/Sydney Adams Front.jpg",
-      sideImage: "/Sydney Adams Side.jpg",
+      frontImage: "/Sydney Adams Front.png",
+      sideImage: "/Sydney Adams Side.png",
     },
     {
-      id: 2,
+      id: "1002",
       name: "Chelsea Perry",
-      age: 42,
+      age: 32,
       email: "chelsea.perry@email.com",
       phone: "(555) 234-5678",
       lastVisit: "2024-01-10",
@@ -106,11 +106,11 @@ export function PatientManagementScreen({
       ],
       treatments: ["Facelift consultation", "Filler"],
       notes: "Comprehensive rejuvenation candidate",
-      frontImage: "/Chelsea Perry Front.jpg",
-      sideImage: "/Chelsea Perry Side.jpg",
+      frontImage: "/Chelsea Perry Front.png",
+      sideImage: "/Chelsea Perry Side.png",
     },
     {
-      id: 3,
+      id: "1003",
       name: "Jen LePage",
       age: 39,
       email: "jen.lepage@email.com",
@@ -145,11 +145,11 @@ export function PatientManagementScreen({
       ],
       treatments: ["Chemical peel", "Microneedling"],
       notes: "Excellent candidate for preventive care",
-      frontImage: "/Sydney Adams Front.jpg",
-      sideImage: "/Sydney Adams Side.jpg",
+      frontImage: "/Jen LePage Front.png",
+      sideImage: "/Jen LePage Side.png",
     },
     {
-      id: 4,
+      id: "1004",
       name: "Stephanie Enrietti",
       age: 40,
       email: "stephanie.enrietti@email.com",
@@ -186,8 +186,8 @@ export function PatientManagementScreen({
       ],
       treatments: ["Botox"],
       notes: "Completed treatment series",
-      frontImage: "/Chelsea Perry Front.jpg",
-      sideImage: "/Chelsea Perry Side.jpg",
+      frontImage: "/Chelsea Perry Front.png",
+      sideImage: "/Chelsea Perry Side.png",
     },
   ];
 
@@ -221,7 +221,7 @@ export function PatientManagementScreen({
 
   return (
     <div
-      className="bg-gradient-to-br from-black via-gray-900 to-black flex flex-col h-screen overflow-hidden"
+      className="bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-black dark:via-gray-900 dark:to-black flex flex-col h-screen overflow-hidden"
       style={{
         height: "100vh",
         minHeight: "100vh",
@@ -233,7 +233,7 @@ export function PatientManagementScreen({
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="p-4 border-b border-gray-800"
+        className="p-4 border-b border-gray-200 dark:border-gray-800"
       >
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-3">
@@ -246,10 +246,10 @@ export function PatientManagementScreen({
               <ArrowLeft className="w-4 h-4" />
             </Button>
             <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent dark:text-white dark:from-white dark:to-gray-300">
                 Patient Management
               </h1>
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
                 {filteredPatients.length} patients found
               </p>
             </div>
@@ -295,7 +295,10 @@ export function PatientManagementScreen({
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="p-4 bg-gray-800/50 border-gray-700 hover:border-gray-600 transition-all duration-300">
+              <Card
+                className="p-4 bg-gray-800/50 border-gray-700 hover:border-gray-600 transition-all duration-300 cursor-pointer hover:bg-gray-800/70"
+                onClick={() => onSelectPatient(patient)}
+              >
                 <div className="flex items-start justify-between">
                   {/* Patient Info */}
                   <div className="flex items-start space-x-4 flex-1">

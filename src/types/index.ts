@@ -48,7 +48,7 @@ export type SceneType =
   | "journey"
   | "value";
 
-export type PatientType = "sydney" | "chelsea";
+export type PatientType = "1001" | "1002";
 
 export interface PatientProfile {
   name: string;
