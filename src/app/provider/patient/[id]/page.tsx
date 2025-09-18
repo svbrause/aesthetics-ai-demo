@@ -4,6 +4,7 @@ import { PatientDetailScreenV2Refactored } from "@/components/provider/PatientDe
 import { useRouter, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
+
 // Mock patient data - in a real app, this would come from an API
 const mockPatients = {
   "1001": {

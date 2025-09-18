@@ -9,9 +9,9 @@ export default function AnalysisResultsPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [userPhoto, setUserPhoto] = useState<string>("");
-  const [selectedPatient, setSelectedPatient] = useState<PatientType | null>(
-    null
-  );
+  const [selectedPatient, setSelectedPatient] = useState<
+    "sydney" | "chelsea" | null
+  >(null);
 
   useEffect(() => {
     // Get data from localStorage
@@ -26,7 +26,10 @@ export default function AnalysisResultsPage() {
     }
 
     if (patient) {
-      setSelectedPatient(patient);
+      // Map PatientType to the expected format for ThreeSlideAnalysisScreen
+      const mappedPatient =
+        patient === "1001" ? "sydney" : patient === "1002" ? "chelsea" : null;
+      setSelectedPatient(mappedPatient);
     } else {
       router.push("/patient-selection");
       return;
