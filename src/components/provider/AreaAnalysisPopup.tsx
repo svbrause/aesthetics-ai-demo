@@ -447,7 +447,7 @@ export function AreaAnalysisPopup({
                       }}
                     />
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-full"
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-400/30 to-transparent rounded-full"
                       animate={{ x: ["-100%", "100%"] }}
                       transition={{
                         duration: 2.5,
@@ -457,7 +457,7 @@ export function AreaAnalysisPopup({
                       }}
                     />
                     <motion.div
-                      className="absolute top-0 left-0 w-2 h-full bg-white/40 rounded-full"
+                      className="absolute top-0 left-0 w-2 h-full bg-gray-400/40 rounded-full"
                       animate={{ x: [0, `${currentDetail.score}%`] }}
                       transition={{
                         duration: 2,

@@ -221,7 +221,7 @@ export function PatientManagementScreen({
 
   return (
     <div
-      className="bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-black dark:via-gray-900 dark:to-black flex flex-col h-screen overflow-hidden"
+      className="bg-gradient-to-br from-black via-gray-900 to-black flex flex-col h-screen overflow-hidden"
       style={{
         height: "100vh",
         minHeight: "100vh",

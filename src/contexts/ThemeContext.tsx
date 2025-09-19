@@ -30,7 +30,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const savedHipaaMode = localStorage.getItem("hipaaMode") === "true";
-      
+
       if (savedHipaaMode !== hipaaMode) {
         setHipaaMode(savedHipaaMode);
       }

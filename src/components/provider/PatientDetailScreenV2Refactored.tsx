@@ -186,7 +186,7 @@ export function PatientDetailScreenV2Refactored({
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-black dark:via-gray-900 dark:to-black flex flex-col h-screen overflow-hidden relative">
+    <div className="bg-gradient-to-br from-black via-gray-900 to-black flex flex-col h-screen overflow-hidden relative">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 dark:bg-blue-500/5 rounded-full blur-3xl animate-pulse" />
