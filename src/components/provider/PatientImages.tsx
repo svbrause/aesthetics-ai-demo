@@ -47,18 +47,18 @@ export function PatientImages({
     // Create a gradient from red-orange (low scores) to green (high scores)
     // More evenly distributed colors with 80 being a proper midpoint
     if (score >= 90)
-      return "from-green-600 to-emerald-600 dark:from-green-500 dark:to-emerald-500";
+      return "from-green-500 to-emerald-500";
     if (score >= 80)
-      return "from-yellow-400 to-yellow-500 dark:from-yellow-300 dark:to-yellow-400";
+      return "from-yellow-300 to-yellow-400";
     if (score >= 70)
-      return "from-orange-400 to-yellow-400 dark:from-orange-300 dark:to-yellow-300";
+      return "from-orange-300 to-yellow-300";
     if (score >= 60)
-      return "from-red-500 to-orange-500 dark:from-red-400 dark:to-orange-400";
+      return "from-red-400 to-orange-400";
     if (score >= 50)
-      return "from-red-600 to-red-500 dark:from-red-500 dark:to-red-400";
+      return "from-red-500 to-red-400";
     if (score >= 40)
-      return "from-red-700 to-red-600 dark:from-red-600 dark:to-red-500";
-    return "from-red-800 to-red-700 dark:from-red-700 dark:to-red-600";
+      return "from-red-600 to-red-500";
+    return "from-red-700 to-red-600";
   };
 
   const handleSavePatient = () => {
@@ -133,7 +133,7 @@ export function PatientImages({
               variant="ghost"
               size="sm"
               onClick={() => setIsSideView(!isSideView)}
-              className="backdrop-blur-md bg-white/10 border-white/20 hover:bg-white/20 text-white"
+              className="backdrop-blur-md bg-gray-400/10 border-gray-400/20 hover:bg-gray-400/20 text-white"
             >
               <RotateCcw className="w-4 h-4 mr-2" />
               {isSideView ? "Switch to Front View" : "Switch to Side View"}
@@ -143,14 +143,14 @@ export function PatientImages({
           {/* Scan Date and Action Buttons */}
           <div className="space-y-4 mt-6">
             {/* Scan Date */}
-            <Card className="p-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 border-gray-200 dark:border-gray-700">
+            <Card className="p-4 bg-gradient-to-r from-gray-800 to-gray-900 border-gray-700">
               <div className="flex items-center justify-center space-x-2">
-                <Calendar className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                <Calendar className="w-5 h-5 text-blue-400" />
                 <div className="text-center">
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <p className="text-sm text-gray-400">
                     Last Scan
                   </p>
-                  <p className="font-semibold text-gray-900 dark:text-white">
+                  <p className="font-semibold text-white">
                     {patient.scanDate || "December 15, 2024"}
                   </p>
                 </div>
