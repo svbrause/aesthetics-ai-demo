@@ -5,7 +5,7 @@ import { Sun, Moon, Shield } from "lucide-react";
 import { Button } from "./Button";
 
 export function ThemeToggle() {
-  const { theme, hipaaMode, toggleTheme, toggleHipaaMode } = useTheme();
+  const { hipaaMode, toggleHipaaMode } = useTheme();
 
   return (
     <div className="flex items-center gap-2">
@@ -27,23 +27,11 @@ export function ThemeToggle() {
         </span>
       </Button>
 
-      {/* Theme Toggle */}
-      <Button
-        variant="ghost"
-        size="sm"
-        onClick={toggleTheme}
-        className="flex items-center gap-2 hover:bg-gray-700"
-        title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-      >
-        {theme === "dark" ? (
-          <Sun className="w-4 h-4" />
-        ) : (
-          <Moon className="w-4 h-4" />
-        )}
-        <span className="hidden sm:inline">
-          {theme === "dark" ? "Light" : "Dark"}
-        </span>
-      </Button>
+      {/* Dark Mode Indicator (read-only) */}
+      <div className="flex items-center gap-2 px-3 py-2 text-sm text-gray-400">
+        <Moon className="w-4 h-4" />
+        <span className="hidden sm:inline">Dark Mode</span>
+      </div>
     </div>
   );
 }
