@@ -278,8 +278,9 @@ export function ProviderDashboard({
           <div className="flex items-center space-x-4">
             <Button
               onClick={() => startTutorial("provider-dashboard")}
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white"
+              variant="primary"
               size="sm"
+              className="flex items-center gap-2"
             >
               <HelpCircle className="w-4 h-4" />
               Tutorial
