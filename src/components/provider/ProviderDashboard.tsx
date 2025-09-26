@@ -308,7 +308,7 @@ export function ProviderDashboard({
             </h2>
             <div className="flex items-center gap-2">
               <Button
-                variant="ghost"
+                variant="primary"
                 size="sm"
                 onClick={onNewPatientScan}
                 className="text-xs flex items-center gap-2"

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { Target, Sparkles, FileText } from "lucide-react";
+import { Target, Sparkles, FileText, Camera, Edit } from "lucide-react";
 import { PatientHeader } from "./PatientHeader";
 import { PatientImages } from "./PatientImages";
 import { AnalysisView } from "./AnalysisView";
@@ -231,6 +231,35 @@ export function PatientDetailScreenV2Refactored({
           onBack={onBack}
           onViewChange={setCurrentView}
         />
+        
+        {/* Action Buttons - Top Right */}
+        <div className="absolute top-4 right-4 flex space-x-2 z-10">
+          <Button
+            size="sm"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 shadow-lg shadow-blue-500/25"
+          >
+            <Camera className="w-4 h-4 mr-2" />
+            New Scan
+          </Button>
+          <Button
+            size="sm"
+            variant="ghost"
+            className="bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-700 hover:to-emerald-700 shadow-lg shadow-green-500/25"
+            onClick={() => setShowQuestionnaire(true)}
+          >
+            <FileText className="w-4 h-4 mr-2" />
+            Questionnaire
+          </Button>
+          <Button
+            size="sm"
+            variant="ghost"
+            className="bg-gradient-to-r from-orange-600 to-red-600 text-white hover:from-orange-700 hover:to-red-700 shadow-lg shadow-orange-500/25"
+            onClick={() => setIsEditingPatient(true)}
+          >
+            <Edit className="w-4 h-4 mr-2" />
+            Edit Patient
+          </Button>
+        </div>
       </div>
 
       {/* HIPAA Session Warning */}

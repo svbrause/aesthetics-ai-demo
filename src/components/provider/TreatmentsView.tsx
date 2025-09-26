@@ -799,97 +799,10 @@ export function TreatmentsView({
           >
             <span className="text-sm">Relevant to Shortlist</span>
           </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() =>
-              setShortlistFilter(
-                shortlistFilter === "not-shortlisted" ? "" : "not-shortlisted"
-              )
-            }
-            className={`px-4 py-3 rounded-xl transition-all duration-300 border-2 focus:outline-none focus:ring-0 active:transform-none ${
-              shortlistFilter === "not-shortlisted"
-                ? "bg-pink-500/25 text-white border-pink-400/40 shadow-md backdrop-blur-md"
-                : "bg-gray-100 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700/60 hover:text-gray-900 dark:hover:text-white border-gray-300 dark:border-gray-600/50 hover:border-gray-400 dark:hover:border-gray-500/70 hover:shadow-md"
-            }`}
-          >
-            <span className="text-sm">Not Relevant to Shortlist</span>
-          </Button>
         </div>
       </div>
 
-      {/* Shortlist Management */}
-      {shortlist.length > 0 && (
-        <div className="mb-6">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-medium text-gray-400">
-              Current Shortlist ({shortlist.length} findings)
-            </h3>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {shortlist.map((finding, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-2 px-3 py-2 bg-pink-500/10 border border-pink-400/30 rounded-lg text-sm text-pink-300"
-              >
-                <span>{finding.name}</span>
-                <span className="text-xs text-pink-400">
-                  ({finding.severity})
-                </span>
-                {onRemoveFromShortlist && (
-                  <button
-                    onClick={() => onRemoveFromShortlist(finding.name)}
-                    className="ml-1 p-1 hover:bg-pink-500/20 rounded-full transition-colors"
-                    title="Remove from shortlist"
-                  >
-                    <X className="w-3 h-3 text-pink-400 hover:text-pink-300" />
-                  </button>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
 
-      {/* Modality Navigation - Separate from filters */}
-      <div className="mb-4">
-        <div className="flex items-center justify-between mb-3">
-          <h3 className="text-sm font-medium text-gray-400">
-            Filter by Modality
-          </h3>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {/* All Modalities Button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setModality("")}
-            className={`px-4 py-3 rounded-xl transition-all duration-300 border-2 focus:outline-none focus:ring-0 active:transform-none ${
-              modality === ""
-                ? "bg-cyan-500/25 text-white border-cyan-400/40 shadow-md backdrop-blur-md"
-                : "bg-gray-100 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700/60 hover:text-gray-900 dark:hover:text-white border-gray-300 dark:border-gray-600/50 hover:border-gray-400 dark:hover:border-gray-500/70 hover:shadow-md"
-            }`}
-          >
-            <span className="text-sm">All Modalities</span>
-          </Button>
-
-          {modalities.map((mod) => (
-            <Button
-              key={mod}
-              variant="ghost"
-              size="sm"
-              onClick={() => setModality(modality === mod ? "" : mod)}
-              className={`px-4 py-3 rounded-xl transition-all duration-300 border-2 focus:outline-none focus:ring-0 active:transform-none ${
-                modality === mod
-                  ? "bg-cyan-500/25 text-white border-cyan-400/40 shadow-md backdrop-blur-md"
-                  : "bg-gray-100 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700/60 hover:text-gray-900 dark:hover:text-white border-gray-300 dark:border-gray-600/50 hover:border-gray-400 dark:hover:border-gray-500/70 hover:shadow-md"
-              }`}
-            >
-              <span className="text-sm">{mod}</span>
-            </Button>
-          ))}
-        </div>
-      </div>
 
       {/* Filters */}
       <Card className="p-4 bg-gray-800/50 border-gray-700 relative z-50">
@@ -976,6 +889,23 @@ export function TreatmentsView({
                 value={priceRange}
                 onChange={setPriceRange}
                 placeholder="Any Price"
+              />
+            </div>
+            <div>
+              <label className="text-sm text-gray-400 mb-2 block">
+                Modality
+              </label>
+              <CustomSelect
+                options={[
+                  { value: "", label: "All Modalities" },
+                  ...modalities.map((mod) => ({
+                    value: mod,
+                    label: mod,
+                  })),
+                ]}
+                value={modality}
+                onChange={setModality}
+                placeholder="All Modalities"
               />
             </div>
           </motion.div>
