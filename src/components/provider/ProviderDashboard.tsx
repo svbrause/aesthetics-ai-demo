@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { useTutorial } from "@/contexts/TutorialContext";
 import {
   Users,
   BarChart3,
@@ -18,6 +19,7 @@ import {
   Target,
   Shield,
   Camera,
+  HelpCircle,
 } from "lucide-react";
 
 interface ProviderDashboardProps {
@@ -33,6 +35,7 @@ export function ProviderDashboard({
   onSelectPatient,
   onNewPatientScan,
 }: ProviderDashboardProps) {
+  const { startTutorial } = useTutorial();
   const stats = [
     {
       title: "Active Patients",
@@ -273,6 +276,14 @@ export function ProviderDashboard({
             <p className="text-gray-400 text-sm">Welcome back, Dr. Smith</p>
           </div>
           <div className="flex items-center space-x-4">
+            <Button
+              onClick={() => startTutorial("provider-dashboard")}
+              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white"
+              size="sm"
+            >
+              <HelpCircle className="w-4 h-4" />
+              Tutorial
+            </Button>
             <ThemeToggle />
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />

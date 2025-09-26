@@ -1,6 +1,7 @@
 "use client";
 
 import { ProviderDashboard } from "@/components/provider/ProviderDashboard";
+import { TutorialOverlay } from "@/components/TutorialOverlay";
 import { useRouter } from "next/navigation";
 
 export default function ProviderPage() {
@@ -43,6 +44,7 @@ export default function ProviderPage() {
         onSelectPatient={handleSelectPatient}
         onNewPatientScan={handleNewPatientScan}
       />
+      <TutorialOverlay />
     </div>
   );
 }
