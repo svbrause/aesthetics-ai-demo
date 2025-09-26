@@ -102,32 +102,6 @@ export function PatientHeader({
         </div>
       </motion.div>
 
-      {/* View Toggle */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        className="mb-2 p-6 pb-2"
-      >
-        <div className="flex space-x-1 p-1 bg-gray-100 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700/50">
-          {viewOptions.map((view) => (
-            <Button
-              key={view.id}
-              variant="ghost"
-              size="sm"
-              onClick={() => onViewChange(view.id)}
-              className={`flex-1 transition-all duration-300 ${
-                currentView === view.id
-                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/25"
-                  : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-white/10"
-              }`}
-            >
-              {view.icon}
-              <span className="ml-2 font-medium">{view.label}</span>
-            </Button>
-          ))}
-        </div>
-      </motion.div>
     </>
   );
 }

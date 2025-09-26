@@ -243,8 +243,8 @@ export function PatientDetailScreenV2Refactored({
 
       {/* Main Content */}
       <div className="flex-1 overflow-hidden flex">
-        {/* Left Third - Patient Images */}
-        <div className="w-1/3" data-tutorial="patient-photos">
+        {/* Left Half - Patient Images */}
+        <div className="w-1/2" data-tutorial="patient-photos">
           <PatientImages
             patient={currentPatient}
             shortlist={shortlist}
@@ -254,8 +254,8 @@ export function PatientDetailScreenV2Refactored({
           />
         </div>
 
-        {/* Right Two-Thirds - Content */}
-        <div className="w-2/3 flex flex-col">
+        {/* Right Half - Content */}
+        <div className="w-1/2 flex flex-col">
           {/* Tab Bar - Always visible at top of right column */}
           <div className="p-6 pb-2">
             <div
