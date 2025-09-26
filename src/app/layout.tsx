@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ViewportHeightHandler } from "@/components/ViewportHeightHandler";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { TutorialProvider } from "@/contexts/TutorialContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,8 +25,10 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`${inter.variable} font-sans antialiased`}>
         <ThemeProvider>
-          <ViewportHeightHandler />
-          {children}
+          <TutorialProvider>
+            <ViewportHeightHandler />
+            {children}
+          </TutorialProvider>
         </ThemeProvider>
       </body>
     </html>
