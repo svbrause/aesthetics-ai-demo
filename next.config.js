@@ -7,7 +7,7 @@ const nextConfig = {
   transpilePackages: ["framer-motion"],
   // Disable static optimization for dynamic routes
   experimental: {
-    dynamicIO: true,
+    // dynamicIO is not a valid option in Next.js 14
   },
   // Ensure proper handling of dynamic routes
   trailingSlash: false,
