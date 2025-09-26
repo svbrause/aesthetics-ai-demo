@@ -50,7 +50,7 @@ export function TreatmentsView({
   showFiltersOnly = false,
   showContentOnly = false,
 }: TreatmentsViewProps) {
-  const [showFilters, setShowFilters] = useState(true);
+  const [showFilters, setShowFilters] = useState(false);
   const [selectedArea, setSelectedArea] = useState("");
   const [selectedGoal, setSelectedGoal] = useState("");
   const [priceRange, setPriceRange] = useState("");
