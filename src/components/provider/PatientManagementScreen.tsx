@@ -222,6 +222,7 @@ export function PatientManagementScreen({
   return (
     <div
       className="bg-gradient-to-br from-black via-gray-900 to-black flex flex-col h-screen overflow-hidden"
+      data-tutorial="patients-list"
       style={{
         height: "100vh",
         minHeight: "100vh",
@@ -245,7 +246,10 @@ export function PatientManagementScreen({
             >
               <ArrowLeft className="w-4 h-4" />
             </Button>
-            <div>
+            <div
+              className="patient-list-header"
+              data-tutorial="patient-list-header"
+            >
               <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent dark:text-white dark:from-white dark:to-gray-300">
                 Patient Management
               </h1>
@@ -261,7 +265,7 @@ export function PatientManagementScreen({
         </div>
 
         {/* Search and Filter */}
-        <div className="flex space-x-4">
+        <div className="flex space-x-4" data-tutorial="patients-search">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
@@ -287,7 +291,7 @@ export function PatientManagementScreen({
 
       {/* Patient List */}
       <div className="flex-1 overflow-y-auto p-4">
-        <div className="space-y-4">
+        <div className="space-y-4" data-tutorial="patients-grid">
           {filteredPatients.map((patient, index) => (
             <motion.div
               key={patient.id}
@@ -297,6 +301,7 @@ export function PatientManagementScreen({
             >
               <Card
                 className="p-4 bg-gray-800/50 border-gray-700 hover:border-gray-600 transition-all duration-300 cursor-pointer hover:bg-gray-800/70"
+                data-tutorial="patient-card"
                 onClick={() => onSelectPatient(patient)}
               >
                 <div className="flex items-start justify-between">

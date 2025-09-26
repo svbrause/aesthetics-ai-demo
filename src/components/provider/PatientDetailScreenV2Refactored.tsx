@@ -2,12 +2,17 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/Button";
+import { Target, Sparkles, FileText } from "lucide-react";
 import { PatientHeader } from "./PatientHeader";
 import { PatientImages } from "./PatientImages";
 import { AnalysisView } from "./AnalysisView";
 import { TreatmentsView } from "./TreatmentsView";
 import { TreatmentPlanView } from "./TreatmentPlanView";
 import { TreatmentPlanPopup } from "./TreatmentPlanPopup";
+import { ShortlistBar } from "./ShortlistBar";
+import { PatientQuestionnaire } from "./PatientQuestionnaire";
+import { TutorialOverlay } from "../TutorialOverlay";
 import { useTheme } from "@/contexts/ThemeContext";
 import { analysisAreas } from "@/data/analysisData";
 import { treatments } from "@/data/treatmentsData";
@@ -104,6 +109,8 @@ export function PatientDetailScreenV2Refactored({
   const [addedToPlan, setAddedToPlan] = useState<Set<string>>(new Set());
   const [sessionTime, setSessionTime] = useState(0);
   const [currentPatient, setCurrentPatient] = useState(patient);
+  const [showQuestionnaire, setShowQuestionnaire] = useState(false);
+  const [isEditingPatient, setIsEditingPatient] = useState(false);
 
   if (!patient) {
     return (
@@ -185,8 +192,25 @@ export function PatientDetailScreenV2Refactored({
     setCurrentPatient(updatedPatient);
   };
 
+  const handleNewScan = () => {
+    // Navigate to upload page or open scan modal
+    console.log("New scan requested");
+  };
+
+  const handleQuestionnaire = () => {
+    setShowQuestionnaire(true);
+  };
+
+  const handleEditPatient = () => {
+    setIsEditingPatient(true);
+  };
+
   return (
-    <div className="bg-gradient-to-br from-black via-gray-900 to-black flex flex-col h-screen overflow-hidden relative">
+    <div
+      className="bg-gradient-to-br from-black via-gray-900 to-black flex flex-col h-screen overflow-hidden relative patient-detail-container"
+      data-tutorial="patient-detail-container"
+    >
+      <TutorialOverlay />
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 dark:bg-blue-500/5 rounded-full blur-3xl animate-pulse" />
@@ -201,12 +225,15 @@ export function PatientDetailScreenV2Refactored({
       </div>
 
       {/* Header */}
-      <PatientHeader
-        patient={currentPatient}
-        currentView={currentView}
-        onBack={onBack}
-        onViewChange={setCurrentView}
-      />
+      <div className="patient-header" data-tutorial="patient-header">
+        <PatientHeader
+          patient={currentPatient}
+          onBack={onBack}
+          onNewScan={handleNewScan}
+          onQuestionnaire={handleQuestionnaire}
+          onEditPatient={handleEditPatient}
+        />
+      </div>
 
       {/* HIPAA Session Warning */}
       {hipaaMode && (
@@ -219,28 +246,74 @@ export function PatientDetailScreenV2Refactored({
       {/* Main Content */}
       <div className="flex-1 overflow-hidden flex">
         {/* Left Third - Patient Images */}
-        <PatientImages
-          patient={currentPatient}
-          shortlist={shortlist}
-          treatmentPlan={treatmentPlan}
-          interestedAreas={interestedAreas}
-          onUpdatePatient={handleUpdatePatient}
-        />
+        <div className="w-1/3" data-tutorial="patient-photos">
+          <PatientImages
+            patient={currentPatient}
+            shortlist={shortlist}
+            treatmentPlan={treatmentPlan}
+            interestedAreas={interestedAreas}
+            onUpdatePatient={handleUpdatePatient}
+            onRemoveFromShortlist={removeFromShortlist}
+          />
+        </div>
 
         {/* Right Two-Thirds - Content */}
         <div className="w-2/3 flex flex-col">
+          {/* Tab Bar - Always visible at top of right column */}
+          <div className="p-6 pb-2">
+            <div
+              className="flex space-x-1 p-1 bg-gray-800/50 rounded-xl border border-gray-700/50"
+              data-tutorial="tab-navigation"
+            >
+              {[
+                {
+                  id: "analysis" as ViewMode,
+                  label: "Analysis",
+                  icon: <Target className="w-4 h-4" />,
+                },
+                {
+                  id: "treatments" as ViewMode,
+                  label: "Treatments",
+                  icon: <Sparkles className="w-4 h-4" />,
+                },
+                {
+                  id: "treatment-plan" as ViewMode,
+                  label: "Plan",
+                  icon: <FileText className="w-4 h-4" />,
+                },
+              ].map((view) => (
+                <Button
+                  key={view.id}
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setCurrentView(view.id)}
+                  className={`flex-1 transition-all duration-300 ${
+                    currentView === view.id
+                      ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/25"
+                      : "text-gray-400 hover:text-white hover:bg-white/10"
+                  }`}
+                >
+                  {view.icon}
+                  <span className="ml-2 font-medium">{view.label}</span>
+                </Button>
+              ))}
+            </div>
+          </div>
+
           {/* Scrollable Content Area - Now includes filters */}
           <div className="flex-1 overflow-y-auto p-6">
             <AnimatePresence mode="wait">
               {currentView === "analysis" && (
-                <AnalysisView
-                  analysisAreas={analysisAreas as any}
-                  patient={currentPatient}
-                  shortlist={shortlist}
-                  onAddToShortlist={addToShortlist}
-                  onAddToTreatmentPlan={addToTreatmentPlan}
-                  addedToPlan={addedToPlan}
-                />
+                <div data-tutorial="analysis-areas">
+                  <AnalysisView
+                    analysisAreas={analysisAreas as any}
+                    patient={currentPatient}
+                    shortlist={shortlist}
+                    onAddToShortlist={addToShortlist}
+                    onAddToTreatmentPlan={addToTreatmentPlan}
+                    addedToPlan={addedToPlan}
+                  />
+                </div>
               )}
 
               {currentView === "treatments" && (
@@ -257,12 +330,14 @@ export function PatientDetailScreenV2Refactored({
               )}
 
               {currentView === "treatment-plan" && (
-                <TreatmentPlanView
-                  treatmentPlan={treatmentPlan}
-                  onRemoveFromPlan={removeFromTreatmentPlan}
-                  onExportToEMR={handleExportToEMR}
-                  onDownloadPDF={handleDownloadPDF}
-                />
+                <div data-tutorial="treatment-plan">
+                  <TreatmentPlanView
+                    treatmentPlan={treatmentPlan}
+                    onRemoveFromPlan={removeFromTreatmentPlan}
+                    onExportToEMR={handleExportToEMR}
+                    onDownloadPDF={handleDownloadPDF}
+                  />
+                </div>
               )}
             </AnimatePresence>
           </div>
@@ -275,6 +350,13 @@ export function PatientDetailScreenV2Refactored({
         onClose={() => setShowTreatmentPopup(false)}
         onAdd={handleAddToTreatmentPlan}
         treatment={selectedTreatment}
+      />
+
+      {/* Patient Questionnaire Modal */}
+      <PatientQuestionnaire
+        isOpen={showQuestionnaire}
+        onClose={() => setShowQuestionnaire(false)}
+        patientName={currentPatient.name}
       />
 
       {/* HIPAA Security Status Bar */}
