@@ -10,7 +10,6 @@ import { AnalysisView } from "./AnalysisView";
 import { TreatmentsView } from "./TreatmentsView";
 import { TreatmentPlanView } from "./TreatmentPlanView";
 import { TreatmentPlanPopup } from "./TreatmentPlanPopup";
-import { ShortlistBar } from "./ShortlistBar";
 import { PatientQuestionnaire } from "./PatientQuestionnaire";
 import { TutorialOverlay } from "../TutorialOverlay";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -228,10 +227,9 @@ export function PatientDetailScreenV2Refactored({
       <div className="patient-header" data-tutorial="patient-header">
         <PatientHeader
           patient={currentPatient}
+          currentView={currentView}
           onBack={onBack}
-          onNewScan={handleNewScan}
-          onQuestionnaire={handleQuestionnaire}
-          onEditPatient={handleEditPatient}
+          onViewChange={setCurrentView}
         />
       </div>
 
@@ -253,7 +251,6 @@ export function PatientDetailScreenV2Refactored({
             treatmentPlan={treatmentPlan}
             interestedAreas={interestedAreas}
             onUpdatePatient={handleUpdatePatient}
-            onRemoveFromShortlist={removeFromShortlist}
           />
         </div>
 
