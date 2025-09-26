@@ -101,7 +101,6 @@ export function PatientHeader({
           </div>
         </div>
       </motion.div>
-
     </>
   );
 }

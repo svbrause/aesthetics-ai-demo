@@ -148,7 +148,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='patient-actions']",
     position: "bottom",
     screen: "patient-detail",
-    order: 29,
+    order: 10,
   },
   {
     id: "patient-photo",
@@ -158,7 +158,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='patient-photos']",
     position: "right",
     screen: "patient-detail",
-    order: 29,
+    order: 11,
   },
   {
     id: "patient-shortlist",
@@ -168,7 +168,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='patient-shortlist']",
     position: "right",
     screen: "patient-detail",
-    order: 29,
+    order: 12,
   },
   {
     id: "tab-navigation",
@@ -178,7 +178,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='tab-navigation']",
     position: "bottom",
     screen: "patient-detail",
-    order: 29,
+    order: 13,
   },
   {
     id: "analysis-areas",
@@ -188,7 +188,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='analysis-areas']",
     position: "right",
     screen: "patient-detail",
-    order: 29,
+    order: 14,
   },
   {
     id: "treatment-filters",
@@ -198,7 +198,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='treatment-filters']",
     position: "bottom",
     screen: "patient-detail",
-    order: 29,
+    order: 15,
   },
   {
     id: "treatment-cards",
@@ -208,7 +208,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='treatment-cards']",
     position: "right",
     screen: "patient-detail",
-    order: 29,
+    order: 16,
   },
   {
     id: "treatment-plan",
@@ -218,7 +218,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='treatment-plan']",
     position: "right",
     screen: "patient-detail",
-    order: 29,
+    order: 17,
   },
   {
     id: "plan-actions",
@@ -228,7 +228,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='plan-actions']",
     position: "top",
     screen: "patient-detail",
-    order: 29,
+    order: 18,
   },
   {
     id: "dashboard-new-scan",
@@ -238,7 +238,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='new-scan-button']",
     position: "bottom",
     screen: "provider-dashboard",
-    order: 29,
+    order: 10,
     navigateTo: "/provider/upload",
     autoNavigate: true,
     waitForNavigation: true,
@@ -253,7 +253,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='upload-interface']",
     position: "center",
     screen: "upload",
-    order: 29,
+    order: 10,
   },
   {
     id: "upload-instructions",
@@ -263,7 +263,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='upload-instructions']",
     position: "bottom",
     screen: "upload",
-    order: 29,
+    order: 10,
   },
   {
     id: "upload-actions",
@@ -273,7 +273,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='upload-actions']",
     position: "top",
     screen: "upload",
-    order: 29,
+    order: 10,
   },
 
   // ===== RESULTS SCREEN =====
@@ -285,7 +285,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='results-interface']",
     position: "center",
     screen: "results",
-    order: 29,
+    order: 10,
   },
   {
     id: "results-analysis",
@@ -295,7 +295,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='results-analysis']",
     position: "top",
     screen: "results",
-    order: 29,
+    order: 10,
   },
   {
     id: "results-actions",
@@ -305,7 +305,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='results-actions']",
     position: "bottom",
     screen: "results",
-    order: 29,
+    order: 10,
   },
 
   // ===== ANALYSIS TOOLS SCREEN =====
@@ -317,7 +317,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='analysis-tools']",
     position: "center",
     screen: "analysis-tools",
-    order: 29,
+    order: 10,
   },
   {
     id: "analysis-tools-features",
@@ -327,7 +327,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='analysis-tools-features']",
     position: "top",
     screen: "analysis-tools",
-    order: 29,
+    order: 10,
   },
 
   // ===== TUTORIAL COMPLETION =====
@@ -339,7 +339,7 @@ const tutorialSteps: TutorialStep[] = [
     target: "[data-tutorial='provider-dashboard']",
     position: "center",
     screen: "provider-dashboard",
-    order: 29,
+    order: 10,
   },
 ];
 

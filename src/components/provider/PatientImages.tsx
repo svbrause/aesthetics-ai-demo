@@ -46,18 +46,12 @@ export function PatientImages({
   const getScoreColorClasses = (score: number) => {
     // Create a gradient from red-orange (low scores) to green (high scores)
     // More evenly distributed colors with 80 being a proper midpoint
-    if (score >= 90)
-      return "from-green-500 to-emerald-500";
-    if (score >= 80)
-      return "from-yellow-300 to-yellow-400";
-    if (score >= 70)
-      return "from-orange-300 to-yellow-300";
-    if (score >= 60)
-      return "from-red-400 to-orange-400";
-    if (score >= 50)
-      return "from-red-500 to-red-400";
-    if (score >= 40)
-      return "from-red-600 to-red-500";
+    if (score >= 90) return "from-green-500 to-emerald-500";
+    if (score >= 80) return "from-yellow-300 to-yellow-400";
+    if (score >= 70) return "from-orange-300 to-yellow-300";
+    if (score >= 60) return "from-red-400 to-orange-400";
+    if (score >= 50) return "from-red-500 to-red-400";
+    if (score >= 40) return "from-red-600 to-red-500";
     return "from-red-700 to-red-600";
   };
 
@@ -89,14 +83,14 @@ export function PatientImages({
         transition={{ duration: 0.8 }}
         className="w-full h-full flex flex-col space-y-6"
       >
-        {/* Patient Image - Full width and height */}
-        <div className="relative flex-1">
+        {/* Patient Image - Responsive size */}
+        <div className="relative">
           <motion.div
             key={isSideView ? "side" : "front"}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className={`relative w-full h-full rounded-2xl overflow-hidden group ${
+            className={`relative w-full max-w-md mx-auto h-80 rounded-2xl overflow-hidden group ${
               hipaaMode ? "hipaa-secure" : ""
             }`}
           >
@@ -139,31 +133,6 @@ export function PatientImages({
               </div>
             </div>
 
-            {/* Action Buttons - top right corner */}
-            <div className="absolute top-4 right-4 flex flex-col space-y-2">
-              <Button
-                size="sm"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 shadow-lg shadow-blue-500/25"
-              >
-                <Camera className="w-4 h-4" />
-              </Button>
-              <Button
-                size="sm"
-                variant="ghost"
-                className="bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-700 hover:to-emerald-700 shadow-lg shadow-green-500/25"
-                onClick={() => setShowQuestionnaire(true)}
-              >
-                <FileText className="w-4 h-4" />
-              </Button>
-              <Button
-                size="sm"
-                variant="ghost"
-                className="bg-gradient-to-r from-orange-600 to-red-600 text-white hover:from-orange-700 hover:to-red-700 shadow-lg shadow-orange-500/25"
-                onClick={() => setIsEditingPatient(true)}
-              >
-                <Edit className="w-4 h-4" />
-              </Button>
-            </div>
           </motion.div>
 
           {/* View Toggle */}
@@ -181,13 +150,13 @@ export function PatientImages({
         </div>
 
         {/* Shortlist Section */}
-        <div className="mt-6">
-          <Card className="p-4 bg-gradient-to-r from-gray-800 to-gray-900 border-gray-700">
+        <div className="mt-6 flex-1">
+          <Card className="p-4 bg-gradient-to-r from-gray-800 to-gray-900 border-gray-700 h-full flex flex-col">
             <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
               <Target className="w-5 h-5 mr-2 text-blue-400" />
               Shortlist
             </h3>
-            <div className="space-y-3">
+            <div className="space-y-3 overflow-y-auto flex-1 max-h-64">
               {shortlist.length > 0 ? (
                 shortlist.map((item, index) => (
                   <div
@@ -195,17 +164,29 @@ export function PatientImages({
                     className="flex items-center justify-between p-3 bg-gray-700/50 rounded-lg border border-gray-600/50"
                   >
                     <div className="flex items-center space-x-3">
-                      <div className={`w-3 h-3 rounded-full ${
-                        item.severity === 'high' ? 'bg-red-500' :
-                        item.severity === 'moderate' ? 'bg-yellow-500' : 'bg-green-500'
-                      }`} />
-                      <span className="text-white text-sm font-medium">{item.name}</span>
+                      <div
+                        className={`w-3 h-3 rounded-full ${
+                          item.severity === "high"
+                            ? "bg-red-500"
+                            : item.severity === "moderate"
+                            ? "bg-yellow-500"
+                            : "bg-green-500"
+                        }`}
+                      />
+                      <span className="text-white text-sm font-medium">
+                        {item.name}
+                      </span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <span className={`text-sm font-semibold ${
-                        item.score >= 80 ? 'text-green-400' :
-                        item.score >= 60 ? 'text-yellow-400' : 'text-red-400'
-                      }`}>
+                      <span
+                        className={`text-sm font-semibold ${
+                          item.score >= 80
+                            ? "text-green-400"
+                            : item.score >= 60
+                            ? "text-yellow-400"
+                            : "text-red-400"
+                        }`}
+                      >
                         {item.score}
                       </span>
                       <Button
