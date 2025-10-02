@@ -119,6 +119,48 @@ export const analysisAreas = [
         educational:
           "Brow ptosis affects 55% of people aged 35-50. This is a natural part of aging as the brow muscles weaken over time.",
       },
+      {
+        name: "Forehead Wrinkles",
+        score: 75,
+        severity: "moderate" as const,
+        description:
+          "Horizontal lines across the forehead affecting facial appearance",
+        commonality: 80,
+        ageGroup: "25-50",
+        causes: ["Facial expressions", "Aging", "Sun damage"],
+        symptoms: ["Horizontal lines", "Aged appearance", "Expression lines"],
+        beforeAfter: [
+          {
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
+            label: "Botox",
+          },
+        ],
+        treatments: ["Botox", "Dermal fillers", "Microneedling"],
+        educational:
+          "Forehead wrinkles affect 80% of people aged 25-50. These are caused by repeated facial expressions and natural aging.",
+      },
+      {
+        name: "Glabella Lines",
+        score: 68,
+        severity: "moderate" as const,
+        description:
+          "Vertical lines between the eyebrows creating a frowning appearance",
+        commonality: 70,
+        ageGroup: "25-45",
+        causes: ["Frowning", "Muscle tension", "Aging"],
+        symptoms: ["Vertical lines", "Frowning appearance", "Tension lines"],
+        beforeAfter: [
+          {
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
+            label: "Botox",
+          },
+        ],
+        treatments: ["Botox", "Dermal fillers", "Microneedling"],
+        educational:
+          "Glabella lines affect 70% of people aged 25-45. These are caused by repeated frowning and muscle tension.",
+      },
     ],
   },
   {
@@ -209,6 +251,46 @@ export const analysisAreas = [
         educational:
           "Excess upper eyelid skin affects 60% of people aged 40-60. This is a natural part of aging as the skin loses elasticity.",
       },
+      {
+        name: "Crow's Feet",
+        score: 72,
+        severity: "moderate" as const,
+        description: "Fine lines radiating from the outer corners of the eyes",
+        commonality: 85,
+        ageGroup: "25-50",
+        causes: ["Smiling", "Squinting", "Aging"],
+        symptoms: ["Fine lines", "Expression lines", "Aged appearance"],
+        beforeAfter: [
+          {
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
+            label: "Botox",
+          },
+        ],
+        treatments: ["Botox", "Dermal fillers", "Microneedling"],
+        educational:
+          "Crow's feet affect 85% of people aged 25-50. These are caused by repeated smiling and squinting.",
+      },
+      {
+        name: "Under Eye Wrinkles",
+        score: 65,
+        severity: "mild" as const,
+        description: "Fine lines under the eyes affecting appearance",
+        commonality: 70,
+        ageGroup: "25-45",
+        causes: ["Aging", "Sun damage", "Genetics"],
+        symptoms: ["Fine lines", "Tired appearance", "Aged look"],
+        beforeAfter: [
+          {
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
+            label: "Botox",
+          },
+        ],
+        treatments: ["Botox", "Dermal fillers", "Microneedling"],
+        educational:
+          "Under eye wrinkles affect 70% of people aged 25-45. These are often genetic and can be exacerbated by sun damage.",
+      },
     ],
   },
   {
@@ -242,6 +324,46 @@ export const analysisAreas = [
         treatments: ["Cheek filler", "Fat grafting", "Sculptra"],
         educational:
           "Mid cheek flattening affects 70% of people aged 30-50. This is one of the most common signs of aging in the mid-face region.",
+      },
+      {
+        name: "Nasolabial Folds",
+        score: 78,
+        severity: "moderate" as const,
+        description: "Lines running from the nose to the corners of the mouth",
+        commonality: 75,
+        ageGroup: "30-55",
+        causes: ["Aging", "Volume loss", "Facial expressions"],
+        symptoms: ["Deep lines", "Aged appearance", "Expression lines"],
+        beforeAfter: [
+          {
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
+            label: "Dermal Filler",
+          },
+        ],
+        treatments: ["Dermal fillers", "Fat grafting", "Thread lift"],
+        educational:
+          "Nasolabial folds affect 75% of people aged 30-55. These are caused by volume loss and repeated facial expressions.",
+      },
+      {
+        name: "Marionette Lines",
+        score: 70,
+        severity: "moderate" as const,
+        description: "Lines running from the corners of the mouth downward",
+        commonality: 65,
+        ageGroup: "35-60",
+        causes: ["Aging", "Volume loss", "Gravity"],
+        symptoms: ["Vertical lines", "Aged appearance", "Sad expression"],
+        beforeAfter: [
+          {
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
+            label: "Dermal Filler",
+          },
+        ],
+        treatments: ["Dermal fillers", "Fat grafting", "Thread lift"],
+        educational:
+          "Marionette lines affect 65% of people aged 35-60. These are caused by volume loss and gravity.",
       },
     ],
   },
@@ -277,6 +399,46 @@ export const analysisAreas = [
         educational:
           "Lip volume loss affects 60% of people aged 25-45. This is a natural part of aging as the lips lose volume and definition.",
       },
+      {
+        name: "Perioral Wrinkles",
+        score: 68,
+        severity: "moderate" as const,
+        description: "Fine lines around the mouth area",
+        commonality: 70,
+        ageGroup: "30-55",
+        causes: ["Aging", "Smoking", "Sun damage"],
+        symptoms: ["Fine lines", "Aged appearance", "Expression lines"],
+        beforeAfter: [
+          {
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
+            label: "Dermal Filler",
+          },
+        ],
+        treatments: ["Dermal fillers", "Microneedling", "Laser resurfacing"],
+        educational:
+          "Perioral wrinkles affect 70% of people aged 30-55. These are often caused by smoking and sun damage.",
+      },
+      {
+        name: "Thin Lips",
+        score: 72,
+        severity: "mild" as const,
+        description: "Naturally thin lips affecting facial balance",
+        commonality: 50,
+        ageGroup: "All ages",
+        causes: ["Genetics", "Aging", "Volume loss"],
+        symptoms: ["Thin appearance", "Lack of definition", "Imbalanced face"],
+        beforeAfter: [
+          {
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
+            label: "Lip Filler",
+          },
+        ],
+        treatments: ["Lip filler", "Lip enhancement", "Fat grafting"],
+        educational:
+          "Thin lips affect 50% of people across all age groups. This can be genetic or due to natural aging.",
+      },
     ],
   },
   {
@@ -311,6 +473,47 @@ export const analysisAreas = [
         educational:
           "Jawline definition loss affects 65% of people aged 35-55. This is a common concern as the face loses structural support.",
       },
+      {
+        name: "Jowls",
+        score: 75,
+        severity: "moderate" as const,
+        description:
+          "Sagging skin along the jawline creating a droopy appearance",
+        commonality: 70,
+        ageGroup: "40-65",
+        causes: ["Aging", "Gravity", "Skin laxity"],
+        symptoms: ["Sagging skin", "Droopy appearance", "Loss of definition"],
+        beforeAfter: [
+          {
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
+            label: "Thread Lift",
+          },
+        ],
+        treatments: ["Thread lift", "Facelift", "Ultherapy"],
+        educational:
+          "Jowls affect 70% of people aged 40-65. These are caused by aging and gravity affecting skin elasticity.",
+      },
+      {
+        name: "Double Chin",
+        score: 68,
+        severity: "moderate" as const,
+        description: "Excess fat under the chin affecting profile",
+        commonality: 60,
+        ageGroup: "25-55",
+        causes: ["Genetics", "Weight gain", "Aging"],
+        symptoms: ["Excess fat", "Poor profile", "Aged appearance"],
+        beforeAfter: [
+          {
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
+            label: "CoolSculpting",
+          },
+        ],
+        treatments: ["CoolSculpting", "Liposuction", "Kybella"],
+        educational:
+          "Double chin affects 60% of people aged 25-55. This can be genetic or due to weight gain and aging.",
+      },
     ],
   },
   {
@@ -344,6 +547,47 @@ export const analysisAreas = [
         treatments: ["Neck treatment", "Skin tightening", "Botox"],
         educational:
           "Neck lines affect 50% of people aged 40-60. These are often caused by sun damage and repetitive neck movements.",
+      },
+      {
+        name: "Turkey Neck",
+        score: 72,
+        severity: "moderate" as const,
+        description:
+          "Loose, sagging skin on the neck creating a turkey-like appearance",
+        commonality: 65,
+        ageGroup: "45-70",
+        causes: ["Aging", "Gravity", "Weight loss"],
+        symptoms: ["Loose skin", "Sagging appearance", "Aged look"],
+        beforeAfter: [
+          {
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
+            label: "Neck Lift",
+          },
+        ],
+        treatments: ["Neck lift", "Ultherapy", "Thread lift"],
+        educational:
+          "Turkey neck affects 65% of people aged 45-70. This is caused by aging and gravity affecting skin elasticity.",
+      },
+      {
+        name: "Horizontal Neck Bands",
+        score: 68,
+        severity: "moderate" as const,
+        description: "Horizontal bands across the neck affecting appearance",
+        commonality: 55,
+        ageGroup: "40-65",
+        causes: ["Aging", "Muscle tension", "Genetics"],
+        symptoms: ["Horizontal lines", "Aged appearance", "Muscle bands"],
+        beforeAfter: [
+          {
+            before: "/Sydney Adams Front.png",
+            after: "/Sydney Adams Side.png",
+            label: "Botox",
+          },
+        ],
+        treatments: ["Botox", "Neck lift", "Ultherapy"],
+        educational:
+          "Horizontal neck bands affect 55% of people aged 40-65. These are caused by aging and muscle tension.",
       },
     ],
   },

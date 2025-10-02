@@ -24,6 +24,8 @@ import {
 } from "lucide-react";
 import { Treatment, AnalysisArea } from "@/types/patientTypes";
 import { getBestPhotoForTreatment } from "@/data/photoMappings";
+import { useTreatmentPhotos } from "@/hooks/useTreatmentPhotos";
+import { SquareImage } from "@/components/ui/SquareImage";
 
 interface TreatmentsViewProps {
   treatments: Treatment[];
@@ -36,6 +38,7 @@ interface TreatmentsViewProps {
   onViewAllAreas?: () => void;
   showFiltersOnly?: boolean;
   showContentOnly?: boolean;
+  selectedShortlistItems?: Set<string>;
 }
 
 export function TreatmentsView({
@@ -49,7 +52,14 @@ export function TreatmentsView({
   onViewAllAreas,
   showFiltersOnly = false,
   showContentOnly = false,
+  selectedShortlistItems = new Set(),
 }: TreatmentsViewProps) {
+  // Get photos from Airtable
+  const {
+    getTreatmentPhoto,
+    loading: photosLoading,
+    error: photosError,
+  } = useTreatmentPhotos(treatments);
   const [showFilters, setShowFilters] = useState(false);
   const [selectedArea, setSelectedArea] = useState("");
   const [selectedGoal, setSelectedGoal] = useState("");
@@ -109,6 +119,14 @@ export function TreatmentsView({
           shortlist.some((shortlistItem) => shortlistItem.name === servesItem)
         );
         if (servesShortlistedFinding) return false;
+      }
+
+      // Filter by selected shortlist items - if any are selected, only show treatments that serve those specific findings
+      if (selectedShortlistItems.size > 0) {
+        const servesSelectedFinding = treatment.serves.some((servesItem) =>
+          selectedShortlistItems.has(servesItem)
+        );
+        if (!servesSelectedFinding) return false;
       }
       return true;
     })
@@ -331,7 +349,7 @@ export function TreatmentsView({
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="grid grid-cols-2 md:grid-cols-5 gap-4"
+              className="grid grid-cols-2 md:grid-cols-4 gap-4"
             >
               <div>
                 <label className="text-sm text-gray-400 mb-2 block">Area</label>
@@ -469,11 +487,11 @@ export function TreatmentsView({
                           <div className="space-y-4">
                             {/* Before/After Images */}
                             <div className="grid grid-cols-2 gap-3">
-                              <div className="relative rounded-xl overflow-hidden bg-gray-700/30 h-36">
-                                <img
+                              <div className="relative">
+                                <SquareImage
                                   src={treatment.beforeAfter[0].before}
                                   alt={`${treatment.name} before`}
-                                  className="w-full h-full object-cover"
+                                  size="h-24"
                                 />
                                 <div className="absolute top-2 left-2">
                                   <div className="bg-red-500/80 text-white text-xs px-2 py-1 rounded-full font-medium">
@@ -481,11 +499,11 @@ export function TreatmentsView({
                                   </div>
                                 </div>
                               </div>
-                              <div className="relative rounded-xl overflow-hidden bg-gray-700/30 h-36">
-                                <img
+                              <div className="relative">
+                                <SquareImage
                                   src={treatment.beforeAfter[0].after}
                                   alt={`${treatment.name} after`}
-                                  className="w-full h-full object-cover"
+                                  size="h-24"
                                 />
                                 <div className="absolute top-2 left-2">
                                   <div className="bg-green-500/80 text-white text-xs px-2 py-1 rounded-full font-medium">
@@ -495,15 +513,25 @@ export function TreatmentsView({
                               </div>
                             </div>
                             {/* Treatment Result Image */}
-                            <div className="relative rounded-xl overflow-hidden bg-gray-700/30 h-40">
-                              <img
-                                src={treatment.image}
+                            <div className="relative">
+                              <SquareImage
+                                src={getTreatmentPhoto(
+                                  treatment.id.toString(),
+                                  treatment.image
+                                )}
                                 alt={`${treatment.name} result`}
-                                className="w-full h-full object-cover"
+                                size="h-24"
+                                onError={(e) => {
+                                  // Fallback to original image if Airtable photo fails to load
+                                  const target = e.target as HTMLImageElement;
+                                  if (target.src !== treatment.image) {
+                                    target.src = treatment.image;
+                                  }
+                                }}
                               />
-                              <div className="absolute top-3 left-3">
-                                <div className="bg-blue-500/80 text-white text-sm px-3 py-1 rounded-full font-medium">
-                                  Treatment Result
+                              <div className="absolute top-2 left-2">
+                                <div className="bg-blue-500/80 text-white text-xs px-2 py-1 rounded-full font-medium">
+                                  Result
                                 </div>
                               </div>
                             </div>
@@ -511,9 +539,19 @@ export function TreatmentsView({
                         ) : (
                           <div className="relative rounded-xl overflow-hidden bg-gray-700/30 h-80">
                             <img
-                              src={treatment.image}
+                              src={getTreatmentPhoto(
+                                treatment.id.toString(),
+                                treatment.image
+                              )}
                               alt={`${treatment.name} result`}
                               className="w-full h-full object-cover"
+                              onError={(e) => {
+                                // Fallback to original image if Airtable photo fails to load
+                                const target = e.target as HTMLImageElement;
+                                if (target.src !== treatment.image) {
+                                  target.src = treatment.image;
+                                }
+                              }}
                             />
                             <div className="absolute top-3 left-3">
                               <div className="bg-blue-500/80 text-white text-sm px-3 py-1 rounded-full font-medium">
@@ -532,84 +570,106 @@ export function TreatmentsView({
                             <h4 className="text-2xl font-bold text-white">
                               {treatment.name}
                             </h4>
-                            {isShortlisted && (
-                              <div className="flex items-center text-pink-400 text-sm bg-pink-500/20 px-3 py-1 rounded-full">
-                                <Star className="w-4 h-4 mr-2" />
-                                Shortlisted
-                              </div>
-                            )}
+                            <div className="px-3 py-1 bg-purple-500/20 text-purple-300 text-sm rounded-full border border-purple-500/30">
+                              {treatment.category}
+                            </div>
                           </div>
                           <p className="text-gray-300 text-base mb-4 line-clamp-2">
                             {treatment.description}
                           </p>
 
-                          {/* Treatment Details - Moved to right column below description */}
-                          <div className="grid grid-cols-2 gap-4 mb-4">
-                            <div className="text-center p-3 bg-green-500/10 border border-green-500/20 rounded-lg">
-                              <DollarSign className="w-5 h-5 text-green-400 mx-auto mb-2" />
-                              <div className="text-sm text-gray-400">Price</div>
-                              <div className="text-lg font-bold text-white">
-                                ${treatment.price}
+                          {/* Treatment Details and Issues - Side by side layout */}
+                          <div className="flex gap-6 mb-4">
+                            {/* Basic Info - Narrower */}
+                            <div className="grid grid-cols-2 gap-3 w-56 flex-shrink-0">
+                              <div className="text-center p-3 bg-green-500/10 border border-green-500/20 rounded-lg">
+                                <DollarSign className="w-4 h-4 text-green-400 mx-auto mb-2" />
+                                <div className="text-sm text-gray-400">
+                                  Price
+                                </div>
+                                <div className="text-lg font-bold text-white">
+                                  ${treatment.price}
+                                </div>
+                              </div>
+                              <div className="text-center p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                                <Clock className="w-4 h-4 text-blue-400 mx-auto mb-2" />
+                                <div className="text-sm text-gray-400">
+                                  Duration
+                                </div>
+                                <div className="text-lg font-bold text-white">
+                                  {treatment.duration}
+                                </div>
+                              </div>
+                              <div className="text-center p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                                <Bed className="w-4 h-4 text-yellow-400 mx-auto mb-2" />
+                                <div className="text-sm text-gray-400">
+                                  Downtime
+                                </div>
+                                <div className="text-lg font-bold text-white">
+                                  {treatment.downtime}
+                                </div>
+                              </div>
+                              <div className="text-center p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg">
+                                <Activity className="w-4 h-4 text-orange-400 mx-auto mb-2" />
+                                <div className="text-sm text-gray-400">
+                                  Invasiveness
+                                </div>
+                                <div className="text-lg font-bold text-white">
+                                  {treatment.invasiveness}
+                                </div>
                               </div>
                             </div>
-                            <div className="text-center p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-                              <Clock className="w-5 h-5 text-blue-400 mx-auto mb-2" />
-                              <div className="text-sm text-gray-400">
-                                Duration
-                              </div>
-                              <div className="text-lg font-bold text-white">
-                                {treatment.duration}
-                              </div>
-                            </div>
-                            <div className="text-center p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-                              <Bed className="w-5 h-5 text-yellow-400 mx-auto mb-2" />
-                              <div className="text-sm text-gray-400">
-                                Downtime
-                              </div>
-                              <div className="text-lg font-bold text-white">
-                                {treatment.downtime}
-                              </div>
-                            </div>
-                            <div className="text-center p-3 bg-orange-500/10 border border-orange-500/20 rounded-lg">
-                              <Activity className="w-5 h-5 text-orange-400 mx-auto mb-2" />
-                              <div className="text-sm text-gray-400">
-                                Invasiveness
-                              </div>
-                              <div className="text-lg font-bold text-white">
-                                {treatment.invasiveness}
-                              </div>
-                            </div>
-                          </div>
 
-                          {/* Shortlisted Findings */}
-                          {shortlistedFindings.length > 0 && (
-                            <div className="mb-4">
-                              <h5 className="text-sm font-semibold text-purple-300 mb-2">
-                                Addresses These Shortlisted Findings:
-                              </h5>
-                              <div className="flex flex-wrap gap-2">
-                                {shortlistedFindings.map((finding, idx) => (
-                                  <span
-                                    key={idx}
-                                    className="px-3 py-1 bg-purple-500/30 text-purple-200 text-sm rounded-full border border-purple-400/50"
-                                  >
-                                    {finding.name}
-                                  </span>
-                                ))}
+                            {/* Relevant Issues - To the right */}
+                            <div className="flex-1">
+                              {/* Shortlisted Findings */}
+                              {shortlistedFindings.length > 0 && (
+                                <div className="mb-3">
+                                  <h5 className="text-sm font-semibold text-purple-300 mb-2">
+                                    Addresses These Shortlisted Findings:
+                                  </h5>
+                                  <div className="flex flex-wrap gap-2">
+                                    {shortlistedFindings.map((finding, idx) => (
+                                      <span
+                                        key={idx}
+                                        className="px-3 py-1 bg-purple-500/30 text-purple-200 text-sm rounded-full border border-purple-400/50"
+                                      >
+                                        {finding.name}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+
+                              {/* Treatment Areas */}
+                              <div>
+                                <div className="text-sm text-gray-400 mb-2">
+                                  Relevant Issues:
+                                </div>
+                                <div className="flex flex-wrap gap-2">
+                                  {treatment.serves.map((issue, idx) => {
+                                    const isShortlistedIssue = shortlist.some(
+                                      (item) => item.name === issue
+                                    );
+                                    return (
+                                      <span
+                                        key={idx}
+                                        className={`px-3 py-1 text-sm rounded-full ${
+                                          isShortlistedIssue
+                                            ? "bg-purple-500/30 text-purple-200 border border-purple-400/50"
+                                            : "bg-purple-500/20 text-purple-300 border border-purple-400/30"
+                                        }`}
+                                      >
+                                        {isShortlistedIssue && (
+                                          <Star className="w-3 h-3 inline mr-1" />
+                                        )}
+                                        {issue}
+                                      </span>
+                                    );
+                                  })}
+                                </div>
                               </div>
                             </div>
-                          )}
-
-                          {/* Treatment Areas */}
-                          <div className="flex flex-wrap gap-2">
-                            {treatment.serves.map((issue, idx) => (
-                              <span
-                                key={idx}
-                                className="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full border border-blue-400/30"
-                              >
-                                {issue}
-                              </span>
-                            ))}
                           </div>
                         </div>
                       </div>
@@ -763,62 +823,54 @@ export function TreatmentsView({
       transition={{ duration: 0.3 }}
       className="space-y-6"
     >
-      {/* Combined Filter Controls and Treatment Filter */}
-      <div className="mb-4">
-        <div className="flex items-start mb-3">
-          {/* Left Side - Filters and Sort (Narrow) */}
-          <div className="flex flex-col space-y-2 w-32 flex-shrink-0">
-            <h3 className="text-sm font-medium text-gray-400">
-              Filters and Sort
-            </h3>
-            <div className="flex items-center space-x-1">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setShowFilters(!showFilters)}
-                className={`text-gray-400 hover:text-gray-200 p-2 ${
-                  showFilters ? "bg-cyan-500/20 text-cyan-400" : ""
-                }`}
-                title="Toggle Filters"
-              >
-                <Filter className="w-4 h-4" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setShowSort(!showSort)}
-                className={`text-gray-400 hover:text-gray-200 p-2 ${
-                  showSort ? "bg-cyan-500/20 text-cyan-400" : ""
-                }`}
-                title="Toggle Sort"
-              >
-                <Sliders className="w-4 h-4" />
-              </Button>
-            </div>
+      {/* Treatment Filters */}
+      <div className="mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-semibold text-white">
+            Treatment Filters
+          </h3>
+          <div className="flex items-center space-x-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowFilters(!showFilters)}
+              className={`text-gray-400 hover:text-gray-200 p-2 ${
+                showFilters ? "bg-cyan-500/20 text-cyan-400" : ""
+              }`}
+              title="Toggle Advanced Filters"
+            >
+              <Filter className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowSort(!showSort)}
+              className={`text-gray-400 hover:text-gray-200 p-2 ${
+                showSort ? "bg-cyan-500/20 text-cyan-400" : ""
+              }`}
+              title="Toggle Sort"
+            >
+              <Sliders className="w-4 h-4" />
+            </Button>
           </div>
+        </div>
 
-          {/* Vertical Separator */}
-          <div className="w-px h-16 bg-gray-600/50 mx-4 mt-2"></div>
-
-          {/* Right Side - Treatment Filter */}
-          <div className="flex-1">
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-medium text-gray-400">
-                Treatment Filter
-              </h3>
-            </div>
-            <div className="flex flex-wrap gap-2">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-4">
+          {/* Treatment Filter Toggle */}
+          <div className="flex items-center space-x-3">
+            <span className="text-sm text-gray-400">Show:</span>
+            <div className="flex bg-gray-800/50 rounded-xl p-1 border border-gray-700/50">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setShortlistFilter("")}
-                className={`px-4 py-3 rounded-xl transition-all duration-300 border-2 focus:outline-none focus:ring-0 active:transform-none ${
+                className={`px-4 py-2 rounded-lg transition-all duration-300 ${
                   shortlistFilter === ""
-                    ? "bg-pink-500/25 text-white border-pink-400/40 shadow-md backdrop-blur-md"
-                    : "bg-gray-100 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700/60 hover:text-gray-900 dark:hover:text-white border-gray-300 dark:border-gray-600/50 hover:border-gray-400 dark:hover:border-gray-500/70 hover:shadow-md"
+                    ? "bg-pink-500/25 text-white shadow-md"
+                    : "text-gray-400 hover:text-white hover:bg-gray-700/50"
                 }`}
               >
-                <span className="text-sm">All Treatments</span>
+                All
               </Button>
               <Button
                 variant="ghost"
@@ -828,14 +880,51 @@ export function TreatmentsView({
                     shortlistFilter === "shortlisted" ? "" : "shortlisted"
                   )
                 }
-                className={`px-4 py-3 rounded-xl transition-all duration-300 border-2 focus:outline-none focus:ring-0 active:transform-none ${
+                className={`px-4 py-2 rounded-lg transition-all duration-300 ${
                   shortlistFilter === "shortlisted"
-                    ? "bg-pink-500/25 text-white border-pink-400/40 shadow-md backdrop-blur-md"
-                    : "bg-gray-100 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700/60 hover:text-gray-900 dark:hover:text-white border-gray-300 dark:border-gray-600/50 hover:border-gray-400 dark:hover:border-gray-500/70 hover:shadow-md"
+                    ? "bg-pink-500/25 text-white shadow-md"
+                    : "text-gray-400 hover:text-white hover:bg-gray-700/50"
                 }`}
               >
-                <span className="text-sm">For Shortlist</span>
+                <span className="flex items-center">
+                  <Star className="w-3 h-3 mr-1" />
+                  For Shortlist
+                </span>
               </Button>
+            </div>
+          </div>
+
+          {/* Modality Filter Chips */}
+          <div className="flex items-center space-x-3">
+            <span className="text-sm text-gray-400">Modality:</span>
+            <div className="flex flex-wrap gap-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setModality("")}
+                className={`px-3 py-2 rounded-lg transition-all duration-300 border ${
+                  modality === ""
+                    ? "bg-cyan-500/25 text-white border-cyan-400/40 shadow-md"
+                    : "bg-gray-800/60 text-gray-300 border-gray-600/50 hover:bg-gray-700/60 hover:text-white"
+                }`}
+              >
+                All
+              </Button>
+              {modalities.map((mod) => (
+                <Button
+                  key={mod}
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setModality(modality === mod ? "" : mod)}
+                  className={`px-3 py-2 rounded-lg transition-all duration-300 border ${
+                    modality === mod
+                      ? "bg-cyan-500/25 text-white border-cyan-400/40 shadow-md"
+                      : "bg-gray-800/60 text-gray-300 border-gray-600/50 hover:bg-gray-700/60 hover:text-white"
+                  }`}
+                >
+                  {mod}
+                </Button>
+              ))}
             </div>
           </div>
         </div>
@@ -866,7 +955,7 @@ export function TreatmentsView({
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="grid grid-cols-2 md:grid-cols-5 gap-4"
+              className="grid grid-cols-2 md:grid-cols-4 gap-4"
             >
               <div>
                 <label className="text-sm text-gray-400 mb-2 block">Area</label>
@@ -913,23 +1002,6 @@ export function TreatmentsView({
                   value={priceRange}
                   onChange={setPriceRange}
                   placeholder="Any Price"
-                />
-              </div>
-              <div>
-                <label className="text-sm text-gray-400 mb-2 block">
-                  Modality
-                </label>
-                <CustomSelect
-                  options={[
-                    { value: "", label: "All Modalities" },
-                    ...modalities.map((mod) => ({
-                      value: mod,
-                      label: mod,
-                    })),
-                  ]}
-                  value={modality}
-                  onChange={setModality}
-                  placeholder="All Modalities"
                 />
               </div>
             </motion.div>
@@ -1010,16 +1082,14 @@ export function TreatmentsView({
                     <div className="w-64 h-64 flex-shrink-0">
                       <div className="relative w-full h-full rounded-xl overflow-hidden bg-gray-700/30">
                         <img
-                          src={
-                            getBestPhotoForTreatment(
-                              treatment.name,
-                              treatment.serves
-                            ) || treatment.image
-                          }
+                          src={getTreatmentPhoto(
+                            treatment.id.toString(),
+                            treatment.image
+                          )}
                           alt={`${treatment.name} result`}
                           className="w-full h-full object-contain"
                           onError={(e) => {
-                            // Fallback to original image if mapped photo fails to load
+                            // Fallback to original image if Airtable photo fails to load
                             const target = e.target as HTMLImageElement;
                             if (target.src !== treatment.image) {
                               target.src = treatment.image;
@@ -1040,80 +1110,83 @@ export function TreatmentsView({
                         <h4 className="text-lg font-semibold text-white">
                           {treatment.name}
                         </h4>
-                        {isShortlisted && (
-                          <div className="flex items-center text-purple-400 text-xs">
-                            <Star className="w-3 h-3 mr-1" />
-                            Shortlisted
-                          </div>
-                        )}
+                        <div className="px-3 py-1 bg-purple-500/20 text-purple-300 text-xs rounded-full border border-purple-500/30">
+                          {treatment.category}
+                        </div>
                       </div>
                       <p className="text-gray-300 text-sm mb-3 line-clamp-2">
                         {treatment.description}
                       </p>
 
-                      {/* Treatment Details - Moved to right column below description */}
-                      <div className="grid grid-cols-2 gap-3 mb-3">
-                        <div className="text-center p-2 bg-green-500/10 border border-green-500/20 rounded-lg">
-                          <DollarSign className="w-4 h-4 text-green-400 mx-auto mb-1" />
-                          <div className="text-xs text-gray-400">Price</div>
-                          <div className="text-sm font-bold text-white">
-                            ${treatment.price}
+                      {/* Treatment Details and Issues - Side by side layout */}
+                      <div className="flex gap-4 mb-3">
+                        {/* Basic Info - Narrower */}
+                        <div className="grid grid-cols-2 gap-2 w-48 flex-shrink-0">
+                          <div className="text-center p-2 bg-green-500/10 border border-green-500/20 rounded-lg">
+                            <DollarSign className="w-3 h-3 text-green-400 mx-auto mb-1" />
+                            <div className="text-xs text-gray-400">Price</div>
+                            <div className="text-sm font-bold text-white">
+                              ${treatment.price}
+                            </div>
+                          </div>
+                          <div className="text-center p-2 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                            <Clock className="w-3 h-3 text-blue-400 mx-auto mb-1" />
+                            <div className="text-xs text-gray-400">
+                              Duration
+                            </div>
+                            <div className="text-sm font-bold text-white">
+                              {treatment.duration}
+                            </div>
+                          </div>
+                          <div className="text-center p-2 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                            <Bed className="w-3 h-3 text-yellow-400 mx-auto mb-1" />
+                            <div className="text-xs text-gray-400">
+                              Downtime
+                            </div>
+                            <div className="text-sm font-bold text-white">
+                              {treatment.downtime}
+                            </div>
+                          </div>
+                          <div className="text-center p-2 bg-orange-500/10 border border-orange-500/20 rounded-lg">
+                            <Activity className="w-3 h-3 text-orange-400 mx-auto mb-1" />
+                            <div className="text-xs text-gray-400">
+                              Invasiveness
+                            </div>
+                            <div className="text-sm font-bold text-white">
+                              {treatment.invasiveness}
+                            </div>
                           </div>
                         </div>
-                        <div className="text-center p-2 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-                          <Clock className="w-4 h-4 text-blue-400 mx-auto mb-1" />
-                          <div className="text-xs text-gray-400">Duration</div>
-                          <div className="text-sm font-bold text-white">
-                            {treatment.duration}
+
+                        {/* Relevant Issues - To the right */}
+                        <div className="flex-1">
+                          <div className="text-xs text-gray-400 mb-2">
+                            Relevant Issues:
                           </div>
-                        </div>
-                        <div className="text-center p-2 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-                          <Bed className="w-4 h-4 text-yellow-400 mx-auto mb-1" />
-                          <div className="text-xs text-gray-400">Downtime</div>
-                          <div className="text-sm font-bold text-white">
-                            {treatment.downtime}
-                          </div>
-                        </div>
-                        <div className="text-center p-2 bg-orange-500/10 border border-orange-500/20 rounded-lg">
-                          <Activity className="w-4 h-4 text-orange-400 mx-auto mb-1" />
-                          <div className="text-xs text-gray-400">
-                            Invasiveness
-                          </div>
-                          <div className="text-sm font-bold text-white">
-                            {treatment.invasiveness}
+                          <div className="flex flex-wrap gap-1">
+                            {treatment.serves.map((issue, idx) => {
+                              const isShortlistedIssue = shortlist.some(
+                                (item) => item.name === issue
+                              );
+                              return (
+                                <span
+                                  key={idx}
+                                  className={`px-2 py-1 text-xs rounded-full ${
+                                    isShortlistedIssue
+                                      ? "bg-purple-500/30 text-purple-300 border border-purple-400/50"
+                                      : "bg-purple-500/20 text-purple-400"
+                                  }`}
+                                >
+                                  {isShortlistedIssue && (
+                                    <Star className="w-3 h-3 inline mr-1" />
+                                  )}
+                                  {issue}
+                                </span>
+                              );
+                            })}
                           </div>
                         </div>
                       </div>
-
-                      <div className="flex flex-wrap gap-1">
-                        {treatment.serves.map((issue, idx) => {
-                          const isShortlistedIssue = shortlist.some(
-                            (item) => item.name === issue
-                          );
-                          return (
-                            <span
-                              key={idx}
-                              className={`px-2 py-1 text-xs rounded-full ${
-                                isShortlistedIssue
-                                  ? "bg-purple-500/30 text-purple-300 border border-purple-400/50"
-                                  : "bg-purple-500/20 text-purple-400"
-                              }`}
-                            >
-                              {isShortlistedIssue && (
-                                <Star className="w-3 h-3 inline mr-1" />
-                              )}
-                              {issue}
-                            </span>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Category Badge - Moved to bottom */}
-                  <div className="flex justify-end">
-                    <div className="px-3 py-1 bg-purple-500/20 text-purple-300 text-xs rounded-full border border-purple-500/30">
-                      {treatment.category}
                     </div>
                   </div>
 

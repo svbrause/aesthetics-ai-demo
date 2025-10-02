@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { CustomSelect } from "@/components/ui/CustomSelect";
 import { TreatmentPlanPopup } from "./TreatmentPlanPopup";
+import { EditPatientPopup } from "./EditPatientPopup";
 import {
   ArrowLeft,
   Eye,
@@ -42,6 +43,7 @@ import {
   RefreshCw,
 } from "lucide-react";
 import { getFindingImage, getFallbackFindingImage } from "@/lib/findingImages";
+import { SquareImage } from "@/components/ui/SquareImage";
 
 interface PatientDetailScreenV2Props {
   patient: any;
@@ -135,6 +137,7 @@ export function PatientDetailScreenV2({
   const [expandedTreatmentItems, setExpandedTreatmentItems] = useState<
     Set<string>
   >(new Set());
+  const [showEditPatientPopup, setShowEditPatientPopup] = useState(false);
 
   if (!patient) {
     return (
@@ -1321,7 +1324,11 @@ export function PatientDetailScreenV2({
           </div>
 
           <div className="flex items-center space-x-2">
-            <Button variant="ghost" size="sm">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowEditPatientPopup(true)}
+            >
               <Edit className="w-4 h-4" />
             </Button>
             <Button variant="ghost" size="sm">
@@ -1626,12 +1633,7 @@ export function PatientDetailScreenV2({
                                 const isExpanded = expandedCards.has(cardId);
 
                                 return (
-                                  <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.1 }}
-                                  >
+                                  <div key={index}>
                                     <Card className="p-4 bg-gray-800/50 border-gray-700 hover:border-gray-600 transition-all duration-300 backdrop-blur-sm hover:shadow-xl hover:shadow-blue-500/10 group">
                                       {/* Compact Header with Left/Right Layout */}
                                       <div className="flex items-start gap-4 mb-3">
@@ -1643,7 +1645,7 @@ export function PatientDetailScreenV2({
                                                 finding.name
                                               )}
                                               alt={`${finding.name} example`}
-                                              className="w-full h-full object-contain rounded border border-gray-600/50"
+                                              className="w-full h-full object-cover rounded border border-gray-600/50"
                                               onError={(e) => {
                                                 // Fallback to beforeAfter image if available, otherwise use fallback
                                                 const target =
@@ -1669,7 +1671,7 @@ export function PatientDetailScreenV2({
                                         </div>
 
                                         {/* Right Column - Content (Half Width) */}
-                                        <div className="w-1/2 h-64 flex flex-col justify-between">
+                                        <div className="w-1/2 h-64 flex flex-col justify-between max-w-2xl">
                                           {/* Title and Description */}
                                           <div className="mb-4">
                                             <h4 className="text-lg font-semibold text-white mb-2">
@@ -1872,7 +1874,7 @@ export function PatientDetailScreenV2({
                                         </div>
                                       </div>
                                     </Card>
-                                  </motion.div>
+                                  </div>
                                 );
                               })
                           ) : (
@@ -2009,11 +2011,11 @@ export function PatientDetailScreenV2({
                           <div className="mb-4">
                             <div className="grid grid-cols-2 gap-2">
                               {/* Before Image */}
-                              <div className="relative w-full h-40 rounded-xl overflow-hidden bg-gray-700/30">
-                                <img
+                              <div className="relative">
+                                <SquareImage
                                   src={treatment.beforeAfter.before}
                                   alt={`${treatment.name} before`}
-                                  className="w-full h-full object-contain"
+                                  size="h-24"
                                 />
                                 <div className="absolute top-2 left-2">
                                   <div className="bg-red-500/60 text-white/80 text-xs px-2 py-1 rounded-full font-normal">
@@ -2022,11 +2024,11 @@ export function PatientDetailScreenV2({
                                 </div>
                               </div>
                               {/* After Image */}
-                              <div className="relative w-full h-40 rounded-xl overflow-hidden bg-gray-700/30">
-                                <img
+                              <div className="relative">
+                                <SquareImage
                                   src={treatment.beforeAfter.after}
                                   alt={`${treatment.name} after`}
-                                  className="w-full h-full object-contain"
+                                  size="h-24"
                                 />
                                 <div className="absolute top-2 left-2">
                                   <div className="bg-green-500/60 text-white/80 text-xs px-2 py-1 rounded-full font-normal">
@@ -2387,6 +2389,18 @@ export function PatientDetailScreenV2({
         onClose={() => setShowTreatmentPopup(false)}
         onAdd={handleAddToTreatmentPlan}
         treatment={selectedTreatment}
+      />
+
+      {/* Edit Patient Popup */}
+      <EditPatientPopup
+        patient={patient}
+        isOpen={showEditPatientPopup}
+        onClose={() => setShowEditPatientPopup(false)}
+        onSave={(updatedPatient) => {
+          // Handle patient update - in a real app this would update the patient data
+          console.log("Updated patient:", updatedPatient);
+          setShowEditPatientPopup(false);
+        }}
       />
     </div>
   );

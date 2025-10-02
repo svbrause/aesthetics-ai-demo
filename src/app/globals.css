@@ -157,6 +157,23 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Safari-specific fixes for scrolling - only for scrollable content areas */
+@supports (-webkit-appearance: none) {
+  /* Fix for scrollable content areas in Safari */
+  .overflow-y-auto {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+
+  /* Fix for Safari on iPad landscape - ensure scrollable areas work */
+  @media screen and (orientation: landscape) and (max-width: 1024px) {
+    .overflow-y-auto {
+      -webkit-overflow-scrolling: touch;
+      overflow-scrolling: touch;
+    }
+  }
+}
+
 /* Custom animations */
 @keyframes shimmer {
   0% {
@@ -924,4 +941,36 @@ html {
 .light ::-moz-selection {
   background: rgba(0, 122, 255, 0.2) !important;
   color: var(--apple-text) !important;
+}
+
+/* Patient detail container - maintain fixed height layout */
+.patient-detail-container {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* Ensure scrollable content areas work properly on mobile devices */
+@media screen and (max-width: 1024px) {
+  .patient-detail-container .overflow-y-auto {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+}
+
+/* Additional fixes for Safari scrolling in patient detail */
+.patient-detail-container .flex-1.overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+  /* Ensure proper height calculation */
+  height: 0;
+  flex: 1 1 0;
+}
+
+/* Fix for Safari on iPad landscape */
+@media screen and (orientation: landscape) and (max-width: 1024px) {
+  .patient-detail-container .flex-1.overflow-y-auto {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
 }

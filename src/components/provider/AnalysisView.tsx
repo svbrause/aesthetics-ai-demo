@@ -8,7 +8,7 @@ import { CustomSelect } from "@/components/ui/CustomSelect";
 import { useTheme } from "@/contexts/ThemeContext";
 import {
   ChevronDown,
-  Heart,
+  Star,
   CheckCircle,
   Filter,
   Sliders,
@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { AnalysisArea, Finding } from "@/types/patientTypes";
 import { getFindingImage, getFallbackFindingImage } from "@/lib/findingImages";
+import { DynamicImage } from "@/components/ui/DynamicImage";
 
 interface AnalysisViewProps {
   analysisAreas: AnalysisArea[];
@@ -27,6 +28,7 @@ interface AnalysisViewProps {
   addedToPlan?: Set<string>;
   showFiltersOnly?: boolean;
   showContentOnly?: boolean;
+  selectedShortlistItems?: Set<string>;
 }
 
 export function AnalysisView({
@@ -38,6 +40,7 @@ export function AnalysisView({
   addedToPlan = new Set(),
   showFiltersOnly = false,
   showContentOnly = false,
+  selectedShortlistItems = new Set(),
 }: AnalysisViewProps) {
   const { hipaaMode } = useTheme();
   const [selectedArea, setSelectedArea] = useState("");
@@ -204,6 +207,11 @@ export function AnalysisView({
     });
   };
 
+  // Check if a finding is hidden
+  const isFindingHidden = (findingName: string) => {
+    return patient.hiddenFindings?.includes(findingName) || false;
+  };
+
   // Filter and sort findings
   const getFilteredAndSortedFindings = (area: any) => {
     let findings = area.findings.filter((finding: any) => {
@@ -230,6 +238,11 @@ export function AnalysisView({
         shortlist.some((item) => item.name === finding.name)
       )
         return false;
+
+      // Filter by selected shortlist items - if any are selected, only show those specific findings
+      if (selectedShortlistItems.size > 0) {
+        if (!selectedShortlistItems.has(finding.name)) return false;
+      }
 
       // Age group filter
       if (ageGroupFilter && finding.ageGroup !== ageGroupFilter) return false;
@@ -656,7 +669,7 @@ export function AnalysisView({
         {currentVisibleArea && (
           <div className="sticky top-0 z-40 bg-gray-900/95 backdrop-blur-md border-b border-gray-700/50 py-3 mb-3">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-white">
+              <h2 className="text-lg font-bold text-white">
                 {
                   analysisAreas.find((area) => area.id === currentVisibleArea)
                     ?.name
@@ -703,7 +716,20 @@ export function AnalysisView({
         {/* Findings Cards - Only show selected area or all if none selected */}
         <div className="space-y-6">
           {analysisAreas
-            .filter((area) => !selectedArea || area.id === selectedArea)
+            .filter((area) => {
+              // Filter by selected area
+              if (selectedArea && area.id !== selectedArea) return false;
+
+              // If shortlist items are selected, only show areas that have matching findings
+              if (selectedShortlistItems.size > 0) {
+                const hasMatchingFindings = area.findings.some((finding: any) =>
+                  selectedShortlistItems.has(finding.name)
+                );
+                return hasMatchingFindings;
+              }
+
+              return true;
+            })
             .map((area) => {
               const filteredFindings = getFilteredAndSortedFindings(area);
               const shortlistedCount = filteredFindings.filter((finding: any) =>
@@ -721,7 +747,7 @@ export function AnalysisView({
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
-                      <h3 className="text-xl font-semibold text-white">
+                      <h3 className="text-lg font-semibold text-white">
                         {area.name} Findings
                       </h3>
                       {filteredFindings.length > 0 && (
@@ -740,7 +766,7 @@ export function AnalysisView({
                           }}
                           className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:from-cyan-700 hover:to-blue-700"
                         >
-                          <Heart className="w-4 h-4 mr-1" />
+                          <Star className="w-4 h-4 mr-1" />
                           Add All
                         </Button>
                       )}
@@ -768,51 +794,46 @@ export function AnalysisView({
                       const isExpanded = expandedCards.has(cardId);
 
                       return (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                        >
+                        <div key={index}>
                           <Card className="p-3 bg-gradient-to-r from-blue-900/30 to-cyan-900/30 border-blue-700/50 hover:border-blue-600/70 transition-all duration-300 backdrop-blur-sm hover:shadow-xl hover:shadow-blue-500/20 group">
                             {/* Compact Header with Left/Right Layout */}
                             <div className="flex items-start gap-4 mb-3">
-                              {/* Left Column - Visual Example (Half Width) */}
-                              <div className="w-1/2">
-                                <motion.div
-                                  className="relative"
-                                  animate={{
-                                    height: isExpanded ? "16rem" : "10rem", // h-64 when expanded, h-40 when collapsed
+                              {/* Left Column - Visual Example (Dynamic Width) */}
+                              <div
+                                className={`${
+                                  isExpanded ? "w-64" : "w-48"
+                                } flex-shrink-0 transition-all duration-300`}
+                              >
+                                <DynamicImage
+                                  src={getFindingImage(finding.name)}
+                                  alt={`${finding.name} example`}
+                                  className="rounded border border-gray-600/50"
+                                  maxHeight={isExpanded ? "24rem" : "10rem"}
+                                  minHeight="6rem"
+                                  isExpanded={isExpanded}
+                                  forceSquare={false}
+                                  onError={(e) => {
+                                    // Fallback to beforeAfter image if available, otherwise use fallback
+                                    const target = e.target as HTMLImageElement;
+                                    if (
+                                      finding.beforeAfter &&
+                                      finding.beforeAfter.length > 0
+                                    ) {
+                                      target.src =
+                                        finding.beforeAfter[0].before;
+                                    } else {
+                                      target.src = getFallbackFindingImage();
+                                    }
                                   }}
-                                  transition={{
-                                    duration: 0.3,
-                                    ease: "easeInOut",
-                                  }}
-                                >
-                                  <img
-                                    src={getFindingImage(finding.name)}
-                                    alt={`${finding.name} example`}
-                                    className="w-full h-full object-contain rounded border border-gray-600/50"
-                                    onError={(e) => {
-                                      // Fallback to beforeAfter image if available, otherwise use fallback
-                                      const target =
-                                        e.target as HTMLImageElement;
-                                      if (
-                                        finding.beforeAfter &&
-                                        finding.beforeAfter.length > 0
-                                      ) {
-                                        target.src =
-                                          finding.beforeAfter[0].before;
-                                      } else {
-                                        target.src = getFallbackFindingImage();
-                                      }
-                                    }}
-                                  />
-                                </motion.div>
+                                />
                               </div>
 
-                              {/* Right Column - Content (Half Width) */}
-                              <div className="w-1/2 flex flex-col">
+                              {/* Right Column - Content (Dynamic Width) */}
+                              <div
+                                className={`${
+                                  isExpanded ? "flex-1" : "flex-1"
+                                } flex flex-col transition-all duration-300 max-w-2xl`}
+                              >
                                 {/* Title and Description */}
                                 <div className="mb-4">
                                   <h4
@@ -1120,7 +1141,7 @@ export function AnalysisView({
                                     </>
                                   ) : (
                                     <>
-                                      <Heart className="w-4 h-4 mr-1" />
+                                      <Star className="w-4 h-4 mr-1" />
                                       <span className="hidden sm:inline">
                                         Add to Shortlist
                                       </span>
@@ -1131,7 +1152,7 @@ export function AnalysisView({
                               </div>
                             </div>
                           </Card>
-                        </motion.div>
+                        </div>
                       );
                     })}
                   </div>
@@ -1153,49 +1174,45 @@ export function AnalysisView({
         transition={{ duration: 0.3 }}
         className="space-y-1"
       >
-        {/* Combined Filter Controls and Area Navigation */}
-        <div className="mb-4">
-          <div className="flex items-start mb-3">
-            {/* Left Side - Filters and Sort (Narrow) */}
-            <div className="flex flex-col space-y-2 w-32 flex-shrink-0">
-              <h3 className="text-sm font-medium text-gray-400">
-                Filters and Sort
-              </h3>
-              <div className="flex items-center space-x-1">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setShowFilters(!showFilters)}
-                  className={`text-gray-400 hover:text-gray-200 p-2 ${
-                    showFilters ? "bg-cyan-500/20 text-cyan-400" : ""
-                  }`}
-                  title="Toggle Filters"
-                >
-                  <Filter className="w-4 h-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setShowSort(!showSort)}
-                  className={`text-gray-400 hover:text-gray-200 p-2 ${
-                    showSort ? "bg-cyan-500/20 text-cyan-400" : ""
-                  }`}
-                  title="Toggle Sort"
-                >
-                  <Sliders className="w-4 h-4" />
-                </Button>
-              </div>
+        {/* Analysis Filters Header */}
+        <div className="mb-6">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-white">
+              Analysis Filters
+            </h3>
+            <div className="flex items-center space-x-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowFilters(!showFilters)}
+                className={`text-gray-400 hover:text-gray-200 p-2 ${
+                  showFilters ? "bg-cyan-500/20 text-cyan-400" : ""
+                }`}
+                title="Toggle Advanced Filters"
+              >
+                <Filter className="w-4 h-4" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowSort(!showSort)}
+                className={`text-gray-400 hover:text-gray-200 p-2 ${
+                  showSort ? "bg-cyan-500/20 text-cyan-400" : ""
+                }`}
+                title="Toggle Sort"
+              >
+                <Sliders className="w-4 h-4" />
+              </Button>
             </div>
+          </div>
 
-            {/* Vertical Separator */}
-            <div className="h-6 w-px bg-gray-600 mx-4 mt-6"></div>
-
-            {/* Right Side - Filter by Area (Wider) */}
-            <div className="flex flex-col space-y-2 flex-1">
-              <div className="flex items-center space-x-3">
-                <h3 className="text-sm font-medium text-gray-400">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-4">
+            {/* Area Filter */}
+            <div className="flex-1">
+              <div className="flex items-center space-x-3 mb-2">
+                <h4 className="text-sm font-medium text-gray-300">
                   Filter by Area
-                </h3>
+                </h4>
                 {!showAllAnalysisAreas ? (
                   <button
                     type="button"
@@ -1515,7 +1532,7 @@ export function AnalysisView({
                             animate={{ scale: [1, 1.1, 1] }}
                             transition={{ duration: 2, repeat: Infinity }}
                           >
-                            <Heart className="w-4 h-4 mr-1" />
+                            <Star className="w-4 h-4 mr-1" />
                           </motion.div>
                           Add All
                         </Button>
@@ -1565,7 +1582,20 @@ export function AnalysisView({
         {/* Findings Cards - Only show selected area or all if none selected */}
         <div className="space-y-6">
           {analysisAreas
-            .filter((area) => !selectedArea || area.id === selectedArea)
+            .filter((area) => {
+              // Filter by selected area
+              if (selectedArea && area.id !== selectedArea) return false;
+
+              // If shortlist items are selected, only show areas that have matching findings
+              if (selectedShortlistItems.size > 0) {
+                const hasMatchingFindings = area.findings.some((finding: any) =>
+                  selectedShortlistItems.has(finding.name)
+                );
+                return hasMatchingFindings;
+              }
+
+              return true;
+            })
             .map((area, areaIndex) => {
               const filteredFindings = getFilteredAndSortedFindings(area);
               const shortlistedCount = filteredFindings.filter((finding: any) =>
@@ -1623,7 +1653,7 @@ export function AnalysisView({
                             }}
                             className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:from-cyan-700 hover:to-blue-700"
                           >
-                            <Heart className="w-4 h-4 mr-1" />
+                            <Star className="w-4 h-4 mr-1" />
                             Add All
                           </Button>
                         )}
@@ -1663,69 +1693,82 @@ export function AnalysisView({
                       {filteredFindings.map((finding: any, index: number) => {
                         const cardId = `${area.id}-${finding.name}`;
                         const isExpanded = expandedCards.has(cardId);
+                        const isHidden = isFindingHidden(finding.name);
 
                         return (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                          >
-                            <Card className="p-3 bg-gradient-to-r from-blue-900/30 to-cyan-900/30 border-blue-700/50 hover:border-blue-600/70 transition-all duration-300 backdrop-blur-sm hover:shadow-xl hover:shadow-blue-500/20 group">
+                          <div key={index}>
+                            <Card
+                              className={`p-3 transition-all duration-300 backdrop-blur-sm group ${
+                                isHidden
+                                  ? "bg-gradient-to-r from-gray-800/20 to-gray-900/20 border-gray-600/30 opacity-50"
+                                  : "bg-gradient-to-r from-blue-900/30 to-cyan-900/30 border-blue-700/50 hover:border-blue-600/70 hover:shadow-xl hover:shadow-blue-500/20"
+                              }`}
+                            >
                               {/* Compact Header with Left/Right Layout */}
                               <div className="flex items-start gap-4 mb-3">
-                                {/* Left Column - Visual Example (Half Width) */}
-                                <div className="w-1/2">
-                                  <motion.div
-                                    className="relative"
-                                    animate={{
-                                      height: isExpanded ? "16rem" : "10rem", // h-64 when expanded, h-40 when collapsed
+                                {/* Left Column - Visual Example (Dynamic Width) */}
+                                <div
+                                  className={`${
+                                    isExpanded ? "w-64" : "w-48"
+                                  } flex-shrink-0 transition-all duration-300`}
+                                >
+                                  <DynamicImage
+                                    src={getFindingImage(finding.name)}
+                                    alt={`${finding.name} example`}
+                                    className="rounded border border-gray-600/50"
+                                    maxHeight={isExpanded ? "24rem" : "10rem"}
+                                    minHeight="6rem"
+                                    isExpanded={isExpanded}
+                                    forceSquare={false}
+                                    onError={(e) => {
+                                      // Fallback to beforeAfter image if available, otherwise use fallback
+                                      const target =
+                                        e.target as HTMLImageElement;
+                                      if (
+                                        finding.beforeAfter &&
+                                        finding.beforeAfter.length > 0
+                                      ) {
+                                        target.src =
+                                          finding.beforeAfter[0].before;
+                                      } else {
+                                        target.src = getFallbackFindingImage();
+                                      }
                                     }}
-                                    transition={{
-                                      duration: 0.3,
-                                      ease: "easeInOut",
-                                    }}
-                                  >
-                                    <img
-                                      src={getFindingImage(finding.name)}
-                                      alt={`${finding.name} example`}
-                                      className="w-full h-full object-contain rounded border border-gray-600/50"
-                                      onError={(e) => {
-                                        // Fallback to beforeAfter image if available, otherwise use fallback
-                                        const target =
-                                          e.target as HTMLImageElement;
-                                        if (
-                                          finding.beforeAfter &&
-                                          finding.beforeAfter.length > 0
-                                        ) {
-                                          target.src =
-                                            finding.beforeAfter[0].before;
-                                        } else {
-                                          target.src =
-                                            getFallbackFindingImage();
-                                        }
-                                      }}
-                                    />
-                                  </motion.div>
+                                  />
                                 </div>
 
-                                {/* Right Column - Content (Half Width) */}
-                                <div className="w-1/2 flex flex-col">
+                                {/* Right Column - Content (Dynamic Width) */}
+                                <div
+                                  className={`${
+                                    isExpanded ? "flex-1" : "flex-1"
+                                  } flex flex-col transition-all duration-300`}
+                                >
                                   {/* Title and Description */}
                                   <div className="mb-4">
-                                    <h4
-                                      className={`text-lg font-semibold text-white mb-2 ${
-                                        hipaaMode ? "hipaa-masked" : ""
-                                      }`}
-                                    >
-                                      {hipaaMode
-                                        ? "***MASKED FINDING***"
-                                        : finding.name}
-                                    </h4>
+                                    <div className="flex items-center gap-2 mb-2">
+                                      <h4
+                                        className={`text-lg font-semibold ${
+                                          isHidden
+                                            ? "text-gray-400"
+                                            : "text-white"
+                                        } ${hipaaMode ? "hipaa-masked" : ""}`}
+                                      >
+                                        {hipaaMode
+                                          ? "***MASKED FINDING***"
+                                          : finding.name}
+                                      </h4>
+                                      {isHidden && (
+                                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border border-gray-500 text-gray-400">
+                                          Hidden
+                                        </span>
+                                      )}
+                                    </div>
                                     <p
-                                      className={`text-gray-300 text-sm line-clamp-3 ${
-                                        hipaaMode ? "hipaa-masked" : ""
-                                      }`}
+                                      className={`text-sm line-clamp-3 ${
+                                        isHidden
+                                          ? "text-gray-500"
+                                          : "text-gray-300"
+                                      } ${hipaaMode ? "hipaa-masked" : ""}`}
                                     >
                                       {hipaaMode
                                         ? "***Sensitive medical information has been masked for HIPAA compliance***"
@@ -1736,25 +1779,35 @@ export function AnalysisView({
                                   {/* Score and Severity */}
                                   <div className="flex items-center space-x-3 mb-3">
                                     <span
-                                      className={`px-2 py-1 rounded-full text-xs border ${getSeverityColor(
-                                        finding.severity
-                                      )} ${hipaaMode ? "hipaa-masked" : ""}`}
+                                      className={`px-2 py-1 rounded-full text-xs border ${
+                                        isHidden
+                                          ? "bg-gray-500/20 text-gray-400 border-gray-500/30"
+                                          : getSeverityColor(finding.severity)
+                                      } ${hipaaMode ? "hipaa-masked" : ""}`}
                                     >
                                       {hipaaMode ? "***" : finding.severity}
                                     </span>
                                     <div className="flex items-center space-x-1">
                                       <div
-                                        className={`text-xl font-bold bg-gradient-to-r ${getScoreColorClasses(
-                                          finding.score
-                                        )} bg-clip-text text-transparent ${
-                                          hipaaMode ? "hipaa-masked" : ""
-                                        }`}
+                                        className={`text-xl font-bold ${
+                                          isHidden
+                                            ? "text-gray-400"
+                                            : `bg-gradient-to-r ${getScoreColorClasses(
+                                                finding.score
+                                              )} bg-clip-text text-transparent`
+                                        } ${hipaaMode ? "hipaa-masked" : ""}`}
                                       >
                                         {hipaaMode
                                           ? "***"
                                           : `${finding.score}%`}
                                       </div>
-                                      <div className="text-xs text-gray-400">
+                                      <div
+                                        className={`text-xs ${
+                                          isHidden
+                                            ? "text-gray-500"
+                                            : "text-gray-400"
+                                        }`}
+                                      >
                                         Rating
                                       </div>
                                     </div>
@@ -1762,11 +1815,19 @@ export function AnalysisView({
 
                                   {/* Score Bar */}
                                   <div className="mb-3">
-                                    <div className="relative h-2 bg-gray-700 rounded-full overflow-hidden">
+                                    <div
+                                      className={`relative h-2 rounded-full overflow-hidden ${
+                                        isHidden ? "bg-gray-600" : "bg-gray-700"
+                                      }`}
+                                    >
                                       <motion.div
-                                        className={`absolute inset-0 bg-gradient-to-r ${getScoreColorClasses(
-                                          finding.score
-                                        )} rounded-full`}
+                                        className={`absolute inset-0 rounded-full ${
+                                          isHidden
+                                            ? "bg-gray-500"
+                                            : `bg-gradient-to-r ${getScoreColorClasses(
+                                                finding.score
+                                              )}`
+                                        }`}
                                         initial={{ width: 0 }}
                                         animate={{
                                           width: `${finding.score}%`,
@@ -2020,7 +2081,7 @@ export function AnalysisView({
                                       </>
                                     ) : (
                                       <>
-                                        <Heart className="w-4 h-4 mr-1" />
+                                        <Star className="w-4 h-4 mr-1" />
                                         <span className="hidden sm:inline">
                                           Add to Shortlist
                                         </span>
@@ -2031,7 +2092,7 @@ export function AnalysisView({
                                 </div>
                               </div>
                             </Card>
-                          </motion.div>
+                          </div>
                         );
                       })}
                     </div>

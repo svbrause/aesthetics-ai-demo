@@ -622,7 +622,7 @@ export function ModalAnalysisResults({
                                           issue.area
                                         )}
                                         alt={`${issue.name} example`}
-                                        className="w-full h-full object-contain rounded-2xl border border-gray-600/50"
+                                        className="w-full h-full object-cover rounded-2xl border border-gray-600/50"
                                         onError={(e) => {
                                           // Fallback to fallback image if finding image fails to load
                                           const target =

@@ -9,7 +9,10 @@ export interface Patient {
   dateOfBirth?: string;
   frontImage: string;
   sideImage: string;
+  editedFrontImage?: string;
+  editedSideImage?: string;
   findings: any[];
+  hiddenFindings?: string[];
   score: number;
   scanDate: string;
 }
@@ -34,6 +37,7 @@ export interface Finding {
   beforeAfter: BeforeAfter[];
   treatments: string[];
   educational: string;
+  area?: string; // Optional area for provider-identified findings
 }
 
 export interface BeforeAfter {
@@ -65,14 +69,15 @@ export interface TreatmentPlanItem {
   name: string;
   notes: string;
   areas: string[];
-  quantity: string;
-  unit: string;
+  quantity?: string;
+  unit?: string;
   price: string;
   duration: string;
   serves?: string[];
   downtime: string;
   invasiveness: string;
   timeline?: "short-term" | "long-term";
+  targetedFindings?: string[];
 }
 
 export type ViewMode = "analysis" | "treatments" | "treatment-plan";

@@ -8,15 +8,17 @@ import { useTheme } from "@/contexts/ThemeContext";
 import {
   RotateCcw,
   Camera,
-  Target,
+  Star,
   Calendar,
   FileText,
   Edit,
   Save,
   X,
+  Maximize2,
 } from "lucide-react";
 import { Patient } from "@/types/patientTypes";
 import { PatientQuestionnaire } from "./PatientQuestionnaire";
+import { PhotoViewerPopup } from "./PhotoViewerPopup";
 
 interface PatientImagesProps {
   patient: Patient;
@@ -25,6 +27,8 @@ interface PatientImagesProps {
   interestedAreas: string[];
   onUpdatePatient?: (updatedPatient: Patient) => void;
   onRemoveFromShortlist?: (findingName: string) => void;
+  selectedShortlistItems?: Set<string>;
+  onShortlistItemSelect?: (itemName: string) => void;
 }
 
 export function PatientImages({
@@ -34,10 +38,13 @@ export function PatientImages({
   interestedAreas,
   onUpdatePatient,
   onRemoveFromShortlist,
+  selectedShortlistItems = new Set(),
+  onShortlistItemSelect,
 }: PatientImagesProps) {
   const [isSideView, setIsSideView] = useState(false);
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
   const [isEditingPatient, setIsEditingPatient] = useState(false);
+  const [showPhotoViewer, setShowPhotoViewer] = useState(false);
   const [editedPatient, setEditedPatient] = useState({
     email: patient.email || "",
     phone: patient.phone || "",
@@ -92,12 +99,17 @@ export function PatientImages({
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className={`relative w-full max-w-md mx-auto h-80 rounded-2xl overflow-hidden group ${
+            className={`relative w-full max-w-md mx-auto h-80 rounded-2xl overflow-hidden group cursor-pointer ${
               hipaaMode ? "hipaa-secure" : ""
             }`}
+            onClick={() => setShowPhotoViewer(true)}
           >
             <img
-              src={isSideView ? patient.sideImage : patient.frontImage}
+              src={
+                isSideView
+                  ? patient.editedSideImage || patient.sideImage
+                  : patient.editedFrontImage || patient.frontImage
+              }
               alt={`${hipaaMode ? "Masked patient" : patient.name} ${
                 isSideView ? "side" : "front"
               } view`}
@@ -119,7 +131,26 @@ export function PatientImages({
             >
               <span className="text-white text-sm font-medium">
                 {isSideView ? "Side" : "Front"}
+                {(isSideView && patient.editedSideImage) ||
+                (!isSideView && patient.editedFrontImage)
+                  ? " (Edited)"
+                  : ""}
               </span>
+            </div>
+
+            {/* Expand button - top right */}
+            <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <Button
+                size="sm"
+                variant="ghost"
+                className="backdrop-blur-md bg-black/30 border-white/20 hover:bg-black/50 text-white"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowPhotoViewer(true);
+                }}
+              >
+                <Maximize2 className="w-4 h-4" />
+              </Button>
             </div>
           </motion.div>
 
@@ -139,35 +170,51 @@ export function PatientImages({
 
         {/* Shortlist Section */}
         <div className="mt-6 flex-1">
-          <Card className="p-4 bg-gradient-to-r from-red-500/10 to-pink-500/10 border-red-400/30 h-full flex flex-col">
-            <h3 className="text-lg font-semibold text-red-100 mb-4 flex items-center">
-              <Target className="w-5 h-5 mr-2 text-red-300" />
+          <Card className="p-4 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border-purple-400/30 h-full flex flex-col">
+            <h3 className="text-lg font-semibold text-purple-100 mb-4 flex items-center">
+              <Star className="w-5 h-5 mr-2 text-purple-300" />
               Findings Shortlist
             </h3>
             <div className="flex-1 overflow-y-auto">
               <div className="flex flex-wrap gap-2">
                 {shortlist.length > 0 ? (
-                  shortlist.map((item, index) => (
-                    <div
-                      key={index}
-                      className="inline-flex items-center space-x-2 px-4 py-3 bg-gradient-to-r from-red-500/20 to-pink-500/20 rounded-xl border border-red-400/50 hover:from-red-500/30 hover:to-pink-500/30 transition-all duration-300 shadow-lg shadow-red-500/10"
-                    >
-                      <span className="text-red-100 text-sm font-medium whitespace-nowrap">
-                        {item.name}
-                      </span>
-                      <span className="text-red-300 text-xs">
-                        ({item.severity})
-                      </span>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="text-red-300 hover:text-red-100 hover:bg-red-500/30 p-1 h-auto ml-1"
-                        onClick={() => onRemoveFromShortlist?.(item.name)}
+                  shortlist.map((item, index) => {
+                    const isSelected = selectedShortlistItems.has(item.name);
+                    return (
+                      <div
+                        key={index}
+                        className={`inline-flex items-center space-x-2 px-4 py-3 rounded-xl border transition-all duration-300 shadow-lg cursor-pointer ${
+                          isSelected
+                            ? "bg-gradient-to-r from-blue-500/30 to-purple-500/30 border-blue-400/70 hover:from-blue-500/40 hover:to-purple-500/40 shadow-blue-500/20"
+                            : "bg-gradient-to-r from-purple-500/20 to-pink-500/20 border-purple-400/50 hover:from-purple-500/30 hover:to-pink-500/30 shadow-purple-500/10"
+                        }`}
+                        onClick={() => onShortlistItemSelect?.(item.name)}
                       >
-                        <X className="w-3 h-3" />
-                      </Button>
-                    </div>
-                  ))
+                        <span
+                          className={`text-sm font-medium whitespace-nowrap ${
+                            isSelected ? "text-blue-100" : "text-purple-100"
+                          }`}
+                        >
+                          {item.name}
+                        </span>
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          className={`p-1 h-auto ml-1 ${
+                            isSelected
+                              ? "text-blue-300 hover:text-blue-100 hover:bg-blue-500/30"
+                              : "text-purple-300 hover:text-purple-100 hover:bg-purple-500/30"
+                          }`}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onRemoveFromShortlist?.(item.name);
+                          }}
+                        >
+                          <X className="w-3 h-3" />
+                        </Button>
+                      </div>
+                    );
+                  })
                 ) : (
                   <p className="text-gray-400 text-sm text-center py-4 w-full">
                     No items in shortlist
@@ -283,6 +330,27 @@ export function PatientImages({
           </motion.div>
         </div>
       )}
+
+      {/* Photo Viewer Popup */}
+      <PhotoViewerPopup
+        isOpen={showPhotoViewer}
+        onClose={() => setShowPhotoViewer(false)}
+        frontImage={patient.frontImage}
+        sideImage={patient.sideImage}
+        editedFrontImage={patient.editedFrontImage}
+        editedSideImage={patient.editedSideImage}
+        patientName={patient.name}
+        onSaveEditedImage={(imageData, viewType) => {
+          // Save the edited image to the patient's data
+          const updatedPatient = {
+            ...patient,
+            [viewType === "front" ? "editedFrontImage" : "editedSideImage"]:
+              imageData,
+          };
+          onUpdatePatient?.(updatedPatient);
+          console.log(`Saved edited ${viewType} image for ${patient.name}`);
+        }}
+      />
     </div>
   );
 }

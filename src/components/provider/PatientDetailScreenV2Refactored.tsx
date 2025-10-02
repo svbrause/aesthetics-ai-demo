@@ -11,6 +11,8 @@ import { TreatmentsView } from "./TreatmentsView";
 import { TreatmentPlanView } from "./TreatmentPlanView";
 import { TreatmentPlanPopup } from "./TreatmentPlanPopup";
 import { PatientQuestionnaire } from "./PatientQuestionnaire";
+import { EditPatientPopup } from "./EditPatientPopup";
+import { ShareModal } from "./ShareModal";
 import { TutorialOverlay } from "../TutorialOverlay";
 import { useTheme } from "@/contexts/ThemeContext";
 import { analysisAreas } from "@/data/analysisData";
@@ -110,6 +112,10 @@ export function PatientDetailScreenV2Refactored({
   const [currentPatient, setCurrentPatient] = useState(patient);
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
   const [isEditingPatient, setIsEditingPatient] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [selectedShortlistItems, setSelectedShortlistItems] = useState<
+    Set<string>
+  >(new Set());
 
   if (!patient) {
     return (
@@ -179,12 +185,36 @@ export function PatientDetailScreenV2Refactored({
     // This will be handled by the parent component
   };
 
-  const handleExportToEMR = () => {
-    console.log("Exporting to EMR...");
+  const handleDownloadPDF = () => {
+    // Generate and download PDF
+    console.log("Downloading PDF...");
+    // In a real app, this would generate a PDF with the treatment plan
+    // For now, we'll create a simple text file as a demo
+    const treatmentPlanText = treatmentPlan
+      .map(
+        (item, index) =>
+          `${index + 1}. ${item.name}\n   Notes: ${
+            item.notes
+          }\n   Areas: ${item.areas.join(", ")}\n   Price: ${
+            item.price
+          }\n   Duration: ${item.duration}\n   Downtime: ${
+            item.downtime
+          }\n   Invasiveness: ${item.invasiveness}\n\n`
+      )
+      .join("");
+
+    const content = `Treatment Plan for ${currentPatient.name}\n\n${treatmentPlanText}`;
+    const blob = new Blob([content], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${currentPatient.name}_Treatment_Plan.txt`;
+    link.click();
+    URL.revokeObjectURL(url);
   };
 
-  const handleDownloadPDF = () => {
-    console.log("Downloading PDF...");
+  const handleShare = () => {
+    setShowShareModal(true);
   };
 
   const handleUpdatePatient = (updatedPatient: Patient) => {
@@ -202,6 +232,17 @@ export function PatientDetailScreenV2Refactored({
 
   const handleEditPatient = () => {
     setIsEditingPatient(true);
+  };
+
+  const handleShortlistItemSelect = (itemName: string) => {
+    setSelectedShortlistItems((prev) => {
+      // If the clicked item is already selected, deselect it
+      if (prev.has(itemName)) {
+        return new Set();
+      }
+      // Otherwise, select only this item (deselect all others)
+      return new Set([itemName]);
+    });
   };
 
   return (
@@ -223,188 +264,229 @@ export function PatientDetailScreenV2Refactored({
         />
       </div>
 
-      {/* Header */}
-      <div className="patient-header" data-tutorial="patient-header">
-        <PatientHeader
-          patient={currentPatient}
-          currentView={currentView}
-          onBack={onBack}
-          onViewChange={setCurrentView}
-        />
-
-        {/* Action Buttons - Top Right */}
-        <div className="absolute top-4 right-4 flex space-x-2 z-10">
-          <Button
-            size="sm"
-            variant="ghost"
-            className="text-gray-400 hover:text-white hover:bg-gray-700/50"
+      {/* Main Container with max width and centering */}
+      <div className="flex-1 flex justify-center">
+        <div className="w-full max-w-7xl flex flex-col h-full">
+          {/* Header */}
+          <div
+            className="patient-header relative"
+            data-tutorial="patient-header"
           >
-            <Camera className="w-4 h-4 mr-2" />
-            New Scan
-          </Button>
-          <Button
-            size="sm"
-            variant="ghost"
-            className="text-gray-400 hover:text-white hover:bg-gray-700/50"
-            onClick={() => setShowQuestionnaire(true)}
-          >
-            <FileText className="w-4 h-4 mr-2" />
-            Questionnaire
-          </Button>
-          <Button
-            size="sm"
-            variant="ghost"
-            className="text-gray-400 hover:text-white hover:bg-gray-700/50"
-            onClick={() => setIsEditingPatient(true)}
-          >
-            <Edit className="w-4 h-4 mr-2" />
-            Edit Patient
-          </Button>
-        </div>
-      </div>
+            <PatientHeader
+              patient={currentPatient}
+              currentView={currentView}
+              onBack={onBack}
+              onViewChange={setCurrentView}
+            />
 
-      {/* HIPAA Session Warning */}
-      {hipaaMode && (
-        <div className="hipaa-session-warning">
-          ⚠️ HIPAA Compliance Mode Active - Session will timeout in 15 minutes
-          for security
-        </div>
-      )}
-
-      {/* Main Content */}
-      <div className="flex-1 overflow-hidden flex">
-        {/* Left Column - Patient Images (narrower on larger screens) */}
-        <div className="w-1/2 lg:w-2/5 xl:w-1/3" data-tutorial="patient-photos">
-          <PatientImages
-            patient={currentPatient}
-            shortlist={shortlist}
-            treatmentPlan={treatmentPlan}
-            interestedAreas={interestedAreas}
-            onUpdatePatient={handleUpdatePatient}
-            onRemoveFromShortlist={removeFromShortlist}
-          />
-        </div>
-
-        {/* Right Column - Content (wider on larger screens) */}
-        <div className="w-1/2 lg:w-3/5 xl:w-2/3 flex flex-col">
-          {/* Tab Bar - Always visible at top of right column */}
-          <div className="p-6 pb-2">
-            <div
-              className="flex space-x-1 p-1 bg-gray-800/50 rounded-xl border border-gray-700/50"
-              data-tutorial="tab-navigation"
-            >
-              {[
-                {
-                  id: "analysis" as ViewMode,
-                  label: "Analysis",
-                  icon: <Target className="w-4 h-4" />,
-                },
-                {
-                  id: "treatments" as ViewMode,
-                  label: "Treatments",
-                  icon: <Sparkles className="w-4 h-4" />,
-                },
-                {
-                  id: "treatment-plan" as ViewMode,
-                  label: "Plan",
-                  icon: <FileText className="w-4 h-4" />,
-                },
-              ].map((view) => (
-                <Button
-                  key={view.id}
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setCurrentView(view.id)}
-                  className={`flex-1 transition-all duration-300 ${
-                    currentView === view.id
-                      ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/25"
-                      : "text-gray-400 hover:text-white hover:bg-white/10"
-                  }`}
-                >
-                  {view.icon}
-                  <span className="ml-2 font-medium">{view.label}</span>
-                </Button>
-              ))}
+            {/* Action Buttons - Top Right */}
+            <div className="absolute top-4 right-4 flex space-x-2 z-10">
+              <Button
+                size="sm"
+                variant="ghost"
+                className="text-gray-400 hover:text-white hover:bg-gray-700/50"
+              >
+                <Camera className="w-4 h-4 mr-2" />
+                New Scan
+              </Button>
+              <Button
+                size="sm"
+                variant="ghost"
+                className="text-gray-400 hover:text-white hover:bg-gray-700/50"
+                onClick={() => setShowQuestionnaire(true)}
+              >
+                <FileText className="w-4 h-4 mr-2" />
+                Questionnaire
+              </Button>
+              <Button
+                size="sm"
+                variant="ghost"
+                className="text-gray-400 hover:text-white hover:bg-gray-700/50"
+                onClick={() => setIsEditingPatient(true)}
+              >
+                <Edit className="w-4 h-4 mr-2" />
+                Edit Patient
+              </Button>
             </div>
           </div>
 
-          {/* Scrollable Content Area - Now includes filters */}
-          <div className="flex-1 overflow-y-auto p-6">
-            <AnimatePresence mode="wait">
-              {currentView === "analysis" && (
-                <div data-tutorial="analysis-areas">
-                  <AnalysisView
-                    analysisAreas={analysisAreas as any}
-                    patient={currentPatient}
-                    shortlist={shortlist}
-                    onAddToShortlist={addToShortlist}
-                    onAddToTreatmentPlan={addToTreatmentPlan}
-                    addedToPlan={addedToPlan}
-                  />
-                </div>
-              )}
+          {/* HIPAA Session Warning */}
+          {hipaaMode && (
+            <div className="hipaa-session-warning">
+              ⚠️ HIPAA Compliance Mode Active - Session will timeout in 15
+              minutes for security
+            </div>
+          )}
 
-              {currentView === "treatments" && (
-                <TreatmentsView
-                  treatments={treatments as any}
-                  analysisAreas={analysisAreas as any}
-                  addedToPlan={addedToPlan}
-                  shortlist={shortlist}
-                  onAddToTreatmentPlan={addToTreatmentPlan}
-                  onRemoveFromShortlist={removeFromShortlist}
-                  onClearFilters={handleClearFilters}
-                  onViewAllAreas={handleViewAllAreas}
-                />
-              )}
+          {/* Main Content */}
+          <div className="flex-1 overflow-hidden flex">
+            {/* Left Column - Patient Images (fixed max width) */}
+            <div
+              className="w-1/2 lg:w-80 xl:w-96 flex-shrink-0"
+              data-tutorial="patient-photos"
+            >
+              <PatientImages
+                patient={currentPatient}
+                shortlist={shortlist}
+                treatmentPlan={treatmentPlan}
+                interestedAreas={interestedAreas}
+                onUpdatePatient={handleUpdatePatient}
+                onRemoveFromShortlist={removeFromShortlist}
+                selectedShortlistItems={selectedShortlistItems}
+                onShortlistItemSelect={handleShortlistItemSelect}
+              />
+            </div>
 
-              {currentView === "treatment-plan" && (
-                <div data-tutorial="treatment-plan">
-                  <TreatmentPlanView
-                    treatmentPlan={treatmentPlan}
-                    onRemoveFromPlan={removeFromTreatmentPlan}
-                    onExportToEMR={handleExportToEMR}
-                    onDownloadPDF={handleDownloadPDF}
-                  />
+            {/* Right Column - Content (expands to fill remaining space) */}
+            <div className="flex-1 flex flex-col min-h-0">
+              {/* Tab Bar - Always visible at top of right column */}
+              <div className="p-6 pb-2">
+                <div
+                  className="flex space-x-1 p-1 bg-gray-800/50 rounded-xl border border-gray-700/50"
+                  data-tutorial="tab-navigation"
+                >
+                  {[
+                    {
+                      id: "analysis" as ViewMode,
+                      label: "Analysis",
+                      icon: <Target className="w-4 h-4" />,
+                    },
+                    {
+                      id: "treatments" as ViewMode,
+                      label: "Treatments",
+                      icon: <Sparkles className="w-4 h-4" />,
+                    },
+                    {
+                      id: "treatment-plan" as ViewMode,
+                      label: "Plan",
+                      icon: <FileText className="w-4 h-4" />,
+                    },
+                  ].map((view) => (
+                    <Button
+                      key={view.id}
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setCurrentView(view.id)}
+                      className={`flex-1 transition-all duration-300 ${
+                        currentView === view.id
+                          ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/25"
+                          : "text-gray-400 hover:text-white hover:bg-white/10"
+                      }`}
+                    >
+                      {view.icon}
+                      <span className="ml-2 font-medium">{view.label}</span>
+                    </Button>
+                  ))}
                 </div>
-              )}
-            </AnimatePresence>
+              </div>
+
+              {/* Scrollable Content Area - Now includes filters */}
+              <div
+                className="flex-1 overflow-y-auto p-6 min-h-0"
+                style={{ WebkitOverflowScrolling: "touch" }}
+              >
+                <AnimatePresence mode="wait">
+                  {currentView === "analysis" && (
+                    <div data-tutorial="analysis-areas">
+                      <AnalysisView
+                        analysisAreas={analysisAreas as any}
+                        patient={currentPatient}
+                        shortlist={shortlist}
+                        onAddToShortlist={addToShortlist}
+                        onAddToTreatmentPlan={addToTreatmentPlan}
+                        addedToPlan={addedToPlan}
+                        selectedShortlistItems={selectedShortlistItems}
+                      />
+                    </div>
+                  )}
+
+                  {currentView === "treatments" && (
+                    <TreatmentsView
+                      treatments={treatments as any}
+                      analysisAreas={analysisAreas as any}
+                      addedToPlan={addedToPlan}
+                      shortlist={shortlist}
+                      onAddToTreatmentPlan={addToTreatmentPlan}
+                      onRemoveFromShortlist={removeFromShortlist}
+                      onClearFilters={handleClearFilters}
+                      onViewAllAreas={handleViewAllAreas}
+                      selectedShortlistItems={selectedShortlistItems}
+                    />
+                  )}
+
+                  {currentView === "treatment-plan" && (
+                    <div data-tutorial="treatment-plan">
+                      <TreatmentPlanView
+                        treatmentPlan={treatmentPlan}
+                        onRemoveFromPlan={removeFromTreatmentPlan}
+                        onDownloadPDF={handleDownloadPDF}
+                        onShare={handleShare}
+                      />
+                    </div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
           </div>
+
+          {/* Treatment Plan Popup */}
+          <TreatmentPlanPopup
+            isOpen={showTreatmentPopup}
+            onClose={() => setShowTreatmentPopup(false)}
+            onAdd={handleAddToTreatmentPlan}
+            treatment={selectedTreatment}
+            patientFindings={currentPatient.findings}
+            shortlist={shortlist}
+          />
+
+          {/* Edit Patient Popup */}
+          <EditPatientPopup
+            patient={currentPatient}
+            isOpen={isEditingPatient}
+            onClose={() => setIsEditingPatient(false)}
+            onSave={(updatedPatient) => {
+              // Handle patient update - in a real app this would update the patient data
+              console.log("Updated patient:", updatedPatient);
+              setCurrentPatient(updatedPatient);
+              setIsEditingPatient(false);
+            }}
+          />
+
+          {/* Patient Questionnaire Modal */}
+          <PatientQuestionnaire
+            isOpen={showQuestionnaire}
+            onClose={() => setShowQuestionnaire(false)}
+            patientName={currentPatient.name}
+          />
+
+          {/* Share Modal */}
+          <ShareModal
+            isOpen={showShareModal}
+            onClose={() => setShowShareModal(false)}
+            patientName={currentPatient.name}
+            treatmentPlan={treatmentPlan}
+          />
+
+          {/* HIPAA Security Status Bar */}
+          {hipaaMode && (
+            <div className="hipaa-status-bar">
+              <div className="status-item">
+                <div className="status-indicator"></div>
+                <span>Session Active</span>
+              </div>
+              <div className="status-item">
+                <span>🔒 Data Encrypted</span>
+              </div>
+              <div className="status-item">
+                <span>📋 Audit Logged</span>
+              </div>
+              <div className="status-item">
+                <span>⏰ Session: 2:34</span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
-
-      {/* Treatment Plan Popup */}
-      <TreatmentPlanPopup
-        isOpen={showTreatmentPopup}
-        onClose={() => setShowTreatmentPopup(false)}
-        onAdd={handleAddToTreatmentPlan}
-        treatment={selectedTreatment}
-      />
-
-      {/* Patient Questionnaire Modal */}
-      <PatientQuestionnaire
-        isOpen={showQuestionnaire}
-        onClose={() => setShowQuestionnaire(false)}
-        patientName={currentPatient.name}
-      />
-
-      {/* HIPAA Security Status Bar */}
-      {hipaaMode && (
-        <div className="hipaa-status-bar">
-          <div className="status-item">
-            <div className="status-indicator"></div>
-            <span>Session Active</span>
-          </div>
-          <div className="status-item">
-            <span>🔒 Data Encrypted</span>
-          </div>
-          <div className="status-item">
-            <span>📋 Audit Logged</span>
-          </div>
-          <div className="status-item">
-            <span>⏰ Session: 2:34</span>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
