@@ -67,7 +67,7 @@ export function findBestPhotoForTreatment(
   for (const photo of photos) {
     if (photo.fields.Issues && photo.fields.Photo?.[0]?.url) {
       const hasExactMatch = treatmentServes.some((serves) =>
-        photo.fields.Issues.some(
+        photo.fields.Issues?.some(
           (issue) =>
             issue.toLowerCase().includes(serves.toLowerCase()) ||
             serves.toLowerCase().includes(issue.toLowerCase())
