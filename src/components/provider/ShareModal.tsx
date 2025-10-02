@@ -194,7 +194,7 @@ export function ShareModal({
                     </>
                   )}
                 </Button>
-                {navigator.share && (
+                {typeof navigator !== 'undefined' && navigator.share && (
                   <Button
                     onClick={handleWebShare}
                     variant="ghost"
