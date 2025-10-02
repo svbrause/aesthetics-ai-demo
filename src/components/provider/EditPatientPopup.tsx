@@ -205,7 +205,7 @@ export function EditPatientPopup({
       if (finding.area) {
         // Find the area by name (case-insensitive)
         const area = analysisAreas.find(
-          (a) => a.name.toLowerCase() === finding.area.toLowerCase()
+          (a) => a.name.toLowerCase() === finding.area?.toLowerCase()
         );
         if (area) {
           if (!findingsByArea[area.id]) {
