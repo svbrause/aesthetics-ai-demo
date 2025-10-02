@@ -83,7 +83,7 @@ export function findBestPhotoForTreatment(
   for (const photo of photos) {
     if (photo.fields.Issues && photo.fields.Photo?.[0]?.url) {
       const hasPartialMatch = treatmentServes.some((serves) =>
-        photo.fields.Issues.some((issue) => {
+        photo.fields.Issues?.some((issue) => {
           const servesWords = serves.toLowerCase().split(/\s+/);
           const issueWords = issue.toLowerCase().split(/\s+/);
           return servesWords.some((word) =>
