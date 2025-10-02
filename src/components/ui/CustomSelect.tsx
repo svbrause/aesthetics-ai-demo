@@ -15,6 +15,7 @@ interface CustomSelectProps {
   onChange: (value: string) => void;
   placeholder?: string;
   className?: string;
+  disabled?: boolean;
 }
 
 export function CustomSelect({
@@ -23,6 +24,7 @@ export function CustomSelect({
   onChange,
   placeholder = "Select an option",
   className = "",
+  disabled = false,
 }: CustomSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -61,8 +63,13 @@ export function CustomSelect({
     <div ref={selectRef} className={`relative ${className}`}>
       <button
         type="button"
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white appearance-none cursor-pointer hover:border-gray-500/50 focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 flex items-center justify-between"
+        onClick={() => !disabled && setIsOpen(!isOpen)}
+        disabled={disabled}
+        className={`w-full p-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white appearance-none transition-all duration-200 flex items-center justify-between ${
+          disabled
+            ? "cursor-not-allowed opacity-50"
+            : "cursor-pointer hover:border-gray-500/50 focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20"
+        }`}
       >
         <span className={selectedOption ? "text-white" : "text-gray-400"}>
           {selectedOption ? selectedOption.label : placeholder}
