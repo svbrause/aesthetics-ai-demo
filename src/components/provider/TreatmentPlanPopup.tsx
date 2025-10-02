@@ -190,7 +190,7 @@ export function TreatmentPlanPopup({
                           Recommended for this treatment:
                         </div>
                         <div className="space-y-2">
-                          {relevantFindings.map((finding) => (
+                          {relevantFindings.map((finding: string) => (
                             <label
                               key={finding}
                               className={`group flex items-center p-3 rounded-xl text-sm transition-all duration-300 border cursor-pointer hover:bg-gray-700/30 hover:scale-[1.02] ${
