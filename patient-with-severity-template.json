@@ -1,0 +1,106 @@
+{
+  "id": "1007",
+  "name": "Your Patient Name",
+  "age": 35,
+  "email": "patient@email.com",
+  "phone": "(555) 123-4567",
+  "lastVisit": "2024-01-25",
+  "score": 82,
+  "findings": [
+    {
+      "name": "Forehead Wrinkles",
+      "severity": "moderate",
+      "score": 75
+    },
+    {
+      "name": "Glabella Wrinkles",
+      "severity": "mild",
+      "score": 60
+    },
+    {
+      "name": "Dark Spots",
+      "severity": "mild",
+      "score": 65
+    },
+    {
+      "name": "Red Spots",
+      "severity": "mild",
+      "score": 55
+    },
+    {
+      "name": "Marionette Lines",
+      "severity": "moderate",
+      "score": 70
+    },
+    {
+      "name": "Temporal Hollow",
+      "severity": "moderate",
+      "score": 68
+    },
+    {
+      "name": "Brow Asymmetry",
+      "severity": "mild",
+      "score": 62
+    },
+    {
+      "name": "Crooked Nose",
+      "severity": "moderate",
+      "score": 72
+    },
+    {
+      "name": "Dorsal Hump",
+      "severity": "mild",
+      "score": 58
+    },
+    {
+      "name": "Over-Rotated",
+      "severity": "mild",
+      "score": 60
+    },
+    {
+      "name": "Nasal Tip Too Wide",
+      "severity": "moderate",
+      "score": 68
+    },
+    {
+      "name": "Thin Lips",
+      "severity": "moderate",
+      "score": 70
+    },
+    {
+      "name": "Lacking Philtral Column",
+      "severity": "mild",
+      "score": 55
+    },
+    {
+      "name": "Long Philtral Column",
+      "severity": "mild",
+      "score": 58
+    },
+    {
+      "name": "Dry Lips",
+      "severity": "mild",
+      "score": 50
+    },
+    {
+      "name": "Lip Thinning When Smiling",
+      "severity": "moderate",
+      "score": 65
+    },
+    {
+      "name": "Retruded Chin",
+      "severity": "moderate",
+      "score": 72
+    }
+  ],
+  "frontImage": "https://your-image-url.com/front.jpg",
+  "sideImage": "https://your-image-url.com/side.jpg",
+  "scanDate": "January 25, 2024",
+  "airtableRecordId": "recYourAirtableId"
+}
+
+
+
+
+
+
