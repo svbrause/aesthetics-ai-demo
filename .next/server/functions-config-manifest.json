@@ -1,0 +1,1 @@
+{"version":1,"functions":{"/api/demo-form-submit":{"maxDuration":60},"/api/interest-items":{},"/api/check-airtable-record":{},"/api/provider-patient/[patient_id]":{},"/api/quick-patient-create":{},"/api/sync-findings-to-interest-items":{},"/api/provider-patients":{},"/api/test-provider-patients":{},"/api/validate-provider":{},"/api/airtable-photos":{}}}

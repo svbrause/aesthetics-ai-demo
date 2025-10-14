@@ -12,6 +12,8 @@ interface TreatmentPlanPopupProps {
   onClose: () => void;
   onAdd: (treatmentDetails: TreatmentDetails) => void;
   treatment: any;
+  patientFindings?: any[];
+  shortlist?: any[];
 }
 
 interface TreatmentDetails {
@@ -50,6 +52,8 @@ export function TreatmentPlanPopup({
   onClose,
   onAdd,
   treatment,
+  patientFindings,
+  shortlist,
 }: TreatmentPlanPopupProps) {
   const [notes, setNotes] = useState("");
   const [selectedAreas, setSelectedAreas] = useState<string[]>([]);

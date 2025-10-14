@@ -12,6 +12,7 @@ interface TreatmentPlanViewProps {
   onRemoveFromPlan: (id: string) => void;
   onExportToEMR: () => void;
   onDownloadPDF: () => void;
+  onShare?: () => void;
 }
 
 export function TreatmentPlanView({
@@ -19,6 +20,7 @@ export function TreatmentPlanView({
   onRemoveFromPlan,
   onExportToEMR,
   onDownloadPDF,
+  onShare,
 }: TreatmentPlanViewProps) {
   const [expandedTreatmentItems, setExpandedTreatmentItems] = useState<
     Set<string>

@@ -30,12 +30,14 @@ interface TreatmentsViewProps {
   analysisAreas: AnalysisArea[];
   addedToPlan: Set<string>;
   shortlist: any[];
+  patient?: any;
   onAddToTreatmentPlan: (treatment: Treatment) => void;
   onRemoveFromShortlist?: (findingName: string) => void;
   onClearFilters: () => void;
   onViewAllAreas?: () => void;
   showFiltersOnly?: boolean;
   showContentOnly?: boolean;
+  selectedShortlistItems?: Set<string>;
 }
 
 export function TreatmentsView({
@@ -43,12 +45,14 @@ export function TreatmentsView({
   analysisAreas,
   addedToPlan,
   shortlist,
+  patient,
   onAddToTreatmentPlan,
   onRemoveFromShortlist,
   onClearFilters,
   onViewAllAreas,
   showFiltersOnly = false,
   showContentOnly = false,
+  selectedShortlistItems,
 }: TreatmentsViewProps) {
   const [showFilters, setShowFilters] = useState(false);
   const [selectedArea, setSelectedArea] = useState("");

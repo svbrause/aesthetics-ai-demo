@@ -1,0 +1,894 @@
+<!DOCTYPE html><html lang="en" class="dark"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" as="image" href="/Sydney Adams Front.png"/><link rel="preload" as="image" href="/Images/Findings/Finding%3DTemporal%20Hollow.png"/><link rel="preload" as="image" href="/Images/Findings/Finding%3DUnder%20Eye%20Hollow.png"/><link rel="preload" as="image" href="/Images/Findings/Finding%3DMid%20Cheek%20Flattening.png"/><link rel="stylesheet" href="/_next/static/css/8c0cdd820dd0b618.css" crossorigin="" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-417095c207392ae0.js" crossorigin=""/><script src="/_next/static/chunks/fd9d1056-485d6cbe72bd0172.js" async="" crossorigin=""></script><script src="/_next/static/chunks/472-62e506fc209c53be.js" async="" crossorigin=""></script><script src="/_next/static/chunks/main-app-f1e8d0a8f7ad879b.js" async="" crossorigin=""></script><script src="/_next/static/chunks/401-11ac3ea27ce212d2.js" async=""></script><script src="/_next/static/chunks/app/layout-aef669f49ad1d331.js" async=""></script><script src="/_next/static/chunks/575-a9687cccbac72b77.js" async=""></script><script src="/_next/static/chunks/189-2ef7946095469325.js" async=""></script><script src="/_next/static/chunks/852-8fcc06a3e374ca75.js" async=""></script><script src="/_next/static/chunks/859-907b6758d936ba82.js" async=""></script><script src="/_next/static/chunks/app/color-experiments/simple/page-8c29276a663299ed.js" async=""></script><title>Aesthetics AI - Concierge Demo</title><meta name="description" content="Experience the future of personalized patient journeys with AI-powered analysis and concierge-level care"/><link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16"/><meta name="next-size-adjust"/><script src="/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js" crossorigin="" noModule=""></script></head><body class="__variable_f367f3 font-sans antialiased"><div class="min-h-screen" style="background-color:#FFFFFF;color:#1F2937"><div class="fixed top-4 left-4 z-50 px-4 py-2 rounded-lg text-sm font-medium shadow-sm" style="background-color:#374151;color:#FFFFFF;border:1px solid #6B7280">Grayscale Design</div><style>
+          :root {
+            --color-primary: #374151;
+            --color-secondary: #6B7280;
+            --color-accent: #4B5563;
+            --color-background: #FFFFFF;
+            --color-surface: #F9FAFB;
+            --color-text: #1F2937;
+            --color-text-secondary: #6B7280;
+            --color-border: #D1D5DB;
+            --color-success: #374151;
+            --color-warning: #4B5563;
+            --color-error: #374151;
+          }
+          
+          /* Grayscale design with proper hierarchy */
+          .patient-detail-container {
+            background: #FFFFFF !important;
+          }
+          
+          .patient-detail-container .bg-gradient-to-br {
+            background: #FFFFFF !important;
+          }
+          
+          .patient-detail-container .from-black,
+          .patient-detail-container .via-gray-900,
+          .patient-detail-container .to-black {
+            background: #FFFFFF !important;
+          }
+          
+          /* Header with light gray background and dark text */
+          .patient-detail-container .patient-header {
+            background: #F9FAFB !important;
+            border-bottom: 1px solid #D1D5DB !important;
+          }
+          
+          .patient-detail-container .bg-gray-800\/50 {
+            background-color: #F9FAFB !important;
+          }
+          
+          .patient-detail-container .border-gray-700\/50 {
+            border-color: #D1D5DB !important;
+          }
+          
+          /* Text hierarchy with grayscale - all dark text on light backgrounds */
+          .patient-detail-container .text-gray-400 {
+            color: #6B7280 !important;
+            font-weight: 400 !important;
+          }
+          
+          .patient-detail-container .text-white {
+            color: #1F2937 !important;
+            font-weight: 600 !important;
+          }
+          
+          .patient-detail-container .hover\:text-white:hover {
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .hover\:bg-gray-700\/50:hover {
+            background-color: #F3F4F6 !important;
+          }
+          
+          /* Primary buttons - light gray background with dark text */
+          .patient-detail-container .bg-gradient-to-r.from-blue-600.to-purple-600 {
+            background: #F3F4F6 !important;
+            color: #1F2937 !important;
+            border: 1px solid #D1D5DB !important;
+            font-weight: 600 !important;
+          }
+          
+          .patient-detail-container .shadow-blue-500\/25 {
+            box-shadow: 0 4px 6px -1px rgba(55, 65, 81, 0.2), 0 2px 4px -1px rgba(55, 65, 81, 0.1) !important;
+          }
+          
+          .patient-detail-container .text-gray-600 {
+            color: #6B7280 !important;
+            font-weight: 400 !important;
+          }
+          
+          .patient-detail-container .border-gray-900 {
+            border-color: #6B7280 !important;
+          }
+          
+          .patient-detail-container .bg-gray-200 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .text-gray-800 {
+            color: #1F2937 !important;
+            font-weight: 600 !important;
+          }
+          
+          .patient-detail-container .text-gray-900 {
+            color: #1F2937 !important;
+            font-weight: 700 !important;
+          }
+          
+          .patient-detail-container .bg-white {
+            background-color: #FFFFFF !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .text-black {
+            color: #1F2937 !important;
+            font-weight: 600 !important;
+          }
+          
+          .patient-detail-container .hover\:bg-gray-100:hover {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .bg-gray-100 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .text-gray-500 {
+            color: #6B7280 !important;
+            font-weight: 400 !important;
+          }
+          
+          .patient-detail-container .text-gray-700 {
+            color: #1F2937 !important;
+            font-weight: 500 !important;
+          }
+          
+          .patient-detail-container .border-gray-200 {
+            border-color: #D1D5DB !important;
+          }
+          
+          .patient-detail-container .border-gray-300 {
+            border-color: #D1D5DB !important;
+          }
+          
+          .patient-detail-container .bg-gray-50 {
+            background-color: #F9FAFB !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .bg-gray-600 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .bg-gray-700 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .bg-gray-800 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .bg-gray-900 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .text-gray-300 {
+            color: #9CA3AF !important;
+          }
+          
+          .patient-detail-container .text-gray-200 {
+            color: #E5E7EB !important;
+          }
+          
+          .patient-detail-container .text-gray-100 {
+            color: #F3F4F6 !important;
+          }
+          
+          /* Colored elements become light grayscale */
+          .patient-detail-container .bg-blue-500 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .bg-blue-600 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .bg-purple-500 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .bg-purple-600 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .bg-pink-500 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .text-blue-400 {
+            color: #6B7280 !important;
+          }
+          
+          .patient-detail-container .text-purple-400 {
+            color: #6B7280 !important;
+          }
+          
+          .patient-detail-container .text-pink-400 {
+            color: #9CA3AF !important;
+          }
+          
+          /* Remove gradients and use light grayscale */
+          .patient-detail-container .from-blue-400,
+          .patient-detail-container .via-purple-400,
+          .patient-detail-container .to-pink-400,
+          .patient-detail-container .from-gray-600,
+          .patient-detail-container .to-gray-900,
+          .patient-detail-container .dark\:from-white,
+          .patient-detail-container .dark\:via-gray-200,
+          .patient-detail-container .dark\:to-gray-400,
+          .patient-detail-container .from-cyan-600,
+          .patient-detail-container .to-blue-600,
+          .patient-detail-container .from-yellow-500,
+          .patient-detail-container .to-green-500,
+          .patient-detail-container .from-yellow-600,
+          .patient-detail-container .to-yellow-500,
+          .patient-detail-container .from-orange-500,
+          .patient-detail-container .to-yellow-500 {
+            background: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .dark\:text-white {
+            color: #1F2937 !important;
+          }
+          
+          /* Other colored elements become light grayscale */
+          .patient-detail-container .bg-cyan-500 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .bg-cyan-600 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .text-cyan-400 {
+            color: #6B7280 !important;
+          }
+          
+          .patient-detail-container .border-cyan-400 {
+            border-color: #D1D5DB !important;
+          }
+          
+          .patient-detail-container .bg-orange-500 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .bg-orange-400 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .text-orange-400 {
+            color: #6B7280 !important;
+          }
+          
+          .patient-detail-container .bg-yellow-500 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .bg-yellow-400 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .text-yellow-400 {
+            color: #6B7280 !important;
+          }
+          
+          /* Clean grayscale shadows */
+          .patient-detail-container .shadow-lg {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+          }
+          
+          .patient-detail-container .shadow-xl {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+          }
+          
+          /* Remove animated background elements */
+          .patient-detail-container .absolute.inset-0.overflow-hidden.pointer-events-none {
+            display: none !important;
+          }
+          
+          /* Clean button and card styling */
+          .patient-detail-container button {
+            border-radius: 8px !important;
+            font-weight: 500 !important;
+            transition: all 0.15s ease !important;
+          }
+          
+          .patient-detail-container .rounded-2xl {
+            border-radius: 12px !important;
+          }
+          
+          .patient-detail-container .rounded-xl {
+            border-radius: 8px !important;
+          }
+          
+          /* Card styling with gray borders */
+          .patient-detail-container .rounded-2xl.border {
+            border: 1px solid #D1D5DB !important;
+            background: #FFFFFF !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Tab navigation with light gray */
+          .patient-detail-container .bg-gray-800\/50.rounded-xl {
+            background: #F9FAFB !important;
+            border: 1px solid #D1D5DB !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Findings cards with clean light design */
+          .patient-detail-container .bg-gradient-to-r.from-blue-900\/30.to-cyan-900\/30 {
+            background: #FFFFFF !important;
+            border: 1px solid #D1D5DB !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .border-blue-700\/50 {
+            border-color: #D1D5DB !important;
+          }
+          
+          .patient-detail-container .hover\:border-blue-600\/70:hover {
+            border-color: #6B7280 !important;
+          }
+          
+          .patient-detail-container .hover\:shadow-blue-500\/20:hover {
+            box-shadow: 0 4px 6px -1px rgba(107, 114, 128, 0.1), 0 2px 4px -1px rgba(107, 114, 128, 0.06) !important;
+          }
+          
+          /* Findings shortlist - new color scheme */
+          .patient-detail-container .bg-pink-500,
+          .patient-detail-container .bg-pink-400,
+          .patient-detail-container .bg-pink-300,
+          .patient-detail-container .bg-pink-200,
+          .patient-detail-container .bg-pink-100 {
+            background-color: #E8F4F8 !important;
+            color: #1F2937 !important;
+            border: 1px solid #B8D4D1 !important;
+          }
+          
+          .patient-detail-container .text-pink-500,
+          .patient-detail-container .text-pink-400,
+          .patient-detail-container .text-pink-300,
+          .patient-detail-container .text-pink-200,
+          .patient-detail-container .text-pink-100 {
+            color: #111827 !important;
+            font-weight: 600 !important;
+          }
+          
+          /* Additional findings shortlist styling - darker text */
+          .patient-detail-container .bg-blue-500,
+          .patient-detail-container .bg-blue-400,
+          .patient-detail-container .bg-blue-300,
+          .patient-detail-container .bg-blue-200,
+          .patient-detail-container .bg-blue-100 {
+            background-color: #E8F4F8 !important;
+            color: #111827 !important;
+            border: 1px solid #B8D4D1 !important;
+          }
+          
+          .patient-detail-container .bg-purple-500,
+          .patient-detail-container .bg-purple-400,
+          .patient-detail-container .bg-purple-300,
+          .patient-detail-container .bg-purple-200,
+          .patient-detail-container .bg-purple-100 {
+            background-color: #F0F4F8 !important;
+            color: #111827 !important;
+            border: 1px solid #C7D6D7 !important;
+          }
+          
+          .patient-detail-container .bg-cyan-500,
+          .patient-detail-container .bg-cyan-400,
+          .patient-detail-container .bg-cyan-300,
+          .patient-detail-container .bg-cyan-200,
+          .patient-detail-container .bg-cyan-100 {
+            background-color: #F0F4F8 !important;
+            color: #111827 !important;
+            border: 1px solid #C7D6D7 !important;
+          }
+          
+          /* Additional color variations for findings shortlist - darker text */
+          .patient-detail-container .bg-green-500,
+          .patient-detail-container .bg-green-400,
+          .patient-detail-container .bg-green-300,
+          .patient-detail-container .bg-green-200,
+          .patient-detail-container .bg-green-100 {
+            background-color: #F0F8F0 !important;
+            color: #111827 !important;
+            border: 1px solid #C8E6C8 !important;
+          }
+          
+          .patient-detail-container .bg-orange-500,
+          .patient-detail-container .bg-orange-400,
+          .patient-detail-container .bg-orange-300,
+          .patient-detail-container .bg-orange-200,
+          .patient-detail-container .bg-orange-100 {
+            background-color: #FFF8F0 !important;
+            color: #111827 !important;
+            border: 1px solid #F5D5A3 !important;
+          }
+          
+          .patient-detail-container .bg-yellow-500,
+          .patient-detail-container .bg-yellow-400,
+          .patient-detail-container .bg-yellow-300,
+          .patient-detail-container .bg-yellow-200,
+          .patient-detail-container .bg-yellow-100 {
+            background-color: #FFFEF0 !important;
+            color: #111827 !important;
+            border: 1px solid #F5F0A3 !important;
+          }
+          
+          .patient-detail-container .bg-indigo-500,
+          .patient-detail-container .bg-indigo-400,
+          .patient-detail-container .bg-indigo-300,
+          .patient-detail-container .bg-indigo-200,
+          .patient-detail-container .bg-indigo-100 {
+            background-color: #F0F4FF !important;
+            color: #111827 !important;
+            border: 1px solid #D1D9FF !important;
+          }
+          
+          .patient-detail-container .bg-teal-500,
+          .patient-detail-container .bg-teal-400,
+          .patient-detail-container .bg-teal-300,
+          .patient-detail-container .bg-teal-200,
+          .patient-detail-container .bg-teal-100 {
+            background-color: #F0FDFA !important;
+            color: #111827 !important;
+            border: 1px solid #C8F7F0 !important;
+          }
+          
+          /* Findings shortlist title - make text darker gray */
+          .patient-detail-container .text-gray-500,
+          .patient-detail-container .text-gray-400,
+          .patient-detail-container .text-gray-300 {
+            color: #1F2937 !important;
+            font-weight: 600 !important;
+          }
+          
+          /* Score backgrounds - make them lighter gray */
+          .patient-detail-container .bg-gray-200,
+          .patient-detail-container .bg-gray-100,
+          .patient-detail-container .bg-gray-50 {
+            background-color: #F9FAFB !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Additional targeting for findings shortlist title text */
+          .patient-detail-container .text-gray-600,
+          .patient-detail-container .text-gray-500,
+          .patient-detail-container .text-gray-400,
+          .patient-detail-container .text-gray-300,
+          .patient-detail-container .text-gray-200 {
+            color: #1F2937 !important;
+            font-weight: 600 !important;
+          }
+          
+          /* Score elements - make backgrounds even lighter */
+          .patient-detail-container .bg-gray-300,
+          .patient-detail-container .bg-gray-200,
+          .patient-detail-container .bg-gray-100,
+          .patient-detail-container .bg-gray-50 {
+            background-color: #F9FAFB !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Analysis score backgrounds - make them very light */
+          .patient-detail-container .bg-blue-100,
+          .patient-detail-container .bg-blue-200,
+          .patient-detail-container .bg-purple-100,
+          .patient-detail-container .bg-purple-200,
+          .patient-detail-container .bg-cyan-100,
+          .patient-detail-container .bg-cyan-200 {
+            background-color: #F9FAFB !important;
+            color: #1F2937 !important;
+          }
+          
+          /* All score backgrounds - make them light gray instead of dark */
+          .patient-detail-container .bg-blue-500,
+          .patient-detail-container .bg-blue-400,
+          .patient-detail-container .bg-blue-300,
+          .patient-detail-container .bg-purple-500,
+          .patient-detail-container .bg-purple-400,
+          .patient-detail-container .bg-purple-300,
+          .patient-detail-container .bg-cyan-500,
+          .patient-detail-container .bg-cyan-400,
+          .patient-detail-container .bg-cyan-300,
+          .patient-detail-container .bg-green-500,
+          .patient-detail-container .bg-green-400,
+          .patient-detail-container .bg-green-300,
+          .patient-detail-container .bg-orange-500,
+          .patient-detail-container .bg-orange-400,
+          .patient-detail-container .bg-orange-300,
+          .patient-detail-container .bg-yellow-500,
+          .patient-detail-container .bg-yellow-400,
+          .patient-detail-container .bg-yellow-300 {
+            background-color: #F9FAFB !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Findings shortlist text - make all text dark for readability */
+          .patient-detail-container .text-white,
+          .patient-detail-container .text-gray-100,
+          .patient-detail-container .text-gray-200,
+          .patient-detail-container .text-gray-300 {
+            color: #1F2937 !important;
+            font-weight: 500 !important;
+          }
+          
+          /* Findings shortlist title specifically */
+          .patient-detail-container .text-gray-400,
+          .patient-detail-container .text-gray-500,
+          .patient-detail-container .text-gray-600 {
+            color: #1F2937 !important;
+            font-weight: 600 !important;
+          }
+          
+          /* Comprehensive targeting for all score backgrounds */
+          .patient-detail-container .bg-blue-600,
+          .patient-detail-container .bg-blue-700,
+          .patient-detail-container .bg-blue-800,
+          .patient-detail-container .bg-purple-600,
+          .patient-detail-container .bg-purple-700,
+          .patient-detail-container .bg-purple-800,
+          .patient-detail-container .bg-cyan-600,
+          .patient-detail-container .bg-cyan-700,
+          .patient-detail-container .bg-cyan-800,
+          .patient-detail-container .bg-green-600,
+          .patient-detail-container .bg-green-700,
+          .patient-detail-container .bg-green-800,
+          .patient-detail-container .bg-orange-600,
+          .patient-detail-container .bg-orange-700,
+          .patient-detail-container .bg-orange-800,
+          .patient-detail-container .bg-yellow-600,
+          .patient-detail-container .bg-yellow-700,
+          .patient-detail-container .bg-yellow-800 {
+            background-color: #F9FAFB !important;
+            color: #1F2937 !important;
+          }
+          
+          /* All findings shortlist text elements - make darker */
+          .patient-detail-container .text-blue-400,
+          .patient-detail-container .text-blue-500,
+          .patient-detail-container .text-purple-400,
+          .patient-detail-container .text-purple-500,
+          .patient-detail-container .text-cyan-400,
+          .patient-detail-container .text-cyan-500,
+          .patient-detail-container .text-green-400,
+          .patient-detail-container .text-green-500,
+          .patient-detail-container .text-orange-400,
+          .patient-detail-container .text-orange-500,
+          .patient-detail-container .text-yellow-400,
+          .patient-detail-container .text-yellow-500 {
+            color: #111827 !important;
+            font-weight: 600 !important;
+          }
+          
+          /* Additional findings shortlist text colors */
+          .patient-detail-container .text-indigo-400,
+          .patient-detail-container .text-indigo-500,
+          .patient-detail-container .text-teal-400,
+          .patient-detail-container .text-teal-500,
+          .patient-detail-container .text-pink-400,
+          .patient-detail-container .text-pink-500 {
+            color: #111827 !important;
+            font-weight: 600 !important;
+          }
+          
+          /* Remove ALL dark gray backgrounds - make everything light gray */
+          .patient-detail-container .bg-gray-900,
+          .patient-detail-container .bg-gray-800,
+          .patient-detail-container .bg-gray-700,
+          .patient-detail-container .bg-gray-600,
+          .patient-detail-container .bg-gray-500,
+          .patient-detail-container .bg-gray-400 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Specific targeting for area findings horizontal bars */
+          .patient-detail-container .bg-gray-800\/50,
+          .patient-detail-container .bg-gray-700\/50,
+          .patient-detail-container .bg-gray-600\/50,
+          .patient-detail-container .bg-gray-500\/50,
+          .patient-detail-container .bg-gray-400\/50 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Area findings headers - make them light gray */
+          .patient-detail-container .bg-gray-900,
+          .patient-detail-container .bg-gray-800,
+          .patient-detail-container .bg-gray-700 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Analysis score text - remove background */
+          .patient-detail-container .bg-gradient-to-r,
+          .patient-detail-container .bg-blue-500,
+          .patient-detail-container .bg-blue-400,
+          .patient-detail-container .bg-blue-300,
+          .patient-detail-container .bg-blue-200,
+          .patient-detail-container .bg-blue-100 {
+            background: transparent !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Percentage bar styling - make it fill to the actual percentage */
+          .patient-detail-container .w-\[\d+%\] {
+            background-color: #6B7280 !important;
+          }
+          
+          .patient-detail-container .bg-blue-500,
+          .patient-detail-container .bg-blue-400,
+          .patient-detail-container .bg-blue-300 {
+            background-color: #6B7280 !important;
+          }
+          
+          /* Severity badges with light grayscale - dark text on light backgrounds */
+          .patient-detail-container .text-orange-400 {
+            color: #1F2937 !important;
+            font-weight: 600 !important;
+          }
+          
+          .patient-detail-container .bg-orange-500\/20 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .border-orange-500\/50 {
+            border-color: #D1D5DB !important;
+          }
+          
+          .patient-detail-container .text-yellow-400 {
+            color: #1F2937 !important;
+            font-weight: 600 !important;
+          }
+          
+          .patient-detail-container .bg-yellow-500\/20 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .border-yellow-500\/50 {
+            border-color: #D1D5DB !important;
+          }
+          
+          /* Green elements become light grayscale */
+          .patient-detail-container .text-green-400 {
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .bg-green-500\/20 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          .patient-detail-container .border-green-500\/50 {
+            border-color: #D1D5DB !important;
+          }
+          
+          /* Additional specific fixes for findings and analysis */
+          
+          /* Remove any remaining dark backgrounds from analysis sections */
+          .patient-detail-container .bg-gray-900,
+          .patient-detail-container .bg-gray-800,
+          .patient-detail-container .bg-gray-700 {
+            background-color: #F9FAFB !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Analysis score text - ensure no background */
+          .patient-detail-container .text-4xl,
+          .patient-detail-container .text-3xl,
+          .patient-detail-container .text-2xl,
+          .patient-detail-container .text-xl {
+            background: transparent !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Progress bars - make them fill to actual percentage with gray color */
+          .patient-detail-container .bg-blue-500,
+          .patient-detail-container .bg-blue-400,
+          .patient-detail-container .bg-blue-300,
+          .patient-detail-container .bg-blue-200,
+          .patient-detail-container .bg-blue-100,
+          .patient-detail-container .bg-gradient-to-r {
+            background-color: #6B7280 !important;
+          }
+          
+          /* Remove any gradient backgrounds from score displays */
+          .patient-detail-container .from-blue-500,
+          .patient-detail-container .to-blue-600,
+          .patient-detail-container .from-blue-400,
+          .patient-detail-container .to-blue-500 {
+            background: transparent !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Findings section headers - very light background */
+          .patient-detail-container .bg-gray-800\/50,
+          .patient-detail-container .bg-gray-700\/50,
+          .patient-detail-container .bg-gray-600\/50 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Additional targeting for area findings horizontal bars */
+          .patient-detail-container .rounded-xl,
+          .patient-detail-container .rounded-lg,
+          .patient-detail-container .rounded-md {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Target any remaining dark elements in findings sections */
+          .patient-detail-container .bg-opacity-50,
+          .patient-detail-container .bg-opacity-75,
+          .patient-detail-container .bg-opacity-90 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Analysis tab area section headers - make them light gray */
+          .patient-detail-container .bg-gray-900,
+          .patient-detail-container .bg-gray-800,
+          .patient-detail-container .bg-gray-700,
+          .patient-detail-container .bg-gray-600,
+          .patient-detail-container .bg-gray-500 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Specific targeting for analysis tab headers */
+          .patient-detail-container .bg-gray-800\/50,
+          .patient-detail-container .bg-gray-700\/50,
+          .patient-detail-container .bg-gray-600\/50,
+          .patient-detail-container .bg-gray-500\/50 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Analysis tab section headers with borders */
+          .patient-detail-container .border-gray-800,
+          .patient-detail-container .border-gray-700,
+          .patient-detail-container .border-gray-600 {
+            border-color: #D1D5DB !important;
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Additional targeting for analysis tab area headers */
+          .patient-detail-container .bg-gray-900\/50,
+          .patient-detail-container .bg-gray-800\/50,
+          .patient-detail-container .bg-gray-700\/50,
+          .patient-detail-container .bg-gray-600\/50,
+          .patient-detail-container .bg-gray-500\/50 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Target any remaining dark analysis tab elements */
+          .patient-detail-container .bg-gray-900\/75,
+          .patient-detail-container .bg-gray-800\/75,
+          .patient-detail-container .bg-gray-700\/75,
+          .patient-detail-container .bg-gray-600\/75 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Analysis tab section headers - ensure all are light gray */
+          .patient-detail-container .bg-gray-900\/90,
+          .patient-detail-container .bg-gray-800\/90,
+          .patient-detail-container .bg-gray-700\/90,
+          .patient-detail-container .bg-gray-600\/90 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Comprehensive rule to remove ALL remaining dark gray backgrounds */
+          .patient-detail-container [class*="bg-gray-9"],
+          .patient-detail-container [class*="bg-gray-8"],
+          .patient-detail-container [class*="bg-gray-7"],
+          .patient-detail-container [class*="bg-gray-6"],
+          .patient-detail-container [class*="bg-gray-5"],
+          .patient-detail-container [class*="bg-gray-4"] {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Target any remaining dark backgrounds with opacity */
+          .patient-detail-container [class*="bg-gray-9/"],
+          .patient-detail-container [class*="bg-gray-8/"],
+          .patient-detail-container [class*="bg-gray-7/"],
+          .patient-detail-container [class*="bg-gray-6/"],
+          .patient-detail-container [class*="bg-gray-5/"],
+          .patient-detail-container [class*="bg-gray-4/"] {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Ultra-comprehensive targeting for ANY remaining dark gray */
+          .patient-detail-container [class*="bg-gray-"],
+          .patient-detail-container [class*="bg-slate-"],
+          .patient-detail-container [class*="bg-zinc-"],
+          .patient-detail-container [class*="bg-neutral-"],
+          .patient-detail-container [class*="bg-stone-"] {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Target any dark backgrounds with any opacity */
+          .patient-detail-container [class*="bg-gray-"]:not([class*="bg-gray-1"]):not([class*="bg-gray-2"]):not([class*="bg-gray-3"]) {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Catch any remaining dark elements */
+          .patient-detail-container .bg-black,
+          .patient-detail-container .bg-gray-900,
+          .patient-detail-container .bg-gray-800,
+          .patient-detail-container .bg-gray-700,
+          .patient-detail-container .bg-gray-600,
+          .patient-detail-container .bg-gray-500,
+          .patient-detail-container .bg-gray-400 {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Final comprehensive catch-all for any dark backgrounds */
+          .patient-detail-container [style*="background-color: rgb(17, 24, 39)"],
+          .patient-detail-container [style*="background-color: rgb(31, 41, 55)"],
+          .patient-detail-container [style*="background-color: rgb(55, 65, 81)"],
+          .patient-detail-container [style*="background-color: rgb(75, 85, 99)"],
+          .patient-detail-container [style*="background-color: rgb(107, 114, 128)"],
+          .patient-detail-container [style*="background-color: rgb(156, 163, 175)"],
+          .patient-detail-container [style*="background-color: #111827"],
+          .patient-detail-container [style*="background-color: #1F2937"],
+          .patient-detail-container [style*="background-color: #374151"],
+          .patient-detail-container [style*="background-color: #4B5563"],
+          .patient-detail-container [style*="background-color: #6B7280"],
+          .patient-detail-container [style*="background-color: #9CA3AF"] {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Target any elements with dark colors in their class names */
+          .patient-detail-container [class*="dark"],
+          .patient-detail-container [class*="black"],
+          .patient-detail-container [class*="gray-9"],
+          .patient-detail-container [class*="gray-8"],
+          .patient-detail-container [class*="gray-7"],
+          .patient-detail-container [class*="gray-6"],
+          .patient-detail-container [class*="gray-5"],
+          .patient-detail-container [class*="gray-4"] {
+            background-color: #F3F4F6 !important;
+            color: #1F2937 !important;
+          }
+          
+          /* Clean spacing */
+          .patient-detail-container .p-6 {
+            padding: 1.5rem !important;
+          }
+          
+          .patient-detail-container .p-4 {
+            padding: 1rem !important;
+          }
+          
+          .patient-detail-container .mb-6 {
+            margin-bottom: 1.5rem !important;
+          }
+          
+          .patient-detail-container .mb-4 {
+            margin-bottom: 1rem !important;
+          }
+        </style><div class="bg-gradient-to-br from-black via-gray-900 to-black flex flex-col h-screen overflow-hidden relative patient-detail-container" data-tutorial="patient-detail-container"><div class="absolute inset-0 overflow-hidden pointer-events-none"><div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 dark:bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div><div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 dark:bg-purple-500/5 rounded-full blur-3xl animate-pulse" style="animation-delay:1s"></div><div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-pink-500/5 dark:bg-pink-500/5 rounded-full blur-3xl animate-pulse" style="animation-delay:2s"></div></div><div class="patient-header" data-tutorial="patient-header"><div class="p-4 border-b border-gray-800/50 " style="opacity:0;transform:translateY(-20px) translateZ(0)"><div class="flex items-center justify-between"><div class="flex items-center space-x-4"><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 text-gray-400 hover:text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Back</button><div class="relative"><h1 class="text-2xl font-bold bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent dark:text-white dark:from-white dark:to-gray-300">Sydney Adams</h1><p class="text-gray-600 dark:text-gray-400 text-sm">28 years old<!-- --> • Patient ID #<!-- -->1001</p></div></div><div class="flex items-center space-x-2"><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z"></path></svg></button><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg></button><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" x2="12" y1="2" y2="15"></line></svg></button></div></div></div><div class="absolute top-4 right-4 flex space-x-2 z-10"><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black hover:bg-gray-100 hover:scale-105 shadow-lg h-9 rounded-md px-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 shadow-lg shadow-blue-500/25"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle></svg>New Scan</button><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-700 hover:to-emerald-700 shadow-lg shadow-green-500/25"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><line x1="10" x2="8" y1="9" y2="9"></line></svg>Questionnaire</button><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 bg-gradient-to-r from-orange-600 to-red-600 text-white hover:from-orange-700 hover:to-red-700 shadow-lg shadow-orange-500/25"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z"></path></svg>Edit Patient</button></div></div><div class="flex-1 overflow-hidden flex"><div class="w-1/2" data-tutorial="patient-photos"><div class="w-full h-full p-6 flex flex-col"><div class="w-full h-full flex flex-col space-y-6" style="opacity:0;transform:translateX(-50px) translateZ(0)"><div class="relative"><div class="relative w-full max-w-md mx-auto h-80 rounded-2xl overflow-hidden group " style="opacity:0;transform:scale(0.9) translateZ(0)"><img src="/Sydney Adams Front.png" alt="Sydney Adams front view" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 "/><div class="absolute inset-0 rounded-2xl border-2 border-white/20"></div><div class="absolute bottom-4 left-4 px-3 py-1 rounded-full backdrop-blur-md bg-blue-500/30 border border-blue-400/50"><span class="text-white text-sm font-medium">Front</span></div><div class="absolute bottom-4 right-4 px-3 py-1 rounded-full backdrop-blur-md bg-gray-800/50 border border-gray-600/50"><div class="flex items-center space-x-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-blue-400"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg><div class="text-right"><p class="text-xs text-gray-400">Last Scan</p><p class="text-sm font-semibold text-white">December 15, 2024</p></div></div></div></div><div class="flex justify-center mt-4"><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 backdrop-blur-md bg-gray-400/10 border-gray-400/20 hover:bg-gray-400/20 text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>Switch to Side View</button></div></div><div class="mt-6 flex-1"><div class="rounded-2xl border border-gray-800 bg-gray-900/50 backdrop-blur-sm text-white shadow-xl p-4 bg-gradient-to-r from-gray-800 to-gray-900 border-gray-700 h-full flex flex-col"><h3 class="text-lg font-semibold text-white mb-4 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-blue-400"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>Shortlist</h3><div class="space-y-3 overflow-y-auto flex-1 max-h-64"><div class="flex items-center justify-between p-3 bg-gray-700/50 rounded-lg border border-gray-600/50"><div class="flex items-center space-x-3"><div class="w-3 h-3 rounded-full bg-yellow-500"></div><span class="text-white text-sm font-medium">Mid Cheek Flattening</span></div><div class="flex items-center space-x-2"><span class="text-sm font-semibold text-yellow-400">75</span><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 text-gray-400 hover:text-red-400 hover:bg-red-500/20"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button></div></div><div class="flex items-center justify-between p-3 bg-gray-700/50 rounded-lg border border-gray-600/50"><div class="flex items-center space-x-3"><div class="w-3 h-3 rounded-full bg-yellow-500"></div><span class="text-white text-sm font-medium">Under Eye Dark Circles</span></div><div class="flex items-center space-x-2"><span class="text-sm font-semibold text-yellow-400">68</span><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 text-gray-400 hover:text-red-400 hover:bg-red-500/20"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button></div></div><div class="flex items-center justify-between p-3 bg-gray-700/50 rounded-lg border border-gray-600/50"><div class="flex items-center space-x-3"><div class="w-3 h-3 rounded-full bg-yellow-500"></div><span class="text-white text-sm font-medium">Under Eye Hollow</span></div><div class="flex items-center space-x-2"><span class="text-sm font-semibold text-yellow-400">72</span><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 text-gray-400 hover:text-red-400 hover:bg-red-500/20"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button></div></div></div></div></div></div></div></div><div class="w-1/2 flex flex-col"><div class="p-6 pb-2"><div class="flex space-x-1 p-1 bg-gray-800/50 rounded-xl border border-gray-700/50" data-tutorial="tab-navigation"><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 flex-1 transition-all duration-300 bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/25"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg><span class="ml-2 font-medium">Analysis</span></button><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 flex-1 transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path><path d="M5 3v4"></path><path d="M19 17v4"></path><path d="M3 5h4"></path><path d="M17 19h4"></path></svg><span class="ml-2 font-medium">Treatments</span></button><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 flex-1 transition-all duration-300 text-gray-400 hover:text-white hover:bg-white/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><line x1="10" x2="8" y1="9" y2="9"></line></svg><span class="ml-2 font-medium">Plan</span></button></div></div><div class="flex-1 overflow-y-auto p-6"><div data-tutorial="analysis-areas"><div class="space-y-1" style="opacity:0;transform:translateY(20px) translateZ(0)"><div class="mb-6"><div class="flex items-center justify-between mb-4"><h3 class="text-lg font-semibold text-white">Analysis Filters</h3><div class="flex items-center space-x-2"><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 text-gray-400 hover:text-gray-200 p-2 " title="Toggle Advanced Filters"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg></button><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 text-gray-400 hover:text-gray-200 p-2 " title="Toggle Sort"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><line x1="4" x2="4" y1="21" y2="14"></line><line x1="4" x2="4" y1="10" y2="3"></line><line x1="12" x2="12" y1="21" y2="12"></line><line x1="12" x2="12" y1="8" y2="3"></line><line x1="20" x2="20" y1="21" y2="16"></line><line x1="20" x2="20" y1="12" y2="3"></line><line x1="2" x2="6" y1="14" y2="14"></line><line x1="10" x2="14" y1="8" y2="8"></line><line x1="18" x2="22" y1="16" y2="16"></line></svg></button></div></div><div class="flex flex-col lg:flex-row lg:items-center gap-4"><div class="flex-1"><div class="flex items-center space-x-3 mb-2"><h4 class="text-sm font-medium text-gray-300">Filter by Area</h4><button type="button" class="text-xs text-blue-400 hover:text-blue-300 transition-colors">View All Areas</button></div><div class="flex flex-wrap gap-2"><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 px-4 py-3 rounded-xl transition-all duration-300 border-2 focus:outline-none focus:ring-0 active:transform-none bg-cyan-500/25 text-white border-cyan-400/40 shadow-md backdrop-blur-md"><span class="text-sm">All Areas</span></button><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 px-4 py-3 rounded-xl transition-all duration-300 border-2 focus:outline-none focus:ring-0 active:transform-none bg-gray-100 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700/60 hover:text-gray-900 dark:hover:text-white border-gray-300 dark:border-gray-600/50 hover:border-gray-400 dark:hover:border-gray-500/70 hover:shadow-md"><span class="text-sm">Forehead</span><span class="ml-2 text-xs font-bold px-2 py-1 rounded-full bg-gradient-to-r from-yellow-600 to-yellow-500 dark:from-yellow-500 dark:to-yellow-400 text-white border border-transparent">68</span><span class="ml-1 text-xs text-pink-400">★</span></button><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 px-4 py-3 rounded-xl transition-all duration-300 border-2 focus:outline-none focus:ring-0 active:transform-none bg-gray-100 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700/60 hover:text-gray-900 dark:hover:text-white border-gray-300 dark:border-gray-600/50 hover:border-gray-400 dark:hover:border-gray-500/70 hover:shadow-md"><span class="text-sm">Eyes</span><span class="ml-2 text-xs font-bold px-2 py-1 rounded-full bg-gradient-to-r from-yellow-500 to-green-500 dark:from-yellow-400 dark:to-green-400 text-white border border-transparent">70</span><span class="ml-1 text-xs text-pink-400">★</span></button><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 px-4 py-3 rounded-xl transition-all duration-300 border-2 focus:outline-none focus:ring-0 active:transform-none bg-gray-100 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700/60 hover:text-gray-900 dark:hover:text-white border-gray-300 dark:border-gray-600/50 hover:border-gray-400 dark:hover:border-gray-500/70 hover:shadow-md"><span class="text-sm">Cheeks</span><span class="ml-2 text-xs font-bold px-2 py-1 rounded-full bg-gradient-to-r from-yellow-500 to-green-500 dark:from-yellow-400 dark:to-green-400 text-white border border-transparent">72</span><span class="ml-1 text-xs text-pink-400">★</span></button></div><div class="mt-2"><p class="text-xs text-gray-500">Showing <!-- -->3<!-- --> areas of interest (marked with ★)</p></div></div></div></div><div class="space-y-6"><div class="space-y-2"><div class="sticky top-0 z-40 bg-gray-900/95 backdrop-blur-xl border-b border-gray-700/60 py-4 mb-4 shadow-lg opacity-100 transition-all duration-300"><div class="flex items-center justify-between py-2" style="opacity:0;transform:translateY(20px) translateZ(0)"><div class="flex items-center space-x-4"><div class="flex items-center space-x-3"><div class="w-1 h-6 bg-gradient-to-b from-blue-400 to-cyan-500 rounded-full"></div><h2 class="text-3xl font-bold text-white">Forehead<!-- --> Findings</h2></div><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black hover:bg-gray-100 hover:scale-105 shadow-lg h-9 rounded-md px-3 bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:from-cyan-700 hover:to-blue-700"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>Add All</button></div><div class="flex items-center space-x-4"><div class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-yellow-600 to-yellow-500 dark:from-yellow-500 dark:to-yellow-400 text-white border border-transparent">68<!-- -->/100</div><div class="text-sm text-gray-400">Good</div><div class="text-sm text-gray-400">0<!-- -->/<!-- -->1<!-- --> <!-- -->shortlisted</div></div></div></div><div class="space-y-2" data-area-id="forehead"><div class="grid grid-cols-1 gap-6"><div><div class="rounded-2xl border border-gray-800 bg-gray-900/50 backdrop-blur-sm text-white shadow-xl p-3 transition-all duration-300 backdrop-blur-sm group bg-gradient-to-r from-blue-900/30 to-cyan-900/30 border-blue-700/50 hover:border-blue-600/70 hover:shadow-xl hover:shadow-blue-500/20"><div class="flex items-start gap-4 mb-3"><div class="w-48 flex-shrink-0 transition-all duration-300"><div class="relative rounded border border-gray-600/50" style="max-height:10rem;min-height:6rem"><div class="absolute inset-0 flex items-center justify-center bg-gray-800 rounded-lg"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div></div><img src="/Images/Findings/Finding%3DTemporal%20Hollow.png" alt="Temporal Hollow example" class="w-full h-full object-cover rounded-lg transition-opacity duration-300 opacity-0 " style="opacity:0"/></div></div><div class="flex-1 flex flex-col transition-all duration-300"><div class="mb-4"><div class="flex items-center gap-2 mb-2"><h4 class="text-lg font-semibold text-white ">Temporal Hollow</h4></div><p class="text-sm line-clamp-3 text-gray-300 ">Volume loss in temporal region affecting facial contour and creating a sunken appearance</p></div><div class="flex items-center space-x-3 mb-3"><span class="px-2 py-1 rounded-full text-xs border text-orange-400 bg-orange-500/20 border-orange-500/50 ">moderate</span><div class="flex items-center space-x-1"><div class="text-xl font-bold bg-gradient-to-r from-yellow-600 to-yellow-500 dark:from-yellow-500 dark:to-yellow-400 bg-clip-text text-transparent ">68%</div><div class="text-xs text-gray-400">Rating</div></div></div><div class="mb-3"><div class="relative h-2 rounded-full overflow-hidden bg-gray-700"><div class="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-600 to-yellow-500 dark:from-yellow-500 dark:to-yellow-400" style="width:0px"></div></div></div></div></div><div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mt-4"><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 text-gray-400 hover:text-white self-start">Learn More<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 ml-1 transition-transform "><path d="m6 9 6 6 6-6"></path></svg></button><div class="flex space-x-2"><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black hover:bg-gray-100 hover:scale-105 shadow-lg h-9 rounded-md px-3 transition-all duration-300 bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:from-cyan-700 hover:to-blue-700"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><span class="hidden sm:inline">Add to Shortlist</span><span class="sm:hidden">Add</span></button></div></div></div></div></div></div></div><div class="space-y-2"><div class="sticky top-0 z-40 bg-gray-900/95 backdrop-blur-xl border-b border-gray-700/60 py-4 mb-4 shadow-lg opacity-100 transition-all duration-300"><div class="flex items-center justify-between py-2" style="opacity:0;transform:translateY(20px) translateZ(0)"><div class="flex items-center space-x-4"><div class="flex items-center space-x-3"><div class="w-1 h-6 bg-gradient-to-b from-blue-400 to-cyan-500 rounded-full"></div><h2 class="text-3xl font-bold text-white">Eyes<!-- --> Findings</h2></div><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black hover:bg-gray-100 hover:scale-105 shadow-lg h-9 rounded-md px-3 bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:from-cyan-700 hover:to-blue-700"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>Add All</button></div><div class="flex items-center space-x-4"><div class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-yellow-500 to-green-500 dark:from-yellow-400 dark:to-green-400 text-white border border-transparent">70<!-- -->/100</div><div class="text-sm text-gray-400">Good</div><div class="text-sm text-gray-400">1<!-- -->/<!-- -->1<!-- --> <!-- -->shortlisted</div></div></div></div><div class="space-y-2" data-area-id="eyes"><div class="grid grid-cols-1 gap-6"><div><div class="rounded-2xl border border-gray-800 bg-gray-900/50 backdrop-blur-sm text-white shadow-xl p-3 transition-all duration-300 backdrop-blur-sm group bg-gradient-to-r from-blue-900/30 to-cyan-900/30 border-blue-700/50 hover:border-blue-600/70 hover:shadow-xl hover:shadow-blue-500/20"><div class="flex items-start gap-4 mb-3"><div class="w-48 flex-shrink-0 transition-all duration-300"><div class="relative rounded border border-gray-600/50" style="max-height:10rem;min-height:6rem"><div class="absolute inset-0 flex items-center justify-center bg-gray-800 rounded-lg"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div></div><img src="/Images/Findings/Finding%3DUnder%20Eye%20Hollow.png" alt="Under Eye Hollow example" class="w-full h-full object-cover rounded-lg transition-opacity duration-300 opacity-0 " style="opacity:0"/></div></div><div class="flex-1 flex flex-col transition-all duration-300"><div class="mb-4"><div class="flex items-center gap-2 mb-2"><h4 class="text-lg font-semibold text-white ">Under Eye Hollow</h4></div><p class="text-sm line-clamp-3 text-gray-300 ">Grade 2 severity requiring structural support and volume restoration</p></div><div class="flex items-center space-x-3 mb-3"><span class="px-2 py-1 rounded-full text-xs border text-orange-400 bg-orange-500/20 border-orange-500/50 ">moderate</span><div class="flex items-center space-x-1"><div class="text-xl font-bold bg-gradient-to-r from-yellow-500 to-green-500 dark:from-yellow-400 dark:to-green-400 bg-clip-text text-transparent ">70%</div><div class="text-xs text-gray-400">Rating</div></div></div><div class="mb-3"><div class="relative h-2 rounded-full overflow-hidden bg-gray-700"><div class="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-500 to-green-500 dark:from-yellow-400 dark:to-green-400" style="width:0px"></div></div></div></div></div><div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mt-4"><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 text-gray-400 hover:text-white self-start">Learn More<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 ml-1 transition-transform "><path d="m6 9 6 6 6-6"></path></svg></button><div class="flex space-x-2"><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black hover:bg-gray-100 hover:scale-105 shadow-lg h-9 rounded-md px-3 transition-all duration-300 bg-gradient-to-r from-cyan-600 to-blue-600 text-white cursor-not-allowed" disabled=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg><span class="hidden sm:inline">Added to Shortlist</span><span class="sm:hidden">Added</span></button></div></div></div></div></div></div></div><div class="space-y-2"><div class="sticky top-0 z-40 bg-gray-900/95 backdrop-blur-xl border-b border-gray-700/60 py-4 mb-4 shadow-lg opacity-100 transition-all duration-300"><div class="flex items-center justify-between py-2" style="opacity:0;transform:translateY(20px) translateZ(0)"><div class="flex items-center space-x-4"><div class="flex items-center space-x-3"><div class="w-1 h-6 bg-gradient-to-b from-blue-400 to-cyan-500 rounded-full"></div><h2 class="text-3xl font-bold text-white">Cheeks<!-- --> Findings</h2></div><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black hover:bg-gray-100 hover:scale-105 shadow-lg h-9 rounded-md px-3 bg-gradient-to-r from-cyan-600 to-blue-600 text-white hover:from-cyan-700 hover:to-blue-700"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>Add All</button></div><div class="flex items-center space-x-4"><div class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-yellow-500 to-green-500 dark:from-yellow-400 dark:to-green-400 text-white border border-transparent">72<!-- -->/100</div><div class="text-sm text-gray-400">Good</div><div class="text-sm text-gray-400">1<!-- -->/<!-- -->1<!-- --> <!-- -->shortlisted</div></div></div></div><div class="space-y-2" data-area-id="cheeks"><div class="grid grid-cols-1 gap-6"><div><div class="rounded-2xl border border-gray-800 bg-gray-900/50 backdrop-blur-sm text-white shadow-xl p-3 transition-all duration-300 backdrop-blur-sm group bg-gradient-to-r from-blue-900/30 to-cyan-900/30 border-blue-700/50 hover:border-blue-600/70 hover:shadow-xl hover:shadow-blue-500/20"><div class="flex items-start gap-4 mb-3"><div class="w-48 flex-shrink-0 transition-all duration-300"><div class="relative rounded border border-gray-600/50" style="max-height:10rem;min-height:6rem"><div class="absolute inset-0 flex items-center justify-center bg-gray-800 rounded-lg"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div></div><img src="/Images/Findings/Finding%3DMid%20Cheek%20Flattening.png" alt="Mid Cheek Flattening example" class="w-full h-full object-cover rounded-lg transition-opacity duration-300 opacity-0 " style="opacity:0"/></div></div><div class="flex-1 flex flex-col transition-all duration-300"><div class="mb-4"><div class="flex items-center gap-2 mb-2"><h4 class="text-lg font-semibold text-white ">Mid Cheek Flattening</h4></div><p class="text-sm line-clamp-3 text-gray-300 ">Loss of mid-cheek volume affecting facial contour and youthful appearance</p></div><div class="flex items-center space-x-3 mb-3"><span class="px-2 py-1 rounded-full text-xs border text-orange-400 bg-orange-500/20 border-orange-500/50 ">moderate</span><div class="flex items-center space-x-1"><div class="text-xl font-bold bg-gradient-to-r from-yellow-500 to-green-500 dark:from-yellow-400 dark:to-green-400 bg-clip-text text-transparent ">72%</div><div class="text-xs text-gray-400">Rating</div></div></div><div class="mb-3"><div class="relative h-2 rounded-full overflow-hidden bg-gray-700"><div class="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-500 to-green-500 dark:from-yellow-400 dark:to-green-400" style="width:0px"></div></div></div></div></div><div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mt-4"><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-gray-100 hover:text-gray-900 h-9 rounded-md px-3 text-gray-400 hover:text-white self-start">Learn More<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 ml-1 transition-transform "><path d="m6 9 6 6 6-6"></path></svg></button><div class="flex space-x-2"><button class="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black hover:bg-gray-100 hover:scale-105 shadow-lg h-9 rounded-md px-3 transition-all duration-300 bg-gradient-to-r from-cyan-600 to-blue-600 text-white cursor-not-allowed" disabled=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg><span class="hidden sm:inline">Added to Shortlist</span><span class="sm:hidden">Added</span></button></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div><script src="/_next/static/chunks/webpack-417095c207392ae0.js" crossorigin="" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/_next/static/css/8c0cdd820dd0b618.css\",\"style\",{\"crossOrigin\":\"\"}]\n0:\"$L3\"\n"])</script><script>self.__next_f.push([1,"4:I[3728,[],\"\"]\n6:I[9928,[],\"\"]\n7:I[6826,[\"401\",\"static/chunks/401-11ac3ea27ce212d2.js\",\"185\",\"static/chunks/app/layout-aef669f49ad1d331.js\"],\"ThemeProvider\"]\n8:I[2721,[\"401\",\"static/chunks/401-11ac3ea27ce212d2.js\",\"185\",\"static/chunks/app/layout-aef669f49ad1d331.js\"],\"TutorialProvider\"]\n9:I[4790,[\"401\",\"static/chunks/401-11ac3ea27ce212d2.js\",\"185\",\"static/chunks/app/layout-aef669f49ad1d331.js\"],\"ViewportHeightHandler\"]\na:I[6954,[],\"\"]\nb:I[7264,[],\"\"]\nd:I[8297,[],\"\"]\ne:I[6267,[\"575\",\"static/chunks/575-a9687"])</script><script>self.__next_f.push([1,"cccbac72b77.js\",\"189\",\"static/chunks/189-2ef7946095469325.js\",\"401\",\"static/chunks/401-11ac3ea27ce212d2.js\",\"852\",\"static/chunks/852-8fcc06a3e374ca75.js\",\"859\",\"static/chunks/859-907b6758d936ba82.js\",\"234\",\"static/chunks/app/color-experiments/simple/page-8c29276a663299ed.js\"],\"\"]\n"])</script><script>self.__next_f.push([1,"3:[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/8c0cdd820dd0b618.css\",\"precedence\":\"next\",\"crossOrigin\":\"\"}]],[\"$\",\"$L4\",null,{\"buildId\":\"rM3DLRuUwv2fmuc157rT2\",\"assetPrefix\":\"\",\"initialCanonicalUrl\":\"/color-experiments/simple\",\"initialTree\":[\"\",{\"children\":[\"color-experiments\",{\"children\":[\"simple\",{\"children\":[\"__PAGE__\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialHead\":[false,\"$L5\"],\"globalErrorComponent\":\"$6\",\"children\":[null,[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"dark\",\"children\":[\"$\",\"body\",null,{\"className\":\"__variable_f367f3 font-sans antialiased\",\"children\":[\"$\",\"$L7\",null,{\"children\":[\"$\",\"$L8\",null,{\"children\":[[\"$\",\"$L9\",null,{}],[\"$\",\"$La\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"loading\":\"$undefined\",\"loadingStyles\":\"$undefined\",\"loadingScripts\":\"$undefined\",\"hasLoading\":false,\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$Lb\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[],\"initialChildNode\":[\"$\",\"$La\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"color-experiments\",\"children\"],\"loading\":\"$undefined\",\"loadingStyles\":\"$undefined\",\"loadingScripts\":\"$undefined\",\"hasLoading\":false,\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$Lb\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\",\"initialChildNode\":[\"$\",\"$La\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"color-experiments\",\"children\",\"simple\",\"children\"],\"loading\":\"$undefined\",\"loadingStyles\":\"$undefined\",\"loadingScripts\":\"$undefined\",\"hasLoading\":false,\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$Lb\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\",\"initialChildNode\":[\"$Lc\",[\"$\",\"$Ld\",null,{\"propsForComponent\":{\"params\":{}},\"Component\":\"$e\",\"isStaticGeneration\":true}],null],\"childPropSegment\":\"__PAGE__\",\"styles\":null}],\"childPropSegment\":\"simple\",\"styles\":null}],\"childPropSegment\":\"color-experiments\",\"styles\":null}]]}]}]}]}],null]}]]\n"])</script><script>self.__next_f.push([1,"5:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Aesthetics AI - Concierge Demo\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"Experience the future of personalized patient journeys with AI-powered analysis and concierge-level care\"}],[\"$\",\"link\",\"4\",{\"rel\":\"icon\",\"href\":\"/favicon.ico\",\"type\":\"image/x-icon\",\"sizes\":\"16x16\"}],[\"$\",\"meta\",\"5\",{\"name\":\"next-size-adjust\"}]]\nc:null\n"])</script><script>self.__next_f.push([1,""])</script></body></html>

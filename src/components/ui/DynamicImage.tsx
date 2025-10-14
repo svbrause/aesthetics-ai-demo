@@ -12,6 +12,7 @@ interface DynamicImageProps {
   isExpanded?: boolean;
   forceSquare?: boolean;
   fallbackSrc?: string;
+  onError?: (e: any) => void;
 }
 
 export function DynamicImage({
@@ -23,6 +24,7 @@ export function DynamicImage({
   isExpanded = false,
   forceSquare = false,
   fallbackSrc,
+  onError,
 }: DynamicImageProps) {
   const [imageError, setImageError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -31,9 +33,12 @@ export function DynamicImage({
     setIsLoading(false);
   };
 
-  const handleImageError = () => {
+  const handleImageError = (e: any) => {
     setImageError(true);
     setIsLoading(false);
+    if (onError) {
+      onError(e);
+    }
   };
 
   // If there's an error and we have a fallback, use the fallback
@@ -45,10 +50,7 @@ export function DynamicImage({
   if (minHeight) dynamicStyles.minHeight = minHeight;
 
   return (
-    <div 
-      className={`relative ${className}`}
-      style={dynamicStyles}
-    >
+    <div className={`relative ${className}`} style={dynamicStyles}>
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-800 rounded-lg">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>

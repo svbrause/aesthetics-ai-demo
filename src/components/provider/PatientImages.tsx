@@ -24,6 +24,9 @@ interface PatientImagesProps {
   treatmentPlan: any[];
   interestedAreas: string[];
   onUpdatePatient?: (updatedPatient: Patient) => void;
+  onRemoveFromShortlist?: (findingName: string) => void;
+  selectedShortlistItems?: Set<string>;
+  onShortlistItemSelect?: (itemName: string) => void;
 }
 
 export function PatientImages({
@@ -32,6 +35,9 @@ export function PatientImages({
   treatmentPlan,
   interestedAreas,
   onUpdatePatient,
+  onRemoveFromShortlist,
+  selectedShortlistItems,
+  onShortlistItemSelect,
 }: PatientImagesProps) {
   const [isSideView, setIsSideView] = useState(false);
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);

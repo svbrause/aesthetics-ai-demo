@@ -12,6 +12,7 @@ export interface Patient {
   findings: any[];
   score: number;
   scanDate: string;
+  hiddenFindings?: string[];
 }
 
 export interface AnalysisArea {
@@ -34,6 +35,7 @@ export interface Finding {
   beforeAfter: BeforeAfter[];
   treatments: string[];
   educational: string;
+  area?: string;
 }
 
 export interface BeforeAfter {
@@ -73,6 +75,7 @@ export interface TreatmentPlanItem {
   downtime: string;
   invasiveness: string;
   timeline?: "short-term" | "long-term";
+  targetedFindings?: string[];
 }
 
 export type ViewMode = "analysis" | "treatments" | "treatment-plan";
