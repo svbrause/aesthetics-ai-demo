@@ -1,0 +1,4441 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Override all background gradients with solid color */
+html,
+body {
+  background: #f8f9fa !important;
+  background-color: #f8f9fa !important;
+}
+
+/* Remove all gradient backgrounds */
+* {
+  background-image: none !important;
+}
+
+/* Override specific gradient classes */
+.bg-gradient-to-br,
+.bg-gradient-to-r,
+.bg-gradient-to-b,
+.bg-gradient-to-t,
+.bg-gradient-to-l,
+.bg-gradient-to-tr,
+.bg-gradient-to-tl,
+.bg-gradient-to-bl {
+  background: #f8f9fa !important;
+  background-color: #f8f9fa !important;
+  background-image: none !important;
+}
+
+/* Filter and Sort buttons - remove blue and make #F3F4F6 gray */
+.medspa-new-theme button[title="Toggle Advanced Filters"],
+.medspa-new-theme button[title="Toggle Sort"] {
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
+  border-color: #e5e7eb !important;
+}
+
+.medspa-new-theme button[title="Toggle Advanced Filters"]:hover,
+.medspa-new-theme button[title="Toggle Sort"]:hover {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+/* More specific targeting for filter/sort buttons */
+.medspa-new-theme button[class*="text-gray-400"][class*="hover:text-gray-200"] {
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
+  border-color: #e5e7eb !important;
+}
+
+.medspa-new-theme
+  button[class*="text-gray-400"][class*="hover:text-gray-200"]:hover {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+/* Override any blue styling on filter/sort buttons */
+.medspa-new-theme button[class*="bg-gray-700/50"] {
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
+  border-color: #e5e7eb !important;
+}
+
+.medspa-new-theme button[class*="bg-gray-700/50"]:hover {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+/* More specific overrides for filter/sort buttons */
+.medspa-new-theme
+  button.inline-flex.items-center.justify-center.whitespace-nowrap.text-sm.font-medium.ring-offset-background.transition-all.focus-visible\:outline-none.focus-visible\:ring-2.focus-visible\:ring-ring.focus-visible\:ring-offset-2.disabled\:pointer-events-none.disabled\:opacity-50.hover\:bg-gray-100.h-9.rounded-md.text-gray-400.hover\:text-gray-200.p-2 {
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
+  border-color: #e5e7eb !important;
+}
+
+.medspa-new-theme
+  button.inline-flex.items-center.justify-center.whitespace-nowrap.text-sm.font-medium.ring-offset-background.transition-all.focus-visible\:outline-none.focus-visible\:ring-2.focus-visible\:ring-ring.focus-visible\:ring-offset-2.disabled\:pointer-events-none.disabled\:opacity-50.hover\:bg-gray-100.h-9.rounded-md.text-gray-400.hover\:text-gray-200.p-2:hover {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+/* Nuclear option - override any button with these specific classes */
+.medspa-new-theme
+  button[class*="text-gray-400"][class*="hover:text-gray-200"][class*="p-2"] {
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
+  border-color: #e5e7eb !important;
+}
+
+.medspa-new-theme
+  button[class*="text-gray-400"][class*="hover:text-gray-200"][class*="p-2"]:hover {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+/* Expanded filter/sort section buttons - remove blue and make darker gray for better contrast */
+.medspa-new-theme
+  button[class*="w-full p-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white"] {
+  background-color: #6b7280 !important;
+  color: #ffffff !important;
+  border-color: #9ca3af !important;
+}
+
+.medspa-new-theme
+  button[class*="w-full p-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white"]:hover {
+  background-color: #4b5563 !important;
+  color: #ffffff !important;
+  border-color: #6b7280 !important;
+}
+
+.medspa-new-theme
+  button[class*="w-full p-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white"]:focus {
+  background-color: #4b5563 !important;
+  color: #ffffff !important;
+  border-color: #6b7280 !important;
+  box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.5) !important;
+}
+
+/* More specific targeting for sort/filter dropdown buttons */
+.medspa-new-theme
+  button[class*="appearance-none transition-all duration-200 flex items-center justify-between cursor-pointer"] {
+  background-color: #6b7280 !important;
+  color: #ffffff !important;
+  border-color: #9ca3af !important;
+}
+
+.medspa-new-theme
+  button[class*="appearance-none transition-all duration-200 flex items-center justify-between cursor-pointer"]:hover {
+  background-color: #4b5563 !important;
+  color: #ffffff !important;
+  border-color: #6b7280 !important;
+}
+
+.medspa-new-theme
+  button[class*="appearance-none transition-all duration-200 flex items-center justify-between cursor-pointer"]:focus {
+  background-color: #4b5563 !important;
+  color: #ffffff !important;
+  border-color: #6b7280 !important;
+  box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.5) !important;
+}
+
+/* Most specific override for sort/filter dropdown buttons */
+.medspa-new-theme
+  button.w-full.p-3.bg-gray-800\/50.border.border-gray-600\/50.rounded-xl.text-white.appearance-none.transition-all.duration-200.flex.items-center.justify-between.cursor-pointer {
+  background-color: #6b7280 !important;
+  color: #ffffff !important;
+  border-color: #9ca3af !important;
+}
+
+.medspa-new-theme
+  button.w-full.p-3.bg-gray-800\/50.border.border-gray-600\/50.rounded-xl.text-white.appearance-none.transition-all.duration-200.flex.items-center.justify-between.cursor-pointer:hover {
+  background-color: #4b5563 !important;
+  color: #ffffff !important;
+  border-color: #6b7280 !important;
+}
+
+.medspa-new-theme
+  button.w-full.p-3.bg-gray-800\/50.border.border-gray-600\/50.rounded-xl.text-white.appearance-none.transition-all.duration-200.flex.items-center.justify-between.cursor-pointer:focus {
+  background-color: #4b5563 !important;
+  color: #ffffff !important;
+  border-color: #6b7280 !important;
+  box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.5) !important;
+}
+
+/* Nuclear option - override any button with these exact classes */
+.medspa-new-theme
+  button[class*="w-full p-3"][class*="bg-gray-800/50"][class*="border border-gray-600/50"][class*="rounded-xl text-white"] {
+  background-color: #6b7280 !important;
+  color: #ffffff !important;
+  border-color: #9ca3af !important;
+}
+
+.medspa-new-theme
+  button[class*="w-full p-3"][class*="bg-gray-800/50"][class*="border border-gray-600/50"][class*="rounded-xl text-white"]:hover {
+  background-color: #4b5563 !important;
+  color: #ffffff !important;
+  border-color: #6b7280 !important;
+}
+
+.medspa-new-theme
+  button[class*="w-full p-3"][class*="bg-gray-800/50"][class*="border border-gray-600/50"][class*="rounded-xl text-white"]:focus {
+  background-color: #4b5563 !important;
+  color: #ffffff !important;
+  border-color: #6b7280 !important;
+  box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.5) !important;
+}
+
+:root {
+  --vh: 1vh; /* Fallback for browsers that don't support CSS custom properties */
+  --actual-vh: 100vh; /* Fallback for actual viewport height */
+  --app-height: 100vh; /* Dynamic viewport height for mobile Safari */
+}
+
+/* Dark theme (default) */
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+  --card-bg: rgba(31, 41, 55, 0.5);
+  --card-border: rgba(75, 85, 99, 0.5);
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --scrollbar-track: #1a1a1a;
+  --scrollbar-thumb: #4a4a4a;
+  --scrollbar-thumb-hover: #6a6a6a;
+}
+
+/* Light theme */
+.light {
+  --background: #ffffff;
+  --foreground: #000000;
+  --card-bg: rgba(249, 250, 251, 0.8);
+  --card-border: rgba(209, 213, 219, 0.5);
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --success: #059669;
+  --warning: #d97706;
+  --error: #dc2626;
+  --scrollbar-track: #e6f3f7;
+  --scrollbar-thumb: #d1d5db;
+  --scrollbar-thumb-hover: #9ca3af;
+}
+
+/* HIPAA Compliance Mode */
+.hipaa-mode {
+  --hipaa-accent: #059669;
+  --hipaa-border: #10b981;
+  --hipaa-bg: rgba(16, 185, 129, 0.1);
+  --hipaa-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  --hipaa-text: #10b981;
+}
+
+/* Gold Theme (Test Version) */
+.gold-theme {
+  --background: #000000;
+  --foreground: #ffffff;
+  --card-bg: rgba(15, 15, 15, 0.9);
+  --card-border: rgba(60, 60, 60, 0.4);
+  --text-primary: #ffffff;
+  --text-secondary: #a3a3a3;
+  --text-muted: #6b7280;
+  --accent: #aa8960;
+  --accent-hover: #8b6f4a;
+  --success: #aa8960;
+  --warning: #aa8960;
+  --error: #dc2626;
+  --scrollbar-track: #0a0a0a;
+  --scrollbar-thumb: #2a2a2a;
+  --scrollbar-thumb-hover: #3a3a3a;
+  --gold-primary: #aa8960;
+  --gold-secondary: #8b6f4a;
+  --gold-accent: #c49d6b;
+  --gold-muted: #6b5a47;
+  --dark-gray-1: #111111;
+  --dark-gray-2: #1a1a1a;
+  --dark-gray-3: #262626;
+  --dark-gray-4: #404040;
+}
+
+/* Medspa Theme - Consistent grays with single accent */
+.medspa-theme {
+  --background: #f8f9fa;
+  --foreground: #1f2937;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
+  --accent: #c08497;
+  --accent-hover: #a8717a;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --scrollbar-track: #e6f3f7;
+  --scrollbar-thumb: #d1d5db;
+  --scrollbar-thumb-hover: #9ca3af;
+  --medspa-primary: #c08497;
+  --medspa-secondary: #a8717a;
+  --medspa-accent: #c08497;
+  --medspa-muted: #6b7280;
+  --medspa-light: #f9fafb;
+  --medspa-dark: #4b5563;
+  --medspa-surface: #ffffff;
+  --medspa-surface-hover: #e6f3f7;
+  --medspa-border: #e5e7eb;
+  --medspa-border-light: #e6f3f7;
+  --medspa-gray-50: #f9fafb;
+  --medspa-gray-100: #e6f3f7;
+  --medspa-gray-200: #e5e7eb;
+  --medspa-gray-300: #d1d5db;
+  --medspa-gray-400: #9ca3af;
+  --medspa-gray-500: #6b7280;
+  --medspa-gray-600: #4b5563;
+  --medspa-gray-700: #374151;
+  --medspa-gray-800: #1f2937;
+  --medspa-gray-900: #111827;
+}
+
+/* New Medspa Theme - Updated Color Scheme */
+.medspa-new-theme {
+  --background: #ffffff;
+  --foreground: #000000;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --text-primary: #000000;
+  --text-secondary: #6b7280;
+  --text-muted: #6b7280;
+  --accent: #367588;
+  --accent-hover: #2c5f6b;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --scrollbar-track: #e6f3f7;
+  --scrollbar-thumb: #d1d5db;
+  --scrollbar-thumb-hover: #9ca3af;
+  --medspa-primary: #367588;
+  --medspa-secondary: #2c5f6b;
+  --medspa-accent: #367588;
+  --medspa-muted: #6b7280;
+  --medspa-light: #f8f9fa;
+  --medspa-dark: #4b5563;
+  --medspa-surface: #ffffff;
+  --medspa-surface-hover: #e6f3f7;
+  --medspa-border: #e5e7eb;
+  --medspa-border-light: #e6f3f7;
+  --medspa-gray-50: #f8f9fa;
+  --medspa-gray-100: #e6f3f7;
+  --medspa-gray-200: #e5e7eb;
+  --medspa-gray-300: #d1d5db;
+  --medspa-gray-400: #9ca3af;
+  --medspa-gray-500: #6b7280;
+  --medspa-gray-600: #4b5563;
+  --medspa-gray-700: #374151;
+  --medspa-gray-800: #1f2937;
+  --medspa-gray-900: #000000;
+  --medspa-accent-24: rgba(54, 117, 136, 0.24);
+}
+
+/* Medspa Theme Overrides */
+.medspa-theme {
+  background-color: var(--background) !important;
+  color: var(--text-primary) !important;
+}
+
+.medspa-theme .bg-gradient-to-br {
+  background: var(--background) !important;
+}
+
+.medspa-theme .bg-gray-800\/50,
+.medspa-theme .bg-gray-800,
+.medspa-theme .bg-gray-700,
+.medspa-theme .bg-gray-600,
+.medspa-theme .bg-gray-900 {
+  background-color: var(--medspa-gray-100) !important;
+  border: 1px solid var(--medspa-gray-200) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+.medspa-theme .bg-gray-500 {
+  background-color: var(--medspa-gray-200) !important;
+  border: 1px solid var(--medspa-gray-300) !important;
+}
+
+.medspa-theme .bg-gray-400 {
+  background-color: var(--medspa-gray-300) !important;
+  border: 1px solid var(--medspa-gray-400) !important;
+}
+
+.medspa-theme .text-white {
+  color: var(--medspa-gray-900) !important;
+}
+
+.medspa-theme .text-gray-200,
+.medspa-theme .text-gray-300 {
+  color: var(--medspa-gray-700) !important;
+}
+
+.medspa-theme .text-gray-400,
+.medspa-theme .text-gray-500 {
+  color: var(--medspa-gray-600) !important;
+}
+
+.medspa-theme .text-gray-600 {
+  color: var(--medspa-gray-500) !important;
+}
+
+.medspa-theme .text-gray-700 {
+  color: var(--medspa-gray-400) !important;
+}
+
+.medspa-theme .border-gray-700,
+.medspa-theme .border-gray-600,
+.medspa-theme .border-gray-800,
+.medspa-theme .border-gray-500 {
+  border-color: var(--medspa-gray-200) !important;
+}
+
+.medspa-theme .hover\:border-gray-600:hover,
+.medspa-theme .hover\:border-gray-700:hover {
+  border-color: var(--medspa-gray-300) !important;
+}
+
+.medspa-theme .hover\:bg-gray-700:hover,
+.medspa-theme .hover\:bg-gray-800:hover {
+  background-color: var(--medspa-gray-200) !important;
+}
+
+.medspa-theme .hover\:bg-gray-600:hover {
+  background-color: var(--medspa-gray-300) !important;
+}
+
+/* Medspa theme glass effect */
+.medspa-theme .glass {
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--card-border) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Medspa theme text selection */
+.medspa-theme ::selection {
+  background: rgba(192, 132, 151, 0.3) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Medspa Accent Elements */
+.medspa-theme .accent-button {
+  background-color: var(--medspa-primary) !important;
+  color: white !important;
+  border: 1px solid var(--medspa-primary) !important;
+}
+
+.medspa-theme .accent-button:hover {
+  background-color: var(--medspa-secondary) !important;
+  border-color: var(--medspa-secondary) !important;
+}
+
+.medspa-theme .accent-tab {
+  background-color: var(--medspa-primary) !important;
+  color: white !important;
+}
+
+.medspa-theme .accent-border {
+  border-color: var(--medspa-primary) !important;
+}
+
+.medspa-theme .accent-bg {
+  background-color: var(--medspa-primary) !important;
+}
+
+.medspa-theme .accent-text {
+  color: var(--medspa-primary) !important;
+}
+
+/* Specific Medspa Accent Elements - Keep Add to Shortlist buttons gray */
+.medspa-theme button[class*="Add to Shortlist"],
+.medspa-theme button[class*="Add All"] {
+  background-color: #e6f3f7 !important;
+  color: #6b7280 !important;
+  border-color: #e5e7eb !important;
+}
+
+.medspa-theme button[class*="Add to Shortlist"]:hover,
+.medspa-theme button[class*="Add All"]:hover {
+  background-color: #e5e7eb !important;
+  border-color: #d1d5db !important;
+}
+
+/* Force pink accents for selected elements */
+.medspa-theme button[class*="Analysis"] {
+  background-color: #c08497 !important;
+  color: white !important;
+  border-color: #c08497 !important;
+}
+
+.medspa-theme button[class*="All Areas"] {
+  background-color: #c08497 !important;
+  color: white !important;
+  border-color: #c08497 !important;
+}
+
+.medspa-theme .severity-scale-bar,
+.medspa-theme [class*="severity"],
+.medspa-theme [class*="progress"] {
+  background: linear-gradient(
+    90deg,
+    var(--medspa-primary) 0%,
+    var(--medspa-secondary) 100%
+  ) !important;
+}
+
+.medspa-theme [class*="shortlist"],
+.medspa-theme [class*="Shortlist"] {
+  border-color: var(--medspa-primary) !important;
+  border-width: 2px !important;
+}
+
+/* Area Headings - Darker Gray with White Text */
+.medspa-theme .area-heading {
+  background: #4b5563 !important;
+  border: 1px solid #374151 !important;
+  color: #ffffff !important;
+}
+
+/* Make area headings darker gray with white text */
+.medspa-theme .sticky.top-0 {
+  background: #4b5563 !important;
+  backdrop-filter: none !important;
+  color: #ffffff !important;
+}
+
+.medspa-theme .bg-gray-900\/95 {
+  background: #4b5563 !important;
+  backdrop-filter: none !important;
+  color: #ffffff !important;
+}
+
+.medspa-theme .finding-card {
+  background-color: #ffffff !important;
+  border: 1px solid var(--medspa-gray-200) !important;
+}
+
+.medspa-theme .filter-chip {
+  background-color: var(--medspa-gray-100) !important;
+  border: 1px solid var(--medspa-gray-200) !important;
+  color: var(--medspa-gray-600) !important;
+}
+
+.medspa-theme .filter-chip.selected {
+  background-color: var(--medspa-primary) !important;
+  border-color: var(--medspa-primary) !important;
+  color: white !important;
+}
+
+.medspa-theme .add-to-shortlist-btn {
+  background-color: var(--medspa-primary) !important;
+  color: white !important;
+  border: 1px solid var(--medspa-primary) !important;
+}
+
+.medspa-theme .add-to-shortlist-btn:hover {
+  background-color: var(--medspa-secondary) !important;
+  border-color: var(--medspa-secondary) !important;
+}
+
+.medspa-theme .severity-bar {
+  background: linear-gradient(
+    90deg,
+    var(--medspa-primary) 0%,
+    var(--medspa-secondary) 100%
+  ) !important;
+}
+
+.medspa-theme ::-moz-selection {
+  background: rgba(232, 180, 184, 0.3) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Medspa theme specific accent colors */
+.medspa-theme .text-blue-400 {
+  color: var(--medspa-primary) !important;
+}
+
+.medspa-theme .text-blue-300 {
+  color: var(--medspa-secondary) !important;
+}
+
+.medspa-theme .border-blue-500\/50 {
+  border-color: rgba(232, 180, 184, 0.5) !important;
+}
+
+/* Override all dark gray elements to light pastel gray */
+.medspa-theme .bg-gray-800\/30,
+.medspa-theme .bg-gray-700\/30,
+.medspa-theme .bg-gray-800,
+.medspa-theme .bg-gray-700,
+.medspa-theme .bg-gray-600 {
+  background-color: #f8f9fa !important;
+  background: #f8f9fa !important;
+}
+
+.medspa-theme .from-gray-800\/30,
+.medspa-theme .to-gray-700\/30,
+.medspa-theme .from-gray-800,
+.medspa-theme .to-gray-700 {
+  background: #f8f9fa !important;
+}
+
+.medspa-theme .border-gray-600\/50,
+.medspa-theme .border-gray-700\/60,
+.medspa-theme .border-gray-500 {
+  border-color: #e5e7eb !important;
+}
+
+.medspa-theme .text-gray-200,
+.medspa-theme .text-gray-300 {
+  color: #374151 !important;
+}
+
+.medspa-theme .text-white {
+  color: #111827 !important;
+}
+
+/* Filter chips - light gray for unselected, pink outline for selected */
+.medspa-theme .bg-gray-100 {
+  background-color: #e6f3f7 !important;
+  color: #6b7280 !important;
+  border-color: #e5e7eb !important;
+}
+
+.medspa-theme .bg-gray-100.dark\:bg-gray-800\/60 {
+  background-color: #e6f3f7 !important;
+  color: #6b7280 !important;
+  border-color: #e5e7eb !important;
+}
+
+/* Make stars pink in unselected chips */
+.medspa-theme
+  button:not([class*="selected"]):not(:has-text("All Areas"))
+  span:contains("★"),
+.medspa-theme
+  button:not([class*="selected"]):not(:has-text("All Areas"))
+  *:contains("★") {
+  color: var(--medspa-primary) !important;
+}
+
+/* Force unselected filter chips to be neutral gray with pink stars */
+.medspa-theme button[class*="bg-gray-100"]:not([active]):not(.active) {
+  background-color: #e6f3f7 !important;
+  color: #6b7280 !important;
+  border-color: #e5e7eb !important;
+}
+
+.medspa-theme
+  button[class*="bg-gray-100"]:not([active]):not(.active)
+  span:contains("★"),
+.medspa-theme
+  button[class*="bg-gray-100"]:not([active]):not(.active)
+  *:contains("★") {
+  color: var(--medspa-primary) !important;
+}
+
+/* Selected filter chips with light gray background and pink accent */
+.medspa-theme button[class*="bg-gray-100"]:has(span:contains("★")),
+.medspa-theme button[class*="bg-gray-100"][class*="selected"] {
+  background-color: #e6f3f7 !important;
+  color: var(--medspa-primary) !important;
+  border-color: var(--medspa-primary) !important;
+  border-width: 2px !important;
+}
+
+/* Target chips with star symbol specifically */
+.medspa-theme button:has(span:contains("★")) {
+  background-color: #e6f3f7 !important;
+  color: var(--medspa-primary) !important;
+  border-color: var(--medspa-primary) !important;
+  border-width: 2px !important;
+}
+
+/* Override specific Tailwind classes for selected chips */
+.medspa-theme .bg-gray-100.text-gray-700.border-gray-300 {
+  background-color: #e6f3f7 !important;
+  color: var(--medspa-primary) !important;
+  border-color: var(--medspa-primary) !important;
+  border-width: 2px !important;
+}
+
+/* Override text colors for selected chips */
+.medspa-theme .text-gray-700 {
+  color: var(--medspa-primary) !important;
+}
+
+/* Force All Areas button to have light gray background with pink accent */
+.medspa-theme button:has-text("All Areas"),
+.medspa-theme button[class*="All Areas"] {
+  background-color: #e6f3f7 !important;
+  color: var(--medspa-primary) !important;
+  border-color: var(--medspa-primary) !important;
+  border-width: 2px !important;
+}
+
+/* Target the specific classes used by All Areas button */
+.medspa-theme .bg-gray-700.text-gray-200.border-gray-500 {
+  background-color: #e6f3f7 !important;
+  color: var(--medspa-primary) !important;
+  border-color: var(--medspa-primary) !important;
+  border-width: 2px !important;
+}
+
+.medspa-theme .border-gray-300 {
+  border-color: var(--medspa-primary) !important;
+  border-width: 2px !important;
+}
+
+/* Add to Shortlist buttons - pink accent like selected tab */
+.medspa-theme button[class*="Add to Shortlist"],
+.medspa-theme button[class*="Add All"] {
+  background: var(--medspa-primary) !important;
+  color: white !important;
+  border-color: var(--medspa-primary) !important;
+}
+
+.medspa-theme button[class*="Add to Shortlist"]:hover,
+.medspa-theme button[class*="Add All"]:hover {
+  background: var(--medspa-secondary) !important;
+  color: white !important;
+  border-color: var(--medspa-secondary) !important;
+}
+
+/* Target the actual gradient classes being used */
+.medspa-theme .bg-gradient-to-r.from-gray-700.to-gray-600 {
+  background: var(--medspa-primary) !important;
+  color: white !important;
+  border-color: var(--medspa-primary) !important;
+}
+
+.medspa-theme .bg-gradient-to-r.from-gray-700.to-gray-600:hover {
+  background: var(--medspa-secondary) !important;
+  color: white !important;
+  border-color: var(--medspa-secondary) !important;
+}
+
+/* Override text colors */
+.medspa-theme .text-gray-200 {
+  color: white !important;
+}
+
+.medspa-theme .text-gray-400 {
+  color: white !important;
+}
+
+.medspa-theme .border-blue-400\/50 {
+  border-color: rgba(232, 180, 184, 0.5) !important;
+}
+
+/* Medspa accent styles */
+.medspa-theme .medspa-accent {
+  color: var(--medspa-primary) !important;
+}
+
+.medspa-theme .medspa-accent-border {
+  border-color: var(--medspa-primary) !important;
+}
+
+.medspa-theme .medspa-accent-bg {
+  background-color: rgba(232, 180, 184, 0.1) !important;
+  border: 1px solid rgba(232, 180, 184, 0.3) !important;
+}
+
+.medspa-theme .medspa-accent-text {
+  color: var(--medspa-primary) !important;
+}
+
+/* Medspa theme focus states */
+.medspa-theme .focus\:ring-blue-500:focus {
+  --tw-ring-color: var(--medspa-primary) !important;
+}
+
+.medspa-theme .focus\:border-blue-500:focus {
+  border-color: var(--medspa-primary) !important;
+}
+
+/* Medspa theme tab navigation */
+.medspa-theme .bg-gradient-to-r.from-blue-600.to-purple-600 {
+  background: linear-gradient(
+    to right,
+    var(--medspa-primary),
+    var(--medspa-secondary)
+  ) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--medspa-primary) !important;
+}
+
+.medspa-theme .shadow-blue-500\/25 {
+  box-shadow: 0 4px 6px -1px rgba(232, 180, 184, 0.25) !important;
+}
+
+/* Medspa theme for small accent elements */
+.medspa-theme .medspa-tab-active {
+  background: linear-gradient(
+    to right,
+    var(--medspa-primary),
+    var(--medspa-secondary)
+  ) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 6px -1px rgba(232, 180, 184, 0.25) !important;
+}
+
+.medspa-theme .medspa-highlight {
+  background-color: rgba(232, 180, 184, 0.1) !important;
+  border: 1px solid rgba(232, 180, 184, 0.3) !important;
+  color: var(--medspa-primary) !important;
+}
+
+.medspa-theme .medspa-border {
+  border-color: var(--medspa-primary) !important;
+}
+
+.medspa-theme .medspa-text {
+  color: var(--medspa-primary) !important;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  height: 100vh;
+  height: 100dvh; /* Use dynamic viewport height */
+  height: var(--app-height); /* Fallback for older browsers */
+}
+
+/* Consistent viewport height across all devices */
+html,
+body {
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+/* Mobile Safari viewport fix */
+@supports (-webkit-touch-callout: none) {
+  html,
+  body {
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+  }
+}
+
+/* Additional mobile Safari fixes */
+@media screen and (max-width: 768px) {
+  html,
+  body {
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+  }
+
+  /* Ensure content doesn't go below viewport */
+  main {
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    max-height: 100dvh !important;
+  }
+}
+
+/* Utility classes for viewport height */
+.h-screen-dvh {
+  height: 100dvh;
+  height: var(--app-height); /* Fallback */
+}
+
+.min-h-screen-dvh {
+  min-height: 100dvh;
+  min-height: var(--app-height); /* Fallback */
+}
+
+.max-h-screen-dvh {
+  max-height: 100dvh;
+  max-height: var(--app-height); /* Fallback */
+}
+
+body {
+  color: var(--text-primary);
+  background: var(--background);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Safari-specific fixes for scrolling - only for scrollable content areas */
+@supports (-webkit-appearance: none) {
+  /* Fix for scrollable content areas in Safari */
+  .overflow-y-auto {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+
+  /* Fix for Safari on iPad landscape - ensure scrollable areas work */
+  @media screen and (orientation: landscape) and (max-width: 1024px) {
+    .overflow-y-auto {
+      -webkit-overflow-scrolling: touch;
+      overflow-scrolling: touch;
+    }
+  }
+}
+
+/* Custom animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Light mode specific overrides */
+.light .glass {
+  background: rgba(249, 250, 251, 0.9);
+  border: 1px solid rgba(209, 213, 219, 0.6);
+}
+
+.light .bg-gray-800 {
+  background-color: var(--card-bg) !important;
+}
+
+.light .bg-gray-900 {
+  background-color: var(--background) !important;
+}
+
+.light .text-white {
+  color: var(--text-primary) !important;
+}
+
+.light .text-gray-300 {
+  color: var(--text-secondary) !important;
+}
+
+.light .text-gray-400 {
+  color: var(--text-muted) !important;
+}
+
+.light .border-gray-700 {
+  border-color: var(--card-border) !important;
+}
+
+.light .bg-black {
+  background-color: var(--background) !important;
+}
+
+/* Additional light mode overrides */
+.light .bg-gray-800\/50 {
+  background-color: rgba(249, 250, 251, 0.8) !important;
+}
+
+.light .bg-gray-700 {
+  background-color: rgba(243, 244, 246, 0.8) !important;
+}
+
+.light .border-gray-600 {
+  border-color: var(--card-border) !important;
+}
+
+.light .border-gray-800 {
+  border-color: var(--card-border) !important;
+}
+
+.light .hover\:bg-gray-700:hover {
+  background-color: rgba(243, 244, 246, 0.8) !important;
+}
+
+.light .hover\:border-gray-600:hover {
+  border-color: var(--card-border) !important;
+}
+
+/* Light mode gradients */
+.light .bg-gradient-to-br {
+  background: linear-gradient(
+    to bottom right,
+    var(--background),
+    var(--card-bg)
+  ) !important;
+}
+
+.light .bg-gradient-to-r {
+  background: linear-gradient(
+    to right,
+    var(--accent),
+    var(--accent-hover)
+  ) !important;
+}
+
+/* Force light mode styles */
+.light {
+  background-color: var(--background) !important;
+  color: var(--text-primary) !important;
+}
+
+.light * {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Override specific Tailwind classes in light mode */
+.light .text-gray-500 {
+  color: var(--text-muted) !important;
+}
+
+.light .text-gray-600 {
+  color: var(--text-secondary) !important;
+}
+
+.light .bg-gray-600 {
+  background-color: var(--card-border) !important;
+}
+
+.light .bg-gray-500 {
+  background-color: var(--text-muted) !important;
+}
+
+/* HIPAA Compliance Styling */
+.hipaa-mode .glass {
+  border: 2px solid var(--hipaa-border);
+  background: var(--hipaa-bg);
+  box-shadow: var(--hipaa-shadow);
+}
+
+.hipaa-mode .hipaa-badge {
+  background: var(--hipaa-accent);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hipaa-mode .hipaa-indicator {
+  position: relative;
+}
+
+.hipaa-mode .hipaa-indicator::before {
+  content: "🔒";
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--hipaa-accent);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  z-index: 10;
+}
+
+/* HIPAA Compliance Mode - Realistic Security Features */
+
+/* Data Masking for Sensitive Information */
+.hipaa-mode .hipaa-masked {
+  background: repeating-linear-gradient(
+    45deg,
+    #374151,
+    #374151 2px,
+    #4b5563 2px,
+    #4b5563 4px
+  );
+  color: transparent;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  position: relative;
+}
+
+.hipaa-mode .hipaa-masked::after {
+  content: "🔒 MASKED";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #10b981;
+  font-size: 10px;
+  font-weight: 600;
+  text-shadow: none;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid #10b981;
+}
+
+/* Secure Data Indicators */
+.hipaa-mode .hipaa-secure::before {
+  content: "🔐";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 12px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hipaa-mode .hipaa-encrypted::after {
+  content: "ENCRYPTED";
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  background: #10b981;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  z-index: 10;
+}
+
+/* Audit Trail Indicators */
+.hipaa-mode .hipaa-audit::before {
+  content: "📋";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  font-size: 10px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 3px;
+  padding: 2px;
+}
+
+/* Access Control Indicators */
+.hipaa-mode .hipaa-restricted {
+  border-left: 4px solid #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+  position: relative;
+}
+
+.hipaa-mode .hipaa-restricted::before {
+  content: "🔑 RESTRICTED ACCESS";
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #f59e0b;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  z-index: 10;
+}
+
+/* Session Timeout Warning */
+.hipaa-mode .hipaa-session-warning {
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Secure Transmission Indicators */
+.hipaa-mode .hipaa-transmission::after {
+  content: "🔒 SECURE TRANSMISSION";
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: #10b981;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  z-index: 10;
+}
+
+/* Data Retention Indicators */
+.hipaa-mode .hipaa-retention::before {
+  content: "⏰";
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 10px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 3px;
+  padding: 2px;
+}
+
+/* Minimal Visual Changes - Focus on Security, Not Color */
+.hipaa-mode {
+  /* Very subtle security-focused styling */
+  border-left: 3px solid #10b981;
+}
+
+.hipaa-mode .hipaa-header {
+  border-bottom: 2px solid #10b981;
+  background: rgba(16, 185, 129, 0.05);
+}
+
+/* Security Status Bar */
+.hipaa-mode .hipaa-status-bar {
+  background: #1f2937;
+  border-top: 2px solid #10b981;
+  padding: 8px 16px;
+  font-size: 12px;
+  color: #10b981;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hipaa-mode .hipaa-status-bar .status-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.hipaa-mode .hipaa-status-bar .status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0.3;
+  }
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Custom focus styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black;
+}
+
+/* Loading spinner */
+.spinner {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Custom button hover effects */
+.btn-hover {
+  transition: all 0.3s ease;
+}
+
+.btn-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Text selection */
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: white;
+}
+
+/* Light mode color overhaul - better contrast and readability */
+.light .bg-blue-600\/20 {
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+}
+
+.light .bg-blue-500\/10 {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+.light .bg-blue-500\/20 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+
+.light .border-blue-500\/50 {
+  border-color: #cbd5e1 !important;
+}
+
+.light .border-blue-400\/50 {
+  border-color: #cbd5e1 !important;
+}
+
+.light .text-blue-300 {
+  color: #475569 !important;
+}
+
+.light .text-blue-400 {
+  color: #334155 !important;
+}
+
+.light .hover\:bg-blue-600\/30:hover {
+  background-color: #e2e8f0 !important;
+}
+
+.light .hover\:bg-blue-700:hover {
+  background-color: #cbd5e1 !important;
+}
+
+/* Button overrides for light mode */
+.light .bg-blue-600 {
+  background-color: #1e293b !important;
+  color: #ffffff !important;
+}
+
+.light .hover\:bg-blue-700:hover {
+  background-color: #334155 !important;
+}
+
+/* Card and container overrides */
+.light .bg-gray-800\/50 {
+  background-color: rgba(248, 250, 252, 0.95) !important;
+  border-color: rgba(226, 232, 240, 0.8) !important;
+}
+
+.light .bg-gray-700 {
+  background-color: rgba(241, 245, 249, 0.8) !important;
+}
+
+.light .bg-gray-700\/30 {
+  background-color: rgba(241, 245, 249, 0.3) !important;
+}
+
+/* Text color improvements */
+.light .text-white {
+  color: #1e293b !important;
+}
+
+.light .text-gray-300 {
+  color: #475569 !important;
+}
+
+.light .text-gray-400 {
+  color: #64748b !important;
+}
+
+/* Border improvements */
+.light .border-gray-700 {
+  border-color: #e2e8f0 !important;
+}
+
+.light .border-gray-600 {
+  border-color: #cbd5e1 !important;
+}
+
+.light .hover\:border-gray-600:hover {
+  border-color: #94a3b8 !important;
+}
+
+/* Gradient improvements for light mode */
+.light .bg-gradient-to-r {
+  background: linear-gradient(to right, #1e293b, #334155) !important;
+}
+
+.light .bg-gradient-to-br {
+  background: linear-gradient(to bottom right, #ffffff, #f8fafc) !important;
+}
+
+/* Specific component overrides */
+.light .bg-gradient-to-r.from-blue-500\/10.to-purple-500\/10 {
+  background: linear-gradient(to right, #f1f5f9, #f8fafc) !important;
+  border-color: #e2e8f0 !important;
+}
+
+.light .bg-gradient-to-r.from-blue-600\/10.to-green-500\/10 {
+  background: linear-gradient(to right, #f1f5f9, #f0fdf4) !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Action button improvements for light mode */
+.light .bg-blue-600\/20 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #334155 !important;
+}
+
+.light .hover\:bg-blue-600\/30:hover {
+  background-color: #e2e8f0 !important;
+}
+
+.light .bg-purple-600\/20 {
+  background-color: #faf5ff !important;
+  border-color: #d8b4fe !important;
+  color: #6b21a8 !important;
+}
+
+.light .hover\:bg-purple-600\/30:hover {
+  background-color: #f3e8ff !important;
+}
+
+.light .bg-green-600\/20 {
+  background-color: #f0fdf4 !important;
+  border-color: #bbf7d0 !important;
+  color: #166534 !important;
+}
+
+.light .hover\:bg-green-600\/30:hover {
+  background-color: #dcfce7 !important;
+}
+
+/* Apple-inspired Light Mode Overhaul */
+.light {
+  --apple-bg: #fafafa;
+  --apple-card: #ffffff;
+  --apple-text: #1d1d1f;
+  --apple-text-secondary: #6e6e73;
+  --apple-text-muted: #86868b;
+  --apple-accent: #007aff;
+  --apple-success: #30d158;
+  --apple-warning: #ff9f0a;
+  --apple-error: #ff3b30;
+  --apple-border: rgba(0, 0, 0, 0.1);
+  --apple-highlight: #f2f2f7;
+  --apple-pastel-blue: #e3f2fd;
+  --apple-pastel-purple: #f3e5f5;
+  --apple-pastel-green: #e8f5e8;
+  --apple-pastel-orange: #fff3e0;
+  --apple-pastel-pink: #fce4ec;
+}
+
+/* Apple-style background and text */
+.light {
+  background-color: var(--apple-bg) !important;
+  color: var(--apple-text) !important;
+}
+
+/* Apple-style cards */
+.light .bg-gray-800\/50,
+.light .bg-gray-800 {
+  background-color: var(--apple-card) !important;
+  border: 1px solid var(--apple-border) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Apple-style text colors */
+.light .text-white {
+  color: var(--apple-text) !important;
+}
+
+.light .text-gray-300 {
+  color: var(--apple-text-secondary) !important;
+}
+
+.light .text-gray-400 {
+  color: var(--apple-text-muted) !important;
+}
+
+.light .text-gray-500 {
+  color: var(--apple-text-muted) !important;
+}
+
+/* Apple-style educational info boxes */
+.light .bg-gradient-to-r.from-blue-500\/10.to-green-500\/10 {
+  background: var(--apple-pastel-blue) !important;
+  border: 1px solid rgba(0, 122, 255, 0.2) !important;
+  color: var(--apple-text) !important;
+}
+
+.light .bg-gradient-to-r.from-blue-500\/10.to-purple-500\/10 {
+  background: var(--apple-pastel-purple) !important;
+  border: 1px solid rgba(175, 82, 222, 0.2) !important;
+  color: var(--apple-text) !important;
+}
+
+/* Apple-style score displays */
+.light .bg-gradient-to-r {
+  background: linear-gradient(135deg, var(--apple-accent), #0056b3) !important;
+  color: white !important;
+}
+
+.light .text-blue-400 {
+  color: var(--apple-accent) !important;
+}
+
+.light .text-blue-300 {
+  color: var(--apple-text-secondary) !important;
+}
+
+/* Apple-style buttons */
+.light .bg-blue-600 {
+  background-color: var(--apple-accent) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 1px 3px rgba(0, 122, 255, 0.3) !important;
+}
+
+.light .hover\:bg-blue-700:hover {
+  background-color: #0056b3 !important;
+}
+
+/* Apple-style action buttons */
+.light .bg-blue-600\/20 {
+  background-color: var(--apple-pastel-blue) !important;
+  border: 1px solid rgba(0, 122, 255, 0.3) !important;
+  color: var(--apple-accent) !important;
+}
+
+.light .hover\:bg-blue-600\/30:hover {
+  background-color: rgba(0, 122, 255, 0.1) !important;
+}
+
+.light .bg-purple-600\/20 {
+  background-color: var(--apple-pastel-purple) !important;
+  border: 1px solid rgba(175, 82, 222, 0.3) !important;
+  color: #8e44ad !important;
+}
+
+.light .hover\:bg-purple-600\/30:hover {
+  background-color: rgba(175, 82, 222, 0.1) !important;
+}
+
+.light .bg-green-600\/20 {
+  background-color: var(--apple-pastel-green) !important;
+  border: 1px solid rgba(48, 209, 88, 0.3) !important;
+  color: #27ae60 !important;
+}
+
+.light .hover\:bg-green-600\/30:hover {
+  background-color: rgba(48, 209, 88, 0.1) !important;
+}
+
+/* Apple-style borders */
+.light .border-gray-700,
+.light .border-gray-600 {
+  border-color: var(--apple-border) !important;
+}
+
+.light .hover\:border-gray-600:hover {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Apple-style marketing highlights */
+.light .bg-gradient-to-r.from-blue-500\/10.to-purple-500\/10 {
+  background: var(--apple-pastel-blue) !important;
+  border: 1px solid rgba(0, 122, 255, 0.2) !important;
+}
+
+.light .text-blue-300 {
+  color: var(--apple-text) !important;
+}
+
+/* Apple-style progress bars */
+.light .bg-gray-700 {
+  background-color: #e5e5ea !important;
+}
+
+/* Apple-style severity indicators */
+.light .bg-yellow-400\/20 {
+  background-color: var(--apple-pastel-orange) !important;
+  color: #f39c12 !important;
+}
+
+.light .bg-orange-400\/20 {
+  background-color: var(--apple-pastel-orange) !important;
+  color: #e67e22 !important;
+}
+
+.light .bg-red-400\/20 {
+  background-color: var(--apple-pastel-pink) !important;
+  color: #e74c3c !important;
+}
+
+/* Apple-style gradients */
+.light .bg-gradient-to-br {
+  background: linear-gradient(
+    135deg,
+    var(--apple-bg),
+    var(--apple-card)
+  ) !important;
+}
+
+/* Apple-style glass effect */
+.light .glass {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--apple-border) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Apple-style hover effects */
+.light .hover\:bg-gray-700:hover {
+  background-color: var(--apple-highlight) !important;
+}
+
+/* Apple-style text selection */
+.light ::selection {
+  background: rgba(0, 122, 255, 0.2) !important;
+  color: var(--apple-text) !important;
+}
+
+.light ::-moz-selection {
+  background: rgba(0, 122, 255, 0.2) !important;
+  color: var(--apple-text) !important;
+}
+
+/* Gold Theme Overrides */
+.gold-theme {
+  background-color: var(--background) !important;
+  color: var(--text-primary) !important;
+}
+
+.gold-theme .bg-gradient-to-br {
+  background: linear-gradient(
+    to bottom right,
+    var(--background),
+    var(--card-bg)
+  ) !important;
+}
+
+.gold-theme .bg-gray-800\/50,
+.gold-theme .bg-gray-800 {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+}
+
+.gold-theme .text-white {
+  color: var(--text-primary) !important;
+}
+
+.gold-theme .text-gray-300 {
+  color: var(--text-secondary) !important;
+}
+
+.gold-theme .text-gray-400 {
+  color: var(--text-muted) !important;
+}
+
+.gold-theme .text-gray-500 {
+  color: var(--text-muted) !important;
+}
+
+.gold-theme .border-gray-700,
+.gold-theme .border-gray-600 {
+  border-color: var(--card-border) !important;
+}
+
+.gold-theme .hover\:border-gray-600:hover {
+  border-color: var(--dark-gray-4) !important;
+}
+
+.gold-theme .hover\:bg-gray-700:hover {
+  background-color: var(--dark-gray-2) !important;
+}
+
+/* Darker gray overrides for gold theme */
+.gold-theme .bg-gray-700 {
+  background-color: var(--dark-gray-3) !important;
+}
+
+.gold-theme .bg-gray-600 {
+  background-color: var(--dark-gray-4) !important;
+}
+
+.gold-theme .text-gray-200 {
+  color: #d1d5db !important;
+}
+
+.gold-theme .text-gray-100 {
+  color: #e6f3f7 !important;
+}
+
+/* Specific component darkening for gold theme */
+/* Findings shortlist background - much darker */
+.gold-theme .bg-gradient-to-r.from-purple-500\/10.to-pink-500\/10 {
+  background: linear-gradient(
+    to right,
+    var(--dark-gray-1),
+    var(--dark-gray-2)
+  ) !important;
+  border: 1px solid var(--dark-gray-4) !important;
+}
+
+/* Analysis selected tab background - much darker */
+.gold-theme .bg-gradient-to-r.from-blue-600.to-purple-600 {
+  background: linear-gradient(
+    to right,
+    var(--dark-gray-3),
+    var(--dark-gray-4)
+  ) !important;
+  color: var(--gold-primary) !important;
+  border: 1px solid var(--gold-primary) !important;
+  box-shadow: 0 4px 6px -1px rgba(212, 175, 55, 0.25) !important;
+}
+
+/* Finding card backgrounds - much darker */
+.gold-theme .bg-gradient-to-r.from-gray-800\/30.to-gray-700\/30 {
+  background: linear-gradient(
+    to right,
+    var(--dark-gray-1),
+    var(--dark-gray-2)
+  ) !important;
+  border: 1px solid var(--dark-gray-4) !important;
+}
+
+.gold-theme .bg-gradient-to-r.from-gray-800\/20.to-gray-900\/20 {
+  background: linear-gradient(
+    to right,
+    var(--dark-gray-1),
+    var(--dark-gray-1)
+  ) !important;
+  border: 1px solid var(--dark-gray-4) !important;
+}
+
+/* Area analysis tab buttons - darker */
+.gold-theme .bg-gray-700 {
+  background-color: var(--dark-gray-2) !important;
+  border: 1px solid var(--dark-gray-4) !important;
+  color: var(--gold-primary) !important;
+}
+
+.gold-theme .bg-gray-100.dark\:bg-gray-800\/60 {
+  background-color: var(--dark-gray-2) !important;
+  border: 1px solid var(--dark-gray-4) !important;
+}
+
+.gold-theme .hover\:bg-gray-200.dark\:hover\:bg-gray-700\/60:hover {
+  background-color: var(--dark-gray-3) !important;
+}
+
+/* Gold theme buttons and accents - Keep most UI elements gray/black, gold only for accents */
+.gold-theme .bg-blue-600 {
+  background-color: #374151 !important; /* Gray instead of gold */
+  color: #ffffff !important;
+  border: 1px solid #4b5563 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+}
+
+.gold-theme .hover\:bg-blue-700:hover {
+  background-color: #4b5563 !important; /* Darker gray on hover */
+}
+
+.gold-theme .bg-gradient-to-r {
+  background: linear-gradient(
+    to right,
+    #374151,
+    #4b5563
+  ) !important; /* Gray gradient */
+  color: #ffffff !important;
+}
+
+.gold-theme .bg-blue-600\/20 {
+  background-color: rgba(55, 65, 81, 0.1) !important; /* Gray background */
+  border: 1px solid rgba(75, 85, 99, 0.3) !important; /* Gray border */
+  color: #d1d5db !important; /* Light gray text */
+}
+
+.gold-theme .hover\:bg-blue-600\/30:hover {
+  background-color: rgba(
+    55,
+    65,
+    81,
+    0.2
+  ) !important; /* Slightly darker gray on hover */
+}
+
+.gold-theme .bg-purple-600\/20 {
+  background-color: rgba(55, 65, 81, 0.1) !important; /* Gray background */
+  border: 1px solid rgba(75, 85, 99, 0.3) !important; /* Gray border */
+  color: #d1d5db !important; /* Light gray text */
+}
+
+.gold-theme .hover\:bg-purple-600\/30:hover {
+  background-color: rgba(
+    55,
+    65,
+    81,
+    0.2
+  ) !important; /* Slightly darker gray on hover */
+}
+
+.gold-theme .bg-green-600\/20 {
+  background-color: rgba(55, 65, 81, 0.1) !important; /* Gray background */
+  border: 1px solid rgba(75, 85, 99, 0.3) !important; /* Gray border */
+  color: #d1d5db !important; /* Light gray text */
+}
+
+.gold-theme .hover\:bg-green-600\/30:hover {
+  background-color: rgba(
+    55,
+    65,
+    81,
+    0.2
+  ) !important; /* Slightly darker gray on hover */
+}
+
+/* Gold theme glass effect */
+.gold-theme .glass {
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--card-border) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Gold theme text selection */
+.gold-theme ::selection {
+  background: rgba(212, 175, 55, 0.3) !important;
+  color: var(--text-primary) !important;
+}
+
+.gold-theme ::-moz-selection {
+  background: rgba(212, 175, 55, 0.3) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Gold theme specific accent colors - Only for small accents */
+.gold-theme .text-blue-400 {
+  color: #d1d5db !important; /* Light gray instead of gold */
+}
+
+.gold-theme .text-blue-300 {
+  color: #e5e7eb !important; /* Lighter gray instead of gold */
+}
+
+.gold-theme .border-blue-500\/50 {
+  border-color: rgba(75, 85, 99, 0.5) !important; /* Gray border */
+}
+
+.gold-theme .border-blue-400\/50 {
+  border-color: rgba(75, 85, 99, 0.5) !important; /* Gray border */
+}
+
+/* Gold accent styles - Only for small highlights */
+.gold-theme .gold-accent {
+  color: var(--gold-primary) !important;
+}
+
+.gold-theme .gold-accent-border {
+  border-color: var(--gold-primary) !important;
+}
+
+.gold-theme .gold-accent-bg {
+  background-color: rgba(212, 175, 55, 0.1) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+.gold-theme .gold-accent-text {
+  color: var(--gold-primary) !important;
+}
+
+/* Gold theme focus states - subtle gold accents */
+.gold-theme .focus\:ring-blue-500:focus {
+  --tw-ring-color: var(--gold-primary) !important;
+}
+
+.gold-theme .focus\:border-blue-500:focus {
+  border-color: var(--gold-primary) !important;
+}
+
+/* Gold theme tab navigation - subtle gold accents */
+.gold-theme .bg-gradient-to-r.from-blue-600.to-purple-600 {
+  background: linear-gradient(
+    to right,
+    #374151,
+    #4b5563
+  ) !important; /* Gray gradient */
+  color: #ffffff !important;
+  border: 1px solid #6b7280 !important;
+}
+
+.gold-theme .shadow-blue-500\/25 {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3) !important; /* Dark shadow instead of blue */
+}
+
+/* Gold theme for small accent elements */
+.gold-theme .gold-tab-active {
+  background: linear-gradient(
+    to right,
+    var(--gold-primary),
+    var(--gold-secondary)
+  ) !important;
+  color: #000000 !important;
+  box-shadow: 0 4px 6px -1px rgba(212, 175, 55, 0.25) !important;
+}
+
+.gold-theme .gold-highlight {
+  background-color: rgba(212, 175, 55, 0.1) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  color: var(--gold-primary) !important;
+}
+
+.gold-theme .gold-border {
+  border-color: var(--gold-primary) !important;
+}
+
+.gold-theme .gold-text {
+  color: var(--gold-primary) !important;
+}
+
+/* New Medspa Theme Overrides */
+.medspa-new-theme {
+  background-color: var(--background) !important;
+  color: var(--text-primary) !important;
+}
+
+.medspa-new-theme .bg-gradient-to-br {
+  background: var(--background) !important;
+}
+
+.medspa-new-theme .bg-gray-800\/50,
+.medspa-new-theme .bg-gray-800,
+.medspa-new-theme .bg-gray-700,
+.medspa-new-theme .bg-gray-600,
+.medspa-new-theme .bg-gray-900 {
+  background-color: var(--medspa-gray-100) !important;
+  border: 1px solid var(--medspa-gray-200) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+.medspa-new-theme .bg-gray-500 {
+  background-color: var(--medspa-gray-200) !important;
+  border: 1px solid var(--medspa-gray-300) !important;
+}
+
+.medspa-new-theme .bg-gray-400 {
+  background-color: var(--medspa-gray-300) !important;
+  border: 1px solid var(--medspa-gray-400) !important;
+}
+
+.medspa-new-theme .text-white {
+  color: var(--medspa-gray-900) !important;
+}
+
+.medspa-new-theme .text-gray-200,
+.medspa-new-theme .text-gray-300 {
+  color: var(--medspa-gray-700) !important;
+}
+
+.medspa-new-theme .text-gray-400,
+.medspa-new-theme .text-gray-500 {
+  color: var(--medspa-gray-600) !important;
+}
+
+.medspa-new-theme .text-gray-600 {
+  color: var(--medspa-gray-500) !important;
+}
+
+.medspa-new-theme .text-gray-700 {
+  color: var(--medspa-gray-400) !important;
+}
+
+.medspa-new-theme .border-gray-700,
+.medspa-new-theme .border-gray-600,
+.medspa-new-theme .border-gray-800,
+.medspa-new-theme .border-gray-500 {
+  border-color: var(--medspa-gray-200) !important;
+}
+
+.medspa-new-theme .hover\:border-gray-600:hover,
+.medspa-new-theme .hover\:border-gray-700:hover {
+  border-color: var(--medspa-gray-300) !important;
+}
+
+.medspa-new-theme .hover\:bg-gray-700:hover,
+.medspa-new-theme .hover\:bg-gray-800:hover {
+  background-color: var(--medspa-gray-200) !important;
+}
+
+.medspa-new-theme .hover\:bg-gray-600:hover {
+  background-color: var(--medspa-gray-300) !important;
+}
+
+/* New Medspa theme glass effect */
+.medspa-new-theme .glass {
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--card-border) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* New Medspa theme text selection */
+.medspa-new-theme ::selection {
+  background: var(--medspa-accent-24) !important;
+  color: var(--text-primary) !important;
+}
+
+/* New Medspa Accent Elements */
+.medspa-new-theme .accent-button {
+  background-color: var(--medspa-primary) !important;
+  color: white !important;
+  border: 1px solid var(--medspa-primary) !important;
+}
+
+.medspa-new-theme .accent-button:hover {
+  background-color: var(--medspa-secondary) !important;
+  border-color: var(--medspa-secondary) !important;
+}
+
+.medspa-new-theme .accent-tab {
+  background-color: var(--medspa-primary) !important;
+  color: white !important;
+}
+
+.medspa-new-theme .accent-border {
+  border-color: var(--medspa-primary) !important;
+}
+
+.medspa-new-theme .accent-bg {
+  background-color: var(--medspa-accent-24) !important;
+  border: 1px solid var(--medspa-primary) !important;
+}
+
+.medspa-new-theme .accent-text {
+  color: var(--medspa-primary) !important;
+}
+
+/* New Medspa theme specific accent colors */
+.medspa-new-theme .text-blue-400 {
+  color: var(--medspa-primary) !important;
+}
+
+.medspa-new-theme .text-blue-300 {
+  color: var(--medspa-secondary) !important;
+}
+
+.medspa-new-theme .border-blue-400\/50 {
+  border-color: var(--medspa-accent-24) !important;
+}
+
+/* ========================================
+   MEDSPA COMPONENT UTILITY CLASSES
+   ======================================== */
+
+/* Primary Color Utilities */
+.medspa-primary-bg {
+  background-color: #367588 !important;
+}
+
+.medspa-primary-text {
+  color: #367588 !important;
+}
+
+.medspa-primary-border {
+  border-color: #367588 !important;
+}
+
+.medspa-primary-hover:hover {
+  background-color: #2c5f6b !important;
+}
+
+/* Secondary Color Utilities */
+.medspa-secondary-bg {
+  background-color: #2c5f6b !important;
+}
+
+.medspa-secondary-text {
+  color: #2c5f6b !important;
+}
+
+.medspa-secondary-border {
+  border-color: #2c5f6b !important;
+}
+
+/* Accent 24% Opacity Utilities */
+.medspa-accent-24-bg {
+  background-color: rgba(54, 117, 136, 0.24) !important;
+}
+
+.medspa-accent-24-border {
+  border-color: rgba(54, 117, 136, 0.24) !important;
+}
+
+/* Background Color Utilities */
+.medspa-bg-main {
+  background-color: #f8f9fa !important;
+}
+
+.medspa-bg-secondary {
+  background-color: #e6f3f7 !important;
+}
+
+/* Ensure area section headers use the correct background color */
+.medspa-new-theme .sticky.bg-medspa-bg-secondary {
+  background-color: #e6f3f7 !important;
+}
+
+.medspa-new-theme div[class*="bg-medspa-bg-secondary"] {
+  background-color: #e6f3f7 !important;
+}
+
+/* Text Color Utilities */
+.medspa-text-primary {
+  color: #000000 !important;
+}
+
+.medspa-text-secondary {
+  color: #6b7280 !important;
+}
+
+/* Button Variants */
+.medspa-btn-primary {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-btn-primary:hover {
+  background-color: #2c5f6b !important;
+  border-color: #2c5f6b !important;
+}
+
+/* Override Button component default styles when medspa-btn-primary is applied */
+button.medspa-btn-primary,
+button[class*="medspa-btn-primary"] {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+button.medspa-btn-primary:hover,
+button[class*="medspa-btn-primary"]:hover {
+  background-color: #2c5f6b !important;
+  border-color: #2c5f6b !important;
+  color: white !important;
+}
+
+.medspa-btn-secondary {
+  background-color: #e6f3f7 !important;
+  color: #367588 !important;
+  border-color: #367588 !important;
+}
+
+.medspa-btn-secondary:hover {
+  background-color: rgba(54, 117, 136, 0.24) !important;
+}
+
+.medspa-btn-outline {
+  background-color: transparent !important;
+  color: #367588 !important;
+  border-color: #367588 !important;
+}
+
+.medspa-btn-outline:hover {
+  background-color: rgba(54, 117, 136, 0.24) !important;
+}
+
+/* Card Variants */
+.medspa-card-primary {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-card-secondary {
+  background-color: #e6f3f7 !important;
+  color: #000000 !important;
+  border-color: rgba(54, 117, 136, 0.24) !important;
+}
+
+.medspa-card-accent {
+  background-color: rgba(54, 117, 136, 0.24) !important;
+  color: #000000 !important;
+  border-color: #367588 !important;
+}
+
+/* Progress Bar Variants */
+.medspa-progress-primary {
+  background: linear-gradient(90deg, #367588 0%, #2c5f6b 100%) !important;
+}
+
+.medspa-progress-bg {
+  background-color: #e6f3f7 !important;
+}
+
+/* Border Variants */
+.medspa-border-primary {
+  border-color: #367588 !important;
+  border-width: 2px !important;
+}
+
+.medspa-border-accent {
+  border-color: rgba(54, 117, 136, 0.24) !important;
+  border-width: 1px !important;
+}
+
+/* Text Variants */
+.medspa-text-on-primary {
+  color: white !important;
+}
+
+.medspa-text-on-secondary {
+  color: #6b7280 !important;
+}
+
+/* Shadow Variants */
+.medspa-shadow-primary {
+  box-shadow: 0 4px 6px -1px rgba(54, 117, 136, 0.25) !important;
+}
+
+.medspa-shadow-secondary {
+  box-shadow: 0 2px 4px -1px rgba(54, 117, 136, 0.1) !important;
+}
+
+/* New Medspa theme focus states */
+.medspa-new-theme .focus\:ring-blue-500:focus {
+  --tw-ring-color: var(--medspa-primary) !important;
+}
+
+.medspa-new-theme .focus\:border-blue-500:focus {
+  border-color: var(--medspa-primary) !important;
+}
+
+/* New Medspa theme tab navigation - Override to use primary color */
+.medspa-new-theme .bg-gradient-to-r.from-blue-600.to-purple-600 {
+  background: #367588 !important;
+  color: #ffffff !important;
+  border: 1px solid #367588 !important;
+}
+
+/* Override any medspa gradient tab buttons to use primary color */
+.medspa-new-theme .bg-gradient-to-r.from-medspa-primary.to-medspa-secondary {
+  background: #367588 !important;
+  color: #ffffff !important;
+  border: 1px solid #367588 !important;
+}
+
+.medspa-new-theme .shadow-blue-500\/25 {
+  box-shadow: 0 4px 6px -1px rgba(54, 117, 136, 0.25) !important;
+}
+
+/* New Medspa theme for small accent elements - Override to use primary color */
+.medspa-new-theme .medspa-tab-active {
+  background: #367588 !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+/* Override tab button active states to use primary color */
+.medspa-new-theme .bg-gray-600 {
+  background-color: #367588 !important;
+  color: #ffffff !important;
+  border-color: #367588 !important;
+  box-shadow: none !important;
+}
+
+/* Ensure active tab buttons have no shadow */
+.medspa-new-theme button[class*="text-white"] {
+  box-shadow: none !important;
+}
+
+/* Force active tab styling - most specific override */
+.medspa-new-theme button.flex-1.transition-all.duration-300.text-white {
+  background-color: #367588 !important;
+  color: #ffffff !important;
+  border-color: #367588 !important;
+  box-shadow: none !important;
+}
+
+/* Even more specific override for tab buttons */
+.medspa-new-theme div[data-tutorial="tab-navigation"] button.text-white {
+  background-color: #367588 !important;
+  color: #ffffff !important;
+  border-color: #367588 !important;
+  box-shadow: none !important;
+}
+
+/* Nuclear option - override any button with text-white class in medspa theme */
+.medspa-new-theme button.text-white {
+  background-color: #367588 !important;
+  color: #ffffff !important;
+  border-color: #367588 !important;
+  box-shadow: none !important;
+}
+
+/* Active tab class - most specific override */
+.medspa-new-theme button.active-tab {
+  background-color: #367588 !important;
+  color: #ffffff !important;
+  border-color: #367588 !important;
+  box-shadow: none !important;
+}
+
+.medspa-new-theme .medspa-highlight {
+  background-color: var(--medspa-accent-24) !important;
+  border: 1px solid var(--medspa-primary) !important;
+  color: var(--medspa-primary) !important;
+}
+
+.medspa-new-theme .medspa-border {
+  border-color: var(--medspa-primary) !important;
+}
+
+.medspa-new-theme .medspa-text {
+  color: var(--medspa-primary) !important;
+}
+
+/* New Medspa theme severity bars and progress indicators */
+.medspa-new-theme .severity-scale-bar,
+.medspa-new-theme [class*="severity"],
+.medspa-new-theme [class*="progress"] {
+  background: linear-gradient(
+    90deg,
+    var(--medspa-primary) 0%,
+    var(--medspa-secondary) 100%
+  ) !important;
+}
+
+.medspa-new-theme [class*="shortlist"],
+.medspa-new-theme [class*="Shortlist"] {
+  border-color: var(--medspa-primary) !important;
+  border-width: 2px !important;
+}
+
+/* New Medspa theme area headings */
+.medspa-new-theme .area-heading {
+  background: var(--medspa-gray-600) !important;
+  border: 1px solid var(--medspa-gray-700) !important;
+  color: #ffffff !important;
+}
+
+.medspa-new-theme .sticky.top-0 {
+  background: var(--medspa-gray-600) !important;
+  backdrop-filter: none !important;
+  color: #ffffff !important;
+}
+
+.medspa-new-theme .bg-gray-900\/95 {
+  background: var(--medspa-gray-600) !important;
+  backdrop-filter: none !important;
+  color: #ffffff !important;
+}
+
+.medspa-new-theme .finding-card {
+  background-color: #ffffff !important;
+  border: 1px solid var(--medspa-gray-200) !important;
+}
+
+.medspa-new-theme .filter-chip {
+  background-color: var(--medspa-gray-100) !important;
+  border: 1px solid var(--medspa-gray-200) !important;
+  color: var(--medspa-gray-600) !important;
+}
+
+.medspa-new-theme .filter-chip.selected {
+  background-color: var(--medspa-primary) !important;
+  border-color: var(--medspa-primary) !important;
+  color: white !important;
+}
+
+.medspa-new-theme .add-to-shortlist-btn {
+  background-color: var(--medspa-primary) !important;
+  color: white !important;
+  border: 1px solid var(--medspa-primary) !important;
+}
+
+.medspa-new-theme .add-to-shortlist-btn:hover {
+  background-color: var(--medspa-secondary) !important;
+  border-color: var(--medspa-secondary) !important;
+}
+
+.medspa-new-theme .severity-bar {
+  background: linear-gradient(
+    90deg,
+    var(--medspa-primary) 0%,
+    var(--medspa-secondary) 100%
+  ) !important;
+}
+
+/* Provider Dashboard - Force light background */
+div.min-h-screen {
+  background-color: #f8f9fa !important;
+  color: #1f2937 !important;
+}
+
+/* More specific targeting for provider dashboard */
+div[class*="min-h-screen"][class*="flex"][class*="flex-col"] {
+  background-color: #f8f9fa !important;
+  color: #1f2937 !important;
+}
+
+/* Override all dark gray elements to light backgrounds */
+.medspa-new-theme .bg-gray-800\/30,
+.medspa-new-theme .bg-gray-700\/30,
+.medspa-new-theme .bg-gray-800,
+.medspa-new-theme .bg-gray-700,
+.medspa-new-theme .bg-gray-600 {
+  background-color: var(--medspa-gray-100) !important;
+  background: var(--medspa-gray-100) !important;
+}
+
+.medspa-new-theme .from-gray-800\/30,
+.medspa-new-theme .to-gray-700\/30,
+.medspa-new-theme .from-gray-800,
+.medspa-new-theme .to-gray-700 {
+  background: var(--medspa-gray-100) !important;
+}
+
+.medspa-new-theme .border-gray-600\/50,
+.medspa-new-theme .border-gray-700\/60,
+.medspa-new-theme .border-gray-500 {
+  border-color: var(--medspa-gray-200) !important;
+}
+
+.medspa-new-theme .text-gray-200,
+.medspa-new-theme .text-gray-300 {
+  color: var(--medspa-gray-700) !important;
+}
+
+.medspa-new-theme .text-white {
+  color: var(--medspa-gray-900) !important;
+}
+
+/* Filter chips - light gray for unselected, teal for selected */
+.medspa-new-theme .bg-gray-100 {
+  background-color: var(--medspa-gray-100) !important;
+  color: var(--medspa-gray-600) !important;
+  border-color: var(--medspa-gray-200) !important;
+}
+
+.medspa-new-theme .bg-gray-100.dark\:bg-gray-800\/60 {
+  background-color: var(--medspa-gray-100) !important;
+  color: var(--medspa-gray-600) !important;
+  border-color: var(--medspa-gray-200) !important;
+}
+
+/* Force unselected filter chips to be neutral gray with teal accents */
+.medspa-new-theme button[class*="bg-gray-100"]:not([active]):not(.active) {
+  background-color: var(--medspa-gray-100) !important;
+  color: var(--medspa-gray-600) !important;
+  border-color: var(--medspa-gray-200) !important;
+}
+
+/* Selected filter chips with light gray background and teal accent */
+.medspa-new-theme button[class*="bg-gray-100"]:has(span:contains("★")),
+.medspa-new-theme button[class*="bg-gray-100"][class*="selected"] {
+  background-color: var(--medspa-gray-100) !important;
+  color: var(--medspa-primary) !important;
+  border-color: var(--medspa-primary) !important;
+  border-width: 2px !important;
+}
+
+/* Target chips with star symbol specifically */
+.medspa-new-theme button:has(span:contains("★")) {
+  background-color: var(--medspa-gray-100) !important;
+  color: var(--medspa-primary) !important;
+  border-color: var(--medspa-primary) !important;
+  border-width: 2px !important;
+}
+
+/* Override specific Tailwind classes for selected chips */
+.medspa-new-theme .bg-gray-100.text-gray-700.border-gray-300 {
+  background-color: var(--medspa-gray-100) !important;
+  color: var(--medspa-primary) !important;
+  border-color: var(--medspa-primary) !important;
+  border-width: 2px !important;
+}
+
+/* Override text colors for selected chips */
+.medspa-new-theme .text-gray-700 {
+  color: var(--medspa-primary) !important;
+}
+
+/* Force All Areas button to have light gray background with teal accent */
+.medspa-new-theme button:has-text("All Areas"),
+.medspa-new-theme button[class*="All Areas"] {
+  background-color: var(--medspa-gray-100) !important;
+  color: var(--medspa-primary) !important;
+  border-color: var(--medspa-primary) !important;
+  border-width: 2px !important;
+}
+
+/* Target the specific classes used by All Areas button */
+.medspa-new-theme .bg-gray-700.text-gray-200.border-gray-500 {
+  background-color: var(--medspa-gray-100) !important;
+  color: var(--medspa-primary) !important;
+  border-color: var(--medspa-primary) !important;
+  border-width: 2px !important;
+}
+
+.medspa-new-theme .border-gray-300 {
+  border-color: var(--medspa-primary) !important;
+  border-width: 2px !important;
+}
+
+/* Add to Shortlist buttons - primary color with white text */
+.medspa-new-theme button[class*="Add to Shortlist"],
+.medspa-new-theme button[class*="Add All"] {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-new-theme button[class*="Add to Shortlist"]:hover,
+.medspa-new-theme button[class*="Add All"]:hover {
+  background-color: #2c5f6b !important;
+  color: white !important;
+  border-color: #2c5f6b !important;
+}
+
+/* Force override for buttons with medspa-btn-primary class in medspa-new-theme */
+.medspa-new-theme button.medspa-btn-primary {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-new-theme button.medspa-btn-primary:hover {
+  background-color: #2c5f6b !important;
+  color: white !important;
+  border-color: #2c5f6b !important;
+}
+
+/* Override any conflicting classes */
+.medspa-new-theme button.bg-white.text-black.medspa-btn-primary {
+  background-color: #367588 !important;
+  color: white !important;
+}
+
+.medspa-new-theme button.bg-white.text-black.medspa-btn-primary:hover {
+  background-color: #2c5f6b !important;
+  color: white !important;
+}
+
+/* Override gradient classes for Add All buttons */
+.medspa-new-theme button.bg-gradient-to-r.from-gray-700.to-gray-600 {
+  background: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-new-theme button.bg-gradient-to-r.from-gray-700.to-gray-600:hover {
+  background: #2c5f6b !important;
+  color: white !important;
+  border-color: #2c5f6b !important;
+}
+
+/* Most specific override for all button variants */
+.medspa-new-theme button[class*="medspa-btn-primary"] {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-new-theme button[class*="medspa-btn-primary"]:hover {
+  background-color: #2c5f6b !important;
+  color: white !important;
+  border-color: #2c5f6b !important;
+}
+
+/* Nuclear option - override everything */
+.medspa-new-theme
+  button.bg-white.text-black.hover\:bg-gray-100.hover\:scale-105.shadow-lg.h-9.rounded-md.px-3.transition-all.duration-300.medspa-btn-primary {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-new-theme
+  button.bg-white.text-black.hover\:bg-gray-100.hover\:scale-105.shadow-lg.h-9.rounded-md.px-3.transition-all.duration-300.medspa-btn-primary:hover {
+  background-color: #2c5f6b !important;
+  color: white !important;
+  border-color: #2c5f6b !important;
+}
+
+/* Override gradient buttons */
+.medspa-new-theme
+  button.bg-gradient-to-r.from-gray-700.to-gray-600.text-gray-200.hover\:from-gray-600.hover\:to-gray-500.border.border-gray-500 {
+  background: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-new-theme
+  button.bg-gradient-to-r.from-gray-700.to-gray-600.text-gray-200.hover\:from-gray-600.hover\:to-gray-500.border.border-gray-500:hover {
+  background: #2c5f6b !important;
+  color: white !important;
+  border-color: #2c5f6b !important;
+}
+
+/* Selected tab text and icon color - force white */
+.medspa-new-theme
+  button.bg-gradient-to-r.from-medspa-primary.to-medspa-secondary {
+  color: white !important;
+}
+
+.medspa-new-theme
+  button.bg-gradient-to-r.from-medspa-primary.to-medspa-secondary
+  * {
+  color: white !important;
+}
+
+.medspa-new-theme
+  button.bg-gradient-to-r.from-medspa-primary.to-medspa-secondary
+  svg {
+  color: white !important;
+  fill: white !important;
+}
+
+.medspa-new-theme
+  button.bg-gradient-to-r.from-medspa-primary.to-medspa-secondary
+  span {
+  color: white !important;
+}
+
+/* Target the actual gradient classes being used */
+.medspa-new-theme .bg-gradient-to-r.from-gray-700.to-gray-600 {
+  background: var(--medspa-primary) !important;
+  color: white !important;
+  border-color: var(--medspa-primary) !important;
+}
+
+.medspa-new-theme .bg-gradient-to-r.from-gray-700.to-gray-600:hover {
+  background: var(--medspa-secondary) !important;
+  color: white !important;
+  border-color: var(--medspa-secondary) !important;
+}
+
+/* Override text colors */
+.medspa-new-theme .text-gray-200 {
+  color: white !important;
+}
+
+.medspa-new-theme .text-gray-400 {
+  color: white !important;
+}
+
+.medspa-new-theme .border-blue-400\/50 {
+  border-color: var(--medspa-accent-24) !important;
+}
+
+/* Gold theme severity bars and labels */
+.gold-theme .bg-gray-700 {
+  background-color: var(--dark-gray-3) !important;
+}
+
+/* Severity scale background */
+.gold-theme .bg-gray-700.rounded-full {
+  background-color: var(--dark-gray-2) !important;
+  border: 1px solid var(--dark-gray-4) !important;
+}
+
+/* Severity scale filled bar - gold gradient */
+.gold-theme .bg-gradient-to-r.from-gray-600.to-gray-500 {
+  background: linear-gradient(
+    to right,
+    var(--gold-primary),
+    var(--gold-accent)
+  ) !important;
+}
+
+/* Severity labels - gold accent */
+.gold-theme .bg-gray-800 {
+  background-color: var(--dark-gray-1) !important;
+  border: 1px solid var(--gold-primary) !important;
+  color: var(--gold-primary) !important;
+}
+
+/* Severity text colors */
+.gold-theme .text-blue-400 {
+  color: var(--gold-primary) !important;
+}
+
+.gold-theme .text-purple-400 {
+  color: var(--gold-accent) !important;
+}
+
+.gold-theme .text-pink-400 {
+  color: var(--gold-secondary) !important;
+}
+
+.gold-theme .text-orange-400 {
+  color: var(--gold-primary) !important;
+}
+
+/* Progress bars and sliders */
+.gold-theme .bg-gradient-to-r.from-green-500.to-emerald-500 {
+  background: linear-gradient(
+    to right,
+    var(--gold-primary),
+    var(--gold-accent)
+  ) !important;
+}
+
+.gold-theme .bg-gradient-to-r.from-green-400.to-green-500 {
+  background: linear-gradient(
+    to right,
+    var(--gold-primary),
+    var(--gold-secondary)
+  ) !important;
+}
+
+.gold-theme .bg-gradient-to-r.from-lime-400.to-green-400 {
+  background: linear-gradient(
+    to right,
+    var(--gold-accent),
+    var(--gold-primary)
+  ) !important;
+}
+
+.gold-theme .bg-gradient-to-r.from-yellow-400.to-lime-400 {
+  background: linear-gradient(
+    to right,
+    var(--gold-accent),
+    var(--gold-primary)
+  ) !important;
+}
+
+.gold-theme .bg-gradient-to-r.from-orange-400.to-yellow-400 {
+  background: linear-gradient(
+    to right,
+    var(--gold-secondary),
+    var(--gold-accent)
+  ) !important;
+}
+
+.gold-theme .bg-gradient-to-r.from-red-400.to-orange-400 {
+  background: linear-gradient(
+    to right,
+    #dc2626,
+    var(--gold-secondary)
+  ) !important;
+}
+
+.gold-theme .bg-gradient-to-r.from-red-500.to-red-400 {
+  background: linear-gradient(to right, #dc2626, #ef4444) !important;
+}
+
+/* Specific severity scale component styling */
+.gold-theme .severity-scale-bg {
+  background-color: var(--dark-gray-2) !important;
+  border: 1px solid var(--dark-gray-4) !important;
+}
+
+.gold-theme .severity-scale-fill {
+  background: linear-gradient(
+    to right,
+    var(--gold-primary),
+    var(--gold-accent)
+  ) !important;
+}
+
+.gold-theme .severity-label {
+  background-color: var(--dark-gray-1) !important;
+  border: 1px solid var(--gold-primary) !important;
+  color: var(--gold-primary) !important;
+  box-shadow: 0 2px 4px rgba(212, 175, 55, 0.2) !important;
+}
+
+/* Severity level text colors */
+.gold-theme .severity-subtle {
+  color: var(--gold-accent) !important;
+}
+
+.gold-theme .severity-mild {
+  color: var(--gold-primary) !important;
+}
+
+.gold-theme .severity-moderate {
+  color: var(--gold-secondary) !important;
+}
+
+.gold-theme .severity-significant {
+  color: #f59e0b !important; /* Slightly different gold for significant */
+}
+
+/* Score display styling */
+.gold-theme .score-display {
+  background: linear-gradient(
+    135deg,
+    var(--gold-primary),
+    var(--gold-accent)
+  ) !important;
+  color: #000000 !important;
+  border: 1px solid var(--gold-secondary) !important;
+}
+
+/* Small UI element accents */
+.gold-theme .accent-border {
+  border-left: 3px solid var(--gold-primary) !important;
+}
+
+.gold-theme .accent-dot {
+  background-color: var(--gold-primary) !important;
+  box-shadow: 0 0 8px rgba(170, 137, 96, 0.4) !important;
+}
+
+/* SeverityScale component - gold gradient override for "Subtle to Significant" bars */
+.gold-theme [style*="linear-gradient(to right, #374151, #6b7280)"] {
+  background: linear-gradient(
+    to right,
+    var(--gold-primary),
+    var(--gold-accent)
+  ) !important;
+}
+
+/* SeverityScaleCompact component - gold gradient */
+.gold-theme
+  [style*="linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899, #f97316)"] {
+  background: linear-gradient(
+    to right,
+    var(--gold-primary),
+    var(--gold-accent),
+    var(--gold-secondary),
+    #f59e0b
+  ) !important;
+}
+
+/* Target the specific inline style used in the progress bars - with !important to override inline styles */
+.gold-theme [style*="background:linear-gradient(to right, #374151, #6b7280)"] {
+  background: linear-gradient(
+    to right,
+    var(--gold-primary),
+    var(--gold-accent)
+  ) !important;
+}
+
+/* Target the compact version inline style */
+.gold-theme
+  [style*="background: linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899, #f97316)"] {
+  background: linear-gradient(
+    to right,
+    var(--gold-primary),
+    var(--gold-accent),
+    var(--gold-secondary),
+    #f59e0b
+  ) !important;
+}
+
+/* Target the specific classes I just added to SeverityScale components - more specific selectors */
+.gold-theme
+  .severity-scale-bar[style*="background:linear-gradient(to right, #374151, #6b7280)"] {
+  background: linear-gradient(
+    to right,
+    var(--gold-primary),
+    var(--gold-accent)
+  ) !important;
+}
+
+.gold-theme
+  .severity-scale-compact-bar[style*="background: linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899, #f97316)"] {
+  background: linear-gradient(
+    to right,
+    var(--gold-primary),
+    var(--gold-accent),
+    var(--gold-secondary),
+    #f59e0b
+  ) !important;
+}
+
+/* Fallback for any severity-scale-bar elements */
+.gold-theme .severity-scale-bar {
+  background: linear-gradient(
+    to right,
+    var(--gold-primary),
+    var(--gold-accent)
+  ) !important;
+}
+
+.gold-theme .severity-scale-compact-bar {
+  background: linear-gradient(
+    to right,
+    var(--gold-primary),
+    var(--gold-accent),
+    var(--gold-secondary),
+    #f59e0b
+  ) !important;
+}
+
+/* SeverityScale background - darker for gold theme */
+.gold-theme .bg-gray-700.rounded-full {
+  background-color: var(--dark-gray-2) !important;
+  border: 1px solid var(--dark-gray-4) !important;
+}
+
+/* SeverityScale labels - gold accent */
+.gold-theme .text-gray-200.font-medium.bg-gray-800 {
+  background-color: var(--dark-gray-1) !important;
+  border: 1px solid var(--gold-primary) !important;
+  color: var(--gold-primary) !important;
+  box-shadow: 0 2px 4px rgba(170, 137, 96, 0.2) !important;
+}
+
+/* Treatment card button gradients - gold theme */
+.gold-theme .bg-gradient-to-r.from-gray-700.to-gray-600 {
+  background: linear-gradient(
+    to right,
+    var(--gold-primary),
+    var(--gold-secondary)
+  ) !important;
+  color: #000000 !important;
+  border: 1px solid var(--gold-accent) !important;
+}
+
+.gold-theme .hover\:from-gray-600.hover\:to-gray-500:hover {
+  background: linear-gradient(
+    to right,
+    var(--gold-accent),
+    var(--gold-primary)
+  ) !important;
+}
+
+/* Treatment card backgrounds - darker for gold theme */
+.gold-theme .bg-gray-800\/40 {
+  background-color: var(--dark-gray-2) !important;
+  border: 1px solid var(--dark-gray-4) !important;
+}
+
+/* Progress bar backgrounds in treatment cards */
+.gold-theme .bg-gray-700\/50 {
+  background-color: var(--dark-gray-2) !important;
+}
+
+.gold-theme .bg-gradient-to-r.from-gray-600\/30.to-gray-500\/30 {
+  background: linear-gradient(
+    to right,
+    rgba(212, 175, 55, 0.2),
+    rgba(244, 208, 63, 0.2)
+  ) !important;
+}
+
+/* Horizontal scales in finding cards - gold gradients */
+.gold-theme .bg-gradient-to-r.from-gray-600.to-gray-500 {
+  background: linear-gradient(
+    to right,
+    var(--gold-primary),
+    var(--gold-accent)
+  ) !important;
+}
+
+/* Treatment plan finding selection - gold accents */
+.gold-theme .bg-gradient-to-r.from-blue-600\/20.to-cyan-600\/20 {
+  background: linear-gradient(
+    to right,
+    rgba(212, 175, 55, 0.1),
+    rgba(244, 208, 63, 0.1)
+  ) !important;
+  border: 1px solid var(--gold-primary) !important;
+  color: var(--gold-primary) !important;
+}
+
+.gold-theme .bg-gray-700\/30 {
+  background-color: var(--dark-gray-2) !important;
+  border: 1px solid var(--dark-gray-4) !important;
+}
+
+/* Tab navigation container - darker */
+.gold-theme .bg-gray-800\/50 {
+  background-color: var(--dark-gray-2) !important;
+  border: 1px solid var(--dark-gray-4) !important;
+}
+
+/* Hover states for finding cards */
+.gold-theme .hover\:border-gray-500\/70:hover {
+  border-color: var(--gold-primary) !important;
+}
+
+.gold-theme .hover\:shadow-xl.hover\:shadow-gray-500\/20:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3),
+    0 10px 10px -5px rgba(212, 175, 55, 0.1) !important;
+}
+
+/* Patient detail container - maintain fixed height layout */
+.patient-detail-container {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* Ensure scrollable content areas work properly on mobile devices */
+@media screen and (max-width: 1024px) {
+  .patient-detail-container .overflow-y-auto {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+}
+
+/* Additional fixes for Safari scrolling in patient detail */
+.patient-detail-container .flex-1.overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+  /* Ensure proper height calculation */
+  height: 0;
+  flex: 1 1 0;
+}
+
+/* Fix for Safari on iPad landscape */
+@media screen and (orientation: landscape) and (max-width: 1024px) {
+  .patient-detail-container .flex-1.overflow-y-auto {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+}
+
+/* Mobile navigation fixes for iPhone Safari/Chrome */
+.mobile-nav {
+  /* Force the navigation to always be visible on mobile */
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+
+  /* Handle safe areas */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* Ensure it's always above everything */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+
+  /* Force visibility with background */
+  background: rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+/* iPhone Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .mobile-nav {
+    /* Force hardware acceleration */
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+
+    /* Ensure it stays in place */
+    position: fixed !important;
+    bottom: 0 !important;
+
+    /* Handle safe areas on iPhone */
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 20px);
+  }
+}
+
+/* Ensure navigation buttons are always accessible on mobile */
+@media screen and (max-width: 768px) {
+  .mobile-nav {
+    /* Force visibility */
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+
+    /* Ensure proper spacing */
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 20px);
+  }
+
+  /* Make sure buttons have proper touch targets */
+  .min-h-\[44px\] {
+    min-height: 44px !important;
+  }
+
+  /* Improve touch interaction */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+}
+
+/* Additional iPhone Safari fixes */
+@media screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+  .mobile-nav {
+    /* Force hardware acceleration for retina displays */
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+
+    /* Ensure it's always visible */
+    position: fixed !important;
+    bottom: 0 !important;
+    z-index: 9999 !important;
+  }
+}
+
+/* Legacy safe area support */
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Dynamic viewport height support for mobile Safari */
+.full-height {
+  height: 100vh; /* Fallback for older browsers */
+}
+
+@supports (height: 100dvh) {
+  .full-height {
+    height: 100dvh; /* Dynamic viewport height */
+  }
+}
+
+/* Area headings - dark gray for gold theme - more specific selectors */
+.gold-theme .w-1.h-6.bg-gradient-to-b.from-gray-600.to-gray-500.rounded-full {
+  background: linear-gradient(
+    to bottom,
+    var(--dark-gray-2),
+    var(--dark-gray-3)
+  ) !important;
+}
+
+.gold-theme [class*="bg-gradient-to-b from-gray-600 to-gray-500"] {
+  background: linear-gradient(
+    to bottom,
+    var(--dark-gray-2),
+    var(--dark-gray-3)
+  ) !important;
+}
+
+/* Force gold gradient on progress bars - override inline styles with maximum specificity */
+.gold-theme
+  .severity-scale-bar[style*="background:linear-gradient(to right, #374151, #6b7280)"] {
+  background: linear-gradient(
+    90deg,
+    #6b5a47 0%,
+    #8b6f4a 25%,
+    #aa8960 50%,
+    #c49d6b 75%,
+    #d4b876 100%
+  ) !important;
+}
+
+.gold-theme
+  .severity-scale-compact-bar[style*="background: linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899, #f97316)"] {
+  background: linear-gradient(
+    90deg,
+    #6b5a47 0%,
+    #8b6f4a 20%,
+    #aa8960 40%,
+    #c49d6b 60%,
+    #d4b876 80%,
+    #f0d4a3 100%
+  ) !important;
+}
+
+/* Additional override for any progress bar with gray gradient */
+.gold-theme [style*="background:linear-gradient(to right, #374151, #6b7280)"] {
+  background: linear-gradient(
+    90deg,
+    #6b5a47 0%,
+    #8b6f4a 25%,
+    #aa8960 50%,
+    #c49d6b 75%,
+    #d4b876 100%
+  ) !important;
+}
+
+/* Force gold theme on ALL elements - more aggressive approach */
+.gold-theme * {
+  /* Override purple colors */
+  --tw-gradient-from: #aa8960 !important;
+  --tw-gradient-to: #c49d6b !important;
+}
+
+/* Specific overrides for purple elements */
+.gold-theme .bg-gradient-to-r.from-purple-500\/10.to-pink-500\/10,
+.gold-theme [class*="from-purple-500"],
+.gold-theme [class*="to-pink-500"] {
+  background: linear-gradient(
+    to right,
+    rgba(170, 137, 96, 0.1),
+    rgba(196, 157, 107, 0.1)
+  ) !important;
+}
+
+.gold-theme .text-purple-100,
+.gold-theme .text-purple-300,
+.gold-theme [class*="text-purple"] {
+  color: #f0d4a3 !important;
+}
+
+.gold-theme .border-purple-400\/30,
+.gold-theme .border-purple-400\/50,
+.gold-theme [class*="border-purple"] {
+  border-color: rgba(170, 137, 96, 0.3) !important;
+}
+
+/* Specific overrides for blue elements */
+.gold-theme .bg-gradient-to-r.from-blue-600.to-purple-600,
+.gold-theme [class*="from-blue-600"],
+.gold-theme [class*="to-purple-600"] {
+  background: linear-gradient(to right, #aa8960, #c49d6b) !important;
+}
+
+.gold-theme .bg-gradient-to-b.from-gray-600.to-gray-500,
+.gold-theme [class*="bg-gradient-to-b from-gray-600 to-gray-500"] {
+  background: linear-gradient(to bottom, #1a1a1a, #262626) !important;
+}
+
+/* Override all progress bars */
+.gold-theme .severity-scale-bar,
+.gold-theme [class*="severity-scale"] {
+  background: linear-gradient(
+    90deg,
+    #6b5a47 0%,
+    #8b6f4a 25%,
+    #aa8960 50%,
+    #c49d6b 75%,
+    #d4b876 100%
+  ) !important;
+}
+
+/* ULTRA SPECIFIC OVERRIDES - Force everything to gold theme */
+.gold-theme
+  div[style*="background:linear-gradient(to right, #374151, #6b7280)"],
+.gold-theme div.severity-scale-bar[style*="background"],
+.gold-theme .severity-scale-bar[style],
+.gold-theme div[class*="severity-scale-bar"] {
+  background: linear-gradient(
+    90deg,
+    #6b5a47 0%,
+    #8b6f4a 25%,
+    #aa8960 50%,
+    #c49d6b 75%,
+    #d4b876 100%
+  ) !important;
+}
+
+.gold-theme
+  div[style*="background:linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899, #f97316)"] {
+  background: linear-gradient(
+    90deg,
+    #6b5a47 0%,
+    #8b6f4a 20%,
+    #aa8960 40%,
+    #c49d6b 60%,
+    #d4b876 80%,
+    #f0d4a3 100%
+  ) !important;
+}
+
+.gold-theme div[class*="bg-gradient-to-b from-gray-600 to-gray-500"] {
+  background: linear-gradient(to bottom, #1a1a1a, #262626) !important;
+}
+
+.gold-theme button[class*="bg-gradient-to-r from-blue-600 to-purple-600"] {
+  background: linear-gradient(to right, #aa8960, #c49d6b) !important;
+}
+
+.gold-theme div[class*="bg-gradient-to-r from-purple-500/10 to-pink-500/10"] {
+  background: linear-gradient(
+    to right,
+    rgba(170, 137, 96, 0.1),
+    rgba(196, 157, 107, 0.1)
+  ) !important;
+}
+
+.gold-theme span[class*="text-purple-100"] {
+  color: #f0d4a3 !important;
+}
+
+.gold-theme button[class*="text-purple-300"] {
+  color: #c49d6b !important;
+}
+
+.gold-theme div[class*="border-purple-400/30"] {
+  border-color: rgba(170, 137, 96, 0.3) !important;
+}
+
+.gold-theme div[class*="border-purple-400/50"] {
+  border-color: rgba(170, 137, 96, 0.5) !important;
+}
+
+/* EVEN MORE SPECIFIC OVERRIDES - Target exact class combinations */
+.gold-theme .text-purple-100 {
+  color: #f0d4a3 !important;
+}
+
+.gold-theme .text-purple-300 {
+  color: #c49d6b !important;
+}
+
+.gold-theme .text-purple-400 {
+  color: #c49d6b !important;
+}
+
+.gold-theme .from-purple-500\/10 {
+  background: linear-gradient(
+    to right,
+    rgba(170, 137, 96, 0.1),
+    rgba(196, 157, 107, 0.1)
+  ) !important;
+}
+
+.gold-theme .to-pink-500\/10 {
+  background: linear-gradient(
+    to right,
+    rgba(170, 137, 96, 0.1),
+    rgba(196, 157, 107, 0.1)
+  ) !important;
+}
+
+.gold-theme .border-purple-400\/30 {
+  border-color: rgba(170, 137, 96, 0.3) !important;
+}
+
+.gold-theme .border-purple-400\/50 {
+  border-color: rgba(170, 137, 96, 0.5) !important;
+}
+
+.gold-theme .from-blue-600 {
+  background: linear-gradient(to right, #aa8960, #c49d6b) !important;
+}
+
+.gold-theme .to-purple-600 {
+  background: linear-gradient(to right, #aa8960, #c49d6b) !important;
+}
+
+.gold-theme .from-gray-600 {
+  background: linear-gradient(to bottom, #1a1a1a, #262626) !important;
+}
+
+.gold-theme .to-gray-500 {
+  background: linear-gradient(to bottom, #1a1a1a, #262626) !important;
+}
+
+.gold-theme .severity-scale-bar {
+  background: linear-gradient(
+    90deg,
+    #6b5a47 0%,
+    #8b6f4a 25%,
+    #aa8960 50%,
+    #c49d6b 75%,
+    #d4b876 100%
+  ) !important;
+}
+
+/* Force override inline styles */
+.gold-theme div[style*="width:50%"] {
+  background: linear-gradient(
+    90deg,
+    #6b5a47 0%,
+    #8b6f4a 25%,
+    #aa8960 50%,
+    #c49d6b 75%,
+    #d4b876 100%
+  ) !important;
+}
+
+/* ULTRA SPECIFIC OVERRIDES - Force everything to gold theme with maximum specificity */
+.gold-theme div.gold-theme .text-purple-100 {
+  color: #f0d4a3 !important;
+}
+
+.gold-theme div.gold-theme .text-purple-300 {
+  color: #c49d6b !important;
+}
+
+.gold-theme div.gold-theme .text-purple-400 {
+  color: #c49d6b !important;
+}
+
+.gold-theme div.gold-theme .from-purple-500\/10 {
+  background: linear-gradient(
+    to right,
+    rgba(170, 137, 96, 0.1),
+    rgba(196, 157, 107, 0.1)
+  ) !important;
+}
+
+.gold-theme div.gold-theme .to-pink-500\/10 {
+  background: linear-gradient(
+    to right,
+    rgba(170, 137, 96, 0.1),
+    rgba(196, 157, 107, 0.1)
+  ) !important;
+}
+
+.gold-theme div.gold-theme .border-purple-400\/30 {
+  border-color: rgba(170, 137, 96, 0.3) !important;
+}
+
+.gold-theme div.gold-theme .border-purple-400\/50 {
+  border-color: rgba(170, 137, 96, 0.5) !important;
+}
+
+.gold-theme div.gold-theme .from-blue-600 {
+  background: linear-gradient(to right, #aa8960, #c49d6b) !important;
+}
+
+.gold-theme div.gold-theme .to-purple-600 {
+  background: linear-gradient(to right, #aa8960, #c49d6b) !important;
+}
+
+.gold-theme div.gold-theme .from-gray-600 {
+  background: linear-gradient(to bottom, #1a1a1a, #262626) !important;
+}
+
+.gold-theme div.gold-theme .to-gray-500 {
+  background: linear-gradient(to bottom, #1a1a1a, #262626) !important;
+}
+
+.gold-theme div.gold-theme .severity-scale-bar {
+  background: linear-gradient(
+    90deg,
+    #6b5a47 0%,
+    #8b6f4a 25%,
+    #aa8960 50%,
+    #c49d6b 75%,
+    #d4b876 100%
+  ) !important;
+}
+
+/* Force override inline styles with maximum specificity */
+.gold-theme div.gold-theme div[style*="width:50%"] {
+  background: linear-gradient(
+    90deg,
+    #6b5a47 0%,
+    #8b6f4a 25%,
+    #aa8960 50%,
+    #c49d6b 75%,
+    #d4b876 100%
+  ) !important;
+}
+
+/* Gold theme component overrides */
+.gold-theme .gold-theme-shortlist {
+  background: linear-gradient(
+    to right,
+    rgba(170, 137, 96, 0.1),
+    rgba(196, 157, 107, 0.1)
+  ) !important;
+  border-color: rgba(170, 137, 96, 0.3) !important;
+}
+
+.gold-theme .gold-theme-title {
+  color: #f0d4a3 !important;
+}
+
+.gold-theme .gold-theme-star {
+  color: #c49d6b !important;
+}
+
+.gold-theme .gold-theme-loader {
+  color: #c49d6b !important;
+}
+
+.gold-theme .gold-theme-shortlist-item {
+  background: linear-gradient(
+    to right,
+    rgba(170, 137, 96, 0.2),
+    rgba(196, 157, 107, 0.2)
+  ) !important;
+  border-color: rgba(170, 137, 96, 0.5) !important;
+}
+
+.gold-theme .gold-theme-shortlist-item:hover {
+  background: linear-gradient(
+    to right,
+    rgba(170, 137, 96, 0.3),
+    rgba(196, 157, 107, 0.3)
+  ) !important;
+}
+
+.gold-theme .gold-theme-shortlist-text {
+  color: #f0d4a3 !important;
+}
+
+.gold-theme .gold-theme-shortlist-button {
+  color: #c49d6b !important;
+}
+
+.gold-theme .gold-theme-shortlist-button:hover {
+  color: #f0d4a3 !important;
+  background-color: rgba(170, 137, 96, 0.3) !important;
+}
+
+.gold-theme .gold-theme-area-heading {
+  background: linear-gradient(to bottom, #1a1a1a, #262626) !important;
+}
+
+.gold-theme .gold-theme-tab-button {
+  background: linear-gradient(to right, #aa8960, #c49d6b) !important;
+  box-shadow: 0 10px 15px -3px rgba(170, 137, 96, 0.25) !important;
+}
+
+/* Fix purple colors in findings shortlist - convert to gold */
+.gold-theme .bg-gradient-to-r.from-purple-500\/10.to-pink-500\/10 {
+  background: linear-gradient(
+    to right,
+    rgba(170, 137, 96, 0.1),
+    rgba(196, 157, 107, 0.1)
+  ) !important;
+}
+
+.gold-theme .border-purple-400\/30 {
+  border-color: rgba(170, 137, 96, 0.3) !important;
+}
+
+.gold-theme .text-purple-100 {
+  color: #f0d4a3 !important;
+}
+
+.gold-theme .text-purple-300 {
+  color: #c49d6b !important;
+}
+
+.gold-theme .bg-gradient-to-r.from-purple-500\/20.to-pink-500\/20 {
+  background: linear-gradient(
+    to right,
+    rgba(170, 137, 96, 0.2),
+    rgba(196, 157, 107, 0.2)
+  ) !important;
+}
+
+.gold-theme .border-purple-400\/50 {
+  border-color: rgba(170, 137, 96, 0.5) !important;
+}
+
+.gold-theme .hover\:from-purple-500\/30.hover\:to-pink-500\/30:hover {
+  background: linear-gradient(
+    to right,
+    rgba(170, 137, 96, 0.3),
+    rgba(196, 157, 107, 0.3)
+  ) !important;
+}
+
+.gold-theme .shadow-purple-500\/10 {
+  box-shadow: 0 4px 6px -1px rgba(170, 137, 96, 0.1),
+    0 2px 4px -1px rgba(170, 137, 96, 0.06) !important;
+}
+
+.gold-theme .hover\:bg-purple-500\/30:hover {
+  background-color: rgba(170, 137, 96, 0.3) !important;
+}
+
+/* Fix blue colors - convert to gray */
+.gold-theme .bg-blue-500\/5 {
+  background-color: rgba(107, 114, 128, 0.05) !important;
+}
+
+.gold-theme .border-blue-500 {
+  border-color: #6b7280 !important;
+}
+
+.gold-theme .bg-blue-500\/30 {
+  background-color: rgba(107, 114, 128, 0.3) !important;
+}
+
+.gold-theme .border-blue-400\/50 {
+  border-color: rgba(107, 114, 128, 0.5) !important;
+}
+
+.gold-theme .bg-gradient-to-r.from-blue-600.to-purple-600 {
+  background: linear-gradient(to right, #6b7280, #9ca3af) !important;
+}
+
+.gold-theme .shadow-blue-500\/25 {
+  box-shadow: 0 4px 6px -1px rgba(107, 114, 128, 0.25),
+    0 2px 4px -1px rgba(107, 114, 128, 0.1) !important;
+}
+
+/* Fix purple colors in severity labels */
+.gold-theme .text-purple-400 {
+  color: #c49d6b !important;
+}
+
+/* Selected filter chip styling */
+.medspa-new-theme button.bg-medspa-primary {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-new-theme button.bg-medspa-primary:hover {
+  background-color: #2c5f6b !important;
+  color: white !important;
+  border-color: #2c5f6b !important;
+}
+
+/* More specific override for filter chips */
+.medspa-new-theme button[class*="bg-medspa-primary"] {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-new-theme button[class*="bg-medspa-primary"]:hover {
+  background-color: #2c5f6b !important;
+  color: white !important;
+  border-color: #2c5f6b !important;
+}
+
+/* Force override for selected filter chips */
+.medspa-new-theme button.bg-medspa-primary.text-white.border-medspa-primary {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+/* Star colors in filter chips */
+.medspa-new-theme .text-medspa-primary {
+  color: #367588 !important;
+}
+
+.medspa-new-theme button .text-medspa-primary {
+  color: #367588 !important;
+}
+
+.medspa-new-theme button .text-white {
+  color: white !important;
+}
+
+/* Area section headers - force secondary background color */
+.medspa-new-theme div[class*="sticky top-0"][class*="bg-medspa-bg-secondary"] {
+  background-color: #e6f3f7 !important;
+}
+
+.medspa-new-theme div[class*="sticky top-0"] {
+  background-color: #e6f3f7 !important;
+}
+
+/* Analysis finding icons - force primary color */
+.medspa-new-theme .bg-medspa-primary\/10 {
+  background-color: rgba(54, 117, 136, 0.1) !important;
+}
+
+.medspa-new-theme .text-medspa-primary {
+  color: #367588 !important;
+}
+
+.medspa-new-theme .border-medspa-primary\/30 {
+  border-color: rgba(54, 117, 136, 0.3) !important;
+}
+
+/* Filter by Area tabs - unselected should be #f3f5f6, not white */
+.medspa-new-theme button[class*="bg-white"][class*="text-gray-700"] {
+  background-color: #f3f5f6 !important;
+  color: #374151 !important;
+  border-color: #d1d5db !important;
+}
+
+.medspa-new-theme button[class*="bg-white"][class*="text-gray-700"]:hover {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+  border-color: #9ca3af !important;
+}
+
+/* More specific override for filter buttons */
+.medspa-new-theme
+  button.inline-flex.items-center.justify-center.whitespace-nowrap.text-sm.font-medium.bg-white.text-gray-700 {
+  background-color: #f3f5f6 !important;
+  color: #374151 !important;
+  border-color: #d1d5db !important;
+}
+
+.medspa-new-theme
+  button.inline-flex.items-center.justify-center.whitespace-nowrap.text-sm.font-medium.bg-white.text-gray-700:hover {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+  border-color: #9ca3af !important;
+}
+
+/* Star icons in unselected filter tabs should be primary blue */
+.medspa-new-theme
+  button[class*="bg-white"][class*="text-gray-700"]
+  span[class*="text-medspa-primary"] {
+  color: #367588 !important;
+}
+
+/* Ensure unselected filter tabs don't have green text or borders */
+.medspa-new-theme button[class*="bg-white"]:not([class*="bg-medspa-primary"]) {
+  background-color: #ffffff !important;
+  color: #374151 !important;
+  border-color: #d1d5db !important;
+}
+
+.medspa-new-theme
+  button[class*="bg-white"]:not([class*="bg-medspa-primary"]):hover {
+  background-color: #f9fafb !important;
+  color: #111827 !important;
+  border-color: #9ca3af !important;
+}
+
+/* Navigation tabs - unselected should be #f3f5f6, not blue */
+.medspa-new-theme button[class*="text-gray-600"]:not([class*="text-white"]) {
+  background-color: #f3f5f6 !important;
+  color: #4b5563 !important;
+  border-color: #d1d5db !important;
+}
+
+.medspa-new-theme
+  button[class*="text-gray-600"]:not([class*="text-white"]):hover {
+  background-color: #e5e7eb !important;
+  color: #374151 !important;
+  border-color: #9ca3af !important;
+}
+
+/* More specific override for navigation tabs */
+.medspa-new-theme
+  div[data-tutorial="tab-navigation"]
+  button[class*="text-gray-600"] {
+  background-color: #f3f5f6 !important;
+  color: #4b5563 !important;
+  border-color: #d1d5db !important;
+}
+
+.medspa-new-theme
+  div[data-tutorial="tab-navigation"]
+  button[class*="text-gray-600"]:hover {
+  background-color: #e5e7eb !important;
+  color: #374151 !important;
+  border-color: #9ca3af !important;
+}
+
+/* Force override for all unselected navigation buttons */
+.medspa-new-theme button.flex-1.transition-all.duration-300.text-gray-600 {
+  background-color: #f3f5f6 !important;
+  color: #4b5563 !important;
+  border-color: #d1d5db !important;
+}
+
+.medspa-new-theme
+  button.flex-1.transition-all.duration-300.text-gray-600:hover {
+  background-color: #e5e7eb !important;
+  color: #374151 !important;
+  border-color: #9ca3af !important;
+}
+
+/* Ensure navigation tab container background is gray */
+.medspa-new-theme div[data-tutorial="tab-navigation"] {
+  background-color: #f3f5f6 !important;
+}
+
+/* Patient image labels - align with primary color scheme */
+.medspa-new-theme div[class*="bg-blue-500/30"] {
+  background-color: rgba(54, 117, 136, 0.3) !important;
+  border-color: rgba(54, 117, 136, 0.5) !important;
+}
+
+.medspa-new-theme div[class*="border-blue-400/50"] {
+  border-color: rgba(54, 117, 136, 0.5) !important;
+}
+
+/* Override all image label background colors to use primary color */
+.medspa-new-theme div[class*="bg-purple-500/30"],
+.medspa-new-theme div[class*="bg-green-500/30"],
+.medspa-new-theme div[class*="bg-red-500/30"],
+.medspa-new-theme div[class*="bg-yellow-500/30"],
+.medspa-new-theme div[class*="bg-pink-500/30"] {
+  background-color: rgba(54, 117, 136, 0.3) !important;
+}
+
+/* Override all image label border colors to use primary color */
+.medspa-new-theme div[class*="border-purple-400/50"],
+.medspa-new-theme div[class*="border-green-400/50"],
+.medspa-new-theme div[class*="border-red-400/50"],
+.medspa-new-theme div[class*="border-yellow-400/50"],
+.medspa-new-theme div[class*="border-pink-400/50"] {
+  border-color: rgba(54, 117, 136, 0.5) !important;
+}
+
+/* Patient image label text */
+.medspa-new-theme span[class*="text-white"] {
+  color: #ffffff !important;
+}
+
+/* Findings shortlist X buttons - white with no background */
+.medspa-new-theme button[class*="text-white/80"] {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.medspa-new-theme button[class*="text-white/80"]:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+/* More specific override for shortlist X buttons */
+.medspa-new-theme .medspa-shortlist button[class*="text-white/80"] {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.medspa-new-theme .medspa-shortlist button[class*="text-white/80"]:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+/* Findings shortlist styling */
+.medspa-new-theme .medspa-shortlist {
+  background-color: #e6f3f7 !important;
+  border-color: rgba(54, 117, 136, 0.3) !important;
+}
+
+.medspa-new-theme .medspa-shortlist-title {
+  color: #367588 !important;
+}
+
+.medspa-new-theme .medspa-shortlist-star {
+  color: #367588 !important;
+}
+
+/* Remove weird borders from shortlist title and star */
+.medspa-new-theme .medspa-shortlist-title {
+  border: none !important;
+}
+
+.medspa-new-theme .medspa-shortlist-title svg {
+  border: none !important;
+}
+
+.medspa-new-theme h3.text-medspa-primary {
+  border: none !important;
+}
+
+.medspa-new-theme h3.text-medspa-primary svg {
+  border: none !important;
+}
+
+/* Tab navigation styling for medspa-new-theme */
+.medspa-new-theme
+  button.bg-gradient-to-r.from-medspa-primary.to-medspa-secondary {
+  background: linear-gradient(to right, #367588, #367588) !important;
+  color: white !important;
+  box-shadow: 0 10px 15px -3px rgba(54, 117, 136, 0.25) !important;
+}
+
+.medspa-new-theme
+  button.bg-gradient-to-r.from-medspa-primary.to-medspa-secondary
+  * {
+  color: white !important;
+}
+
+.medspa-new-theme button.text-medspa-text-secondary {
+  color: #6b7280 !important;
+}
+
+.medspa-new-theme button.text-medspa-text-secondary:hover {
+  color: #000000 !important;
+  background-color: rgba(54, 117, 136, 0.24) !important;
+}
+
+/* Force tab text colors for medspa-new-theme */
+.medspa-new-theme button[class*="text-medspa-text-secondary"] {
+  color: #6b7280 !important;
+}
+
+.medspa-new-theme button[class*="text-medspa-text-secondary"]:hover {
+  color: #000000 !important;
+  background-color: rgba(54, 117, 136, 0.24) !important;
+}
+
+.medspa-new-theme button[class*="bg-gradient-to-r"] {
+  background: linear-gradient(to right, #367588, #367588) !important;
+  color: white !important;
+}
+
+.medspa-new-theme button[class*="bg-gradient-to-r"] * {
+  color: white !important;
+}
+
+/* Shortlist items styling */
+.medspa-new-theme .bg-medspa-primary {
+  background-color: #367588 !important;
+}
+
+.medspa-new-theme .bg-medspa-bg-secondary {
+  background-color: #e6f3f7 !important;
+}
+
+.medspa-new-theme .text-medspa-text-primary {
+  color: #000000 !important;
+}
+
+.medspa-new-theme .text-medspa-text-secondary {
+  color: #6b7280 !important;
+}
+
+.medspa-new-theme .border-medspa-primary\/30 {
+  border-color: rgba(54, 117, 136, 0.3) !important;
+}
+
+.medspa-new-theme .bg-medspa-accent-24 {
+  background-color: rgba(54, 117, 136, 0.24) !important;
+}
+
+/* Severity chips styling - using existing rule above */
+
+.medspa-new-theme .text-medspa-primary {
+  color: #367588 !important;
+}
+
+.medspa-new-theme .border-medspa-primary {
+  border-color: #367588 !important;
+}
+
+/* Force treatment filter chip styling to match analysis chips */
+.medspa-new-theme button[class*="px-3 py-2 rounded-lg"] {
+  background-color: #e6f3f7 !important;
+  color: #4b5563 !important;
+  border-color: #e5e7eb !important;
+}
+
+.medspa-new-theme button[class*="px-3 py-2 rounded-lg"]:hover {
+  background-color: #e5e7eb !important;
+  color: #374151 !important;
+}
+
+.medspa-new-theme
+  button[class*="px-3 py-2 rounded-lg"][class*="bg-medspa-primary"] {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+/* Force treatment filter labels to be darker */
+.medspa-new-theme span[class*="text-gray-400"] {
+  color: #1f2937 !important;
+}
+
+/* Ensure selected treatment filter chips use the correct blue primary color */
+.medspa-new-theme button.bg-medspa-primary {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-new-theme button.bg-medspa-primary:hover {
+  background-color: #2d5f6b !important;
+  color: white !important;
+  border-color: #2d5f6b !important;
+}
+
+/* More specific rules for treatment filter buttons */
+.medspa-new-theme
+  button[class*="px-3 py-2 rounded-lg"][class*="bg-medspa-primary"] {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-new-theme
+  button[class*="px-3 py-2 rounded-lg"][class*="bg-medspa-primary"]:hover {
+  background-color: #2d5f6b !important;
+  color: white !important;
+  border-color: #2d5f6b !important;
+}
+
+/* Override specific Tailwind classes that are conflicting */
+.medspa-new-theme button.bg-medspa-primary.bg-gray-800\/60 {
+  background-color: #367588 !important;
+}
+
+.medspa-new-theme button.bg-medspa-primary.text-gray-300 {
+  color: white !important;
+}
+
+.medspa-new-theme button.bg-medspa-primary.border-gray-600\/50 {
+  border-color: #367588 !important;
+}
+
+.medspa-new-theme button.bg-medspa-primary.hover\:bg-yellow-500\/10:hover {
+  background-color: #2d5f6b !important;
+}
+
+.medspa-new-theme button.bg-medspa-primary.hover\:text-white:hover {
+  color: white !important;
+}
+
+/* Target selected treatment filter buttons using data attributes and active states */
+.medspa-new-theme button[data-state="active"] {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-new-theme button[aria-pressed="true"] {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+/* Target buttons that are selected based on their computed styles */
+.medspa-new-theme button[class*="px-3 py-2 rounded-lg"]:focus {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+/* Target selected buttons that don't have the unselected gray background */
+.medspa-new-theme
+  button[class*="px-3 py-2 rounded-lg"]:not([class*="bg-gray-100"]):not(
+    [class*="bg-gray-800"]
+  ) {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+/* Force selected state for treatment filter buttons with bg-medspa-primary class */
+.medspa-new-theme button.bg-medspa-primary {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-new-theme button.bg-medspa-primary:hover {
+  background-color: #2d5f6b !important;
+  color: white !important;
+  border-color: #2d5f6b !important;
+}
+
+/* Override any conflicting Tailwind classes for selected buttons */
+.medspa-new-theme
+  button[class*="bg-medspa-primary"][class*="text-white"][class*="border-medspa-primary"] {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+/* Ensure the selected state persists even with transitions */
+.medspa-new-theme button[class*="bg-medspa-primary"] * {
+  color: white !important;
+}
+
+/* Force blue color for active treatment filter buttons */
+.medspa-new-theme button[data-state="active"] {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-new-theme button[data-state="active"]:hover {
+  background-color: #2d5f6b !important;
+  color: white !important;
+  border-color: #2d5f6b !important;
+}
+
+/* Force blue color for buttons with active attribute */
+.medspa-new-theme button[active] {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-new-theme button[active]:hover {
+  background-color: #2d5f6b !important;
+  color: white !important;
+  border-color: #2d5f6b !important;
+}
+
+/* Force blue styling for selected shortlist filter buttons */
+.medspa-new-theme button[class*="bg-medspa-primary"][class*="text-white"] {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+  box-shadow: none !important;
+}
+
+.medspa-new-theme
+  button[class*="bg-medspa-primary"][class*="text-white"]:hover {
+  background-color: #2d5f6b !important;
+  color: white !important;
+  border-color: #2d5f6b !important;
+}
+
+/* Force styling for "No treatments found" message and buttons */
+.medspa-new-theme h3[class*="text-medspa-text-primary"] {
+  color: #000000 !important;
+}
+
+.medspa-new-theme p[class*="text-medspa-text-secondary"] {
+  color: #6b7280 !important;
+}
+
+.medspa-new-theme button[class*="bg-medspa-primary"] {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-new-theme button[class*="bg-medspa-bg-secondary"] {
+  background-color: #e6f3f7 !important;
+  color: #000000 !important;
+  border-color: #e5e7eb !important;
+}
+
+.medspa-new-theme button[class*="bg-medspa-bg-secondary"]:hover {
+  background-color: #e5e7eb !important;
+  color: #000000 !important;
+}
+
+/* Fix unselected treatment filter buttons to have better text contrast */
+.medspa-new-theme button[class*="bg-gray-100"] {
+  background-color: #e6f3f7 !important;
+  color: #374151 !important;
+  border-color: #d1d5db !important;
+}
+
+.medspa-new-theme button[class*="bg-gray-100"]:hover {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+  border-color: #9ca3af !important;
+}
+
+/* Force blue color for buttons that are currently selected/focused */
+.medspa-new-theme button:focus {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+/* Only apply blue color to selected treatment filter buttons */
+.medspa-new-theme
+  button[class*="px-3 py-2 rounded-lg"][class*="bg-medspa-primary"] {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+  box-shadow: none !important;
+}
+
+/* Ensure unselected treatment filter buttons have white/light gray styling */
+.medspa-new-theme
+  button[class*="px-3 py-2 rounded-lg"]:not([class*="bg-medspa-primary"]) {
+  background-color: #e6f3f7 !important;
+  color: #6b7280 !important;
+  border-color: #e5e7eb !important;
+  box-shadow: none !important;
+}
+
+/* Hover state for unselected buttons */
+.medspa-new-theme
+  button[class*="px-3 py-2 rounded-lg"]:not(
+    [class*="bg-medspa-primary"]
+  ):hover {
+  background-color: #e5e7eb !important;
+  color: #374151 !important;
+  border-color: #d1d5db !important;
+}
+
+/* Force blue color for active/selected treatment filter buttons */
+.medspa-new-theme button[active] {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+  box-shadow: none !important;
+}
+
+.medspa-new-theme button[active]:hover {
+  background-color: #2d5f6b !important;
+  color: white !important;
+  border-color: #2d5f6b !important;
+}
+
+/* Force blue styling for selected shortlist filter buttons */
+.medspa-new-theme button[class*="bg-medspa-primary"][class*="text-white"] {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+  box-shadow: none !important;
+}
+
+.medspa-new-theme
+  button[class*="bg-medspa-primary"][class*="text-white"]:hover {
+  background-color: #2d5f6b !important;
+  color: white !important;
+  border-color: #2d5f6b !important;
+}
+
+/* Force styling for "No treatments found" message and buttons */
+.medspa-new-theme h3[class*="text-medspa-text-primary"] {
+  color: #000000 !important;
+}
+
+.medspa-new-theme p[class*="text-medspa-text-secondary"] {
+  color: #6b7280 !important;
+}
+
+.medspa-new-theme button[class*="bg-medspa-primary"] {
+  background-color: #367588 !important;
+  color: white !important;
+  border-color: #367588 !important;
+}
+
+.medspa-new-theme button[class*="bg-medspa-bg-secondary"] {
+  background-color: #e6f3f7 !important;
+  color: #000000 !important;
+  border-color: #e5e7eb !important;
+}
+
+.medspa-new-theme button[class*="bg-medspa-bg-secondary"]:hover {
+  background-color: #e5e7eb !important;
+  color: #000000 !important;
+}
+
+/* Fix unselected treatment filter buttons to have better text contrast */
+.medspa-new-theme button[class*="bg-gray-100"] {
+  background-color: #e6f3f7 !important;
+  color: #374151 !important;
+  border-color: #d1d5db !important;
+}
+
+.medspa-new-theme button[class*="bg-gray-100"]:hover {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+  border-color: #9ca3af !important;
+}
+
+/* Force gray text for unselected shortlist filter buttons */
+.medspa-new-theme button[class*="bg-white"][class*="text-gray-600"] {
+  color: #4b5563 !important;
+}
+
+/* Force white text for shortlist items */
+.medspa-shortlist span.text-white {
+  color: white !important;
+}
+
+/* Force light gray background for non-shortlisted findings in treatments */
+.medspa-new-theme span[class*="bg-gray-100"][class*="text-gray-700"] {
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
+  border-color: #d1d5db !important;
+}
+
+/* Override any conflicting styles for non-shortlisted findings */
+.medspa-new-theme .flex.flex-wrap.gap-2 span[class*="bg-gray-100"] {
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
+  border-color: #d1d5db !important;
+}
+
+/* Light medspa-primary colors for relevant issues */
+.medspa-light-bg {
+  background-color: rgba(54, 117, 136, 0.1) !important;
+}
+
+.medspa-light-text {
+  color: #367588 !important;
+}
+
+.medspa-light-border {
+  border-color: rgba(54, 117, 136, 0.3) !important;
+}
+
+/* Force white backgrounds for analysis finding cards */
+.medspa-new-theme .rounded-2xl.border.p-3.bg-white {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+/* Force white backgrounds for all finding cards in analysis view */
+.medspa-new-theme [class*="p-3"][class*="transition-all"][class*="bg-white"] {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+/* Force white backgrounds for analysis section headers */
+.medspa-new-theme .sticky.top-0.z-40.bg-white {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+/* Force white backgrounds for all section headers in analysis */
+.medspa-new-theme [class*="sticky"][class*="top-0"][class*="bg-white"] {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+/* Force white backgrounds for section headers with more specific selectors */
+.medspa-new-theme .sticky.top-0.z-40.bg-white.backdrop-blur-xl {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+/* Even more specific selectors for section headers */
+.medspa-new-theme
+  .sticky.top-0.z-40.bg-white.backdrop-blur-xl.py-4.mb-4.shadow-lg {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+/* Force white backgrounds for all elements with these classes */
+.medspa-new-theme
+  [class*="sticky"][class*="top-0"][class*="z-40"][class*="bg-white"] {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+/* Nuclear option - target the exact element structure */
+.medspa-new-theme
+  div.sticky.top-0.z-40.bg-white.backdrop-blur-xl.py-4.mb-4.shadow-lg.opacity-100.transition-all.duration-300 {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+/* Even more nuclear - target any div with these classes */
+.medspa-new-theme
+  div[class*="sticky"][class*="top-0"][class*="z-40"][class*="bg-white"] {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+/* Remove borders from analysis section headers */
+.medspa-new-theme .sticky.top-0.z-40.bg-white.backdrop-blur-xl.border-b {
+  border-bottom: none !important;
+}
+
+/* Remove borders from analysis finding cards */
+.medspa-new-theme .rounded-2xl.border.p-3.bg-white {
+  border: none !important;
+}
+
+/* Remove borders from all analysis cards */
+.medspa-new-theme [class*="p-3"][class*="transition-all"][class*="bg-white"] {
+  border: none !important;
+}
+
+/* Tab navigation styling for unselected tabs */
+.medspa-new-theme
+  [data-tutorial="tab-navigation"]
+  button:not([class*="bg-gradient-to-r"]) {
+  background-color: #f3f4f6 !important;
+  border-color: #e5e7eb !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+}
+
+/* Tab navigation container styling */
+.medspa-new-theme [data-tutorial="tab-navigation"] {
+  background-color: #f3f4f6 !important;
+  border-color: #e5e7eb !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+}
+
+/* Filter and sort buttons styling */
+.medspa-new-theme button[title*="Toggle"] {
+  background-color: #f3f4f6 !important;
+  border-color: #e5e7eb !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+}
+
+/* Force exact colors for all elements */
+.medspa-new-theme
+  [data-tutorial="tab-navigation"]
+  button:not([class*="bg-gradient-to-r"]),
+.medspa-new-theme button[title*="Toggle"] {
+  background-color: #f3f4f6 !important;
+  border-color: #e5e7eb !important;
+}

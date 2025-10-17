@@ -1,0 +1,42 @@
+Airtable's API does not support direct file uploads. To upload a photo to an attachment field in Airtable using the API, the photo must first be hosted online and accessible via a public URL. Airtable will then download and store its own copy of the image from that URL.
+Here is a general process for uploading a photo to Airtable via the API:
+Host the Image: Upload your photo to a publicly accessible storage service. Examples include:
+Amazon S3 (or S3-compatible services like Cloudflare R2 or DigitalOcean Spaces)
+Google Drive
+Dropbox
+Image hosting services like Cloudinary
+Obtain the Public URL: After uploading, retrieve the public URL of the hosted image.
+Construct the API Request:
+Use the Airtable API's update record or new record endpoint.
+The attachment field in your Airtable record should be updated with an array containing an attachment object.
+The attachment object requires a url property, which will be the public URL of your hosted image. An optional filename property can also be included.
+Code
+
+    {
+      "fields": {
+        "AttachmentFieldName": [
+          {
+            "url": "https://example.com/your-image.jpg",
+            "filename": "your-image.jpg"
+          }
+        ]
+      }
+    }
+Send the API Request: Make a POST or PATCH request to the Airtable API endpoint for your base and table, including the constructed JSON body and your API key in the Authorization header.
+Example using curl:
+Code
+
+curl -X PATCH "https://api.airtable.com/v0/YOUR_BASE_ID/YOUR_TABLE_NAME/YOUR_RECORD_ID" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "fields": {
+      "Photo": [
+        {
+          "url": "https://example.com/my-awesome-photo.jpg",
+          "filename": "my-awesome-photo.jpg"
+        }
+      ]
+    }
+  }'
+Note: After Airtable has downloaded and copied the attachment, the original hosted file no longer needs to remain public, although Airtable's copy will be publicly accessible if someone has the URL to it. Consider the security implications when choosing a hosting method and handling sensitive files.
